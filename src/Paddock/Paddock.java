@@ -73,12 +73,9 @@ public class Paddock {
         String toString = "enclos : " + "\n\tnom = " + name + "\n\tsurface = " + surface + "\n\tnombre d'animaux maximum = " + maxNbAnimals +
                 "\n\tnombre d'animaux présent = " + hereNbAnimals + "\n\ttype d'animals présent = " + typeAnimals + "\n\tdégré de saleté = " + cleanliness +
                 "\n\n";
-        if(getTypeAnimals().isEmpty()) {
+        if(getTypeAnimals().isEmpty())
             toString += "Aucune information sur les animaux car l'enclos est vide.";
-        }
-        /*else {
+        else
             toString += getTypeAnimals().; // chercher comvertir string en class
-        }*/
-        return toString;
     }
 }
