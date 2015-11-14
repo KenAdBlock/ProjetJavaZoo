@@ -11,11 +11,11 @@ public class Paddock {
     private String typeAnimals;
     private String cleanliness;
 
-    public Paddock(String name, int surface, int maxNbAnimals, int herNbAnimals, String typeAnimals, String cleanliness) {
+    public Paddock(String name, int surface, int maxNbAnimals, int hereNbAnimals, String typeAnimals, String cleanliness) {
         this.name = name;
         this.surface = surface;
         this.maxNbAnimals = maxNbAnimals;
-        this.hereNbAnimals = herNbAnimals;
+        this.hereNbAnimals = hereNbAnimals;
         this.typeAnimals = typeAnimals;
         this.cleanliness = cleanliness;
     }
@@ -32,8 +32,8 @@ public class Paddock {
         this.maxNbAnimals = maxNbAnimals;
     }
 
-    public void setHereNbAnimals(int herNbAnimals) {
-        this.hereNbAnimals = herNbAnimals;
+    public void setHereNbAnimals(int hereNbAnimals) {
+        this.hereNbAnimals = hereNbAnimals;
     }
 
     public void setTypeAnimals(String typeAnimals) {
@@ -70,12 +70,14 @@ public class Paddock {
 
     @Override
     public String toString() {
-        String toString = "enclos : " + "\n\tnom = " + name + "\n\tsurface = " + surface + "\n\tnombre d'animaux maximum = " + maxNbAnimals +
-                "\n\tnombre d'animaux présent = " + hereNbAnimals + "\n\ttype d'animals présent = " + typeAnimals + "\n\tdégré de saleté = " + cleanliness +
+        String toString = "Enclos : " + "\n\tnom = " + name + "\n\tsurface = " + surface + "m²\n\tnombre d'animaux maximum = " + maxNbAnimals +
+                "\n\tnombre d'animaux présents = " + hereNbAnimals + "\n\ttype d'animal présent = " + typeAnimals + "\n\tdégré de saleté = " + cleanliness +
                 "\n\n";
         if(getTypeAnimals().isEmpty())
             toString += "Aucune information sur les animaux car l'enclos est vide.";
-        else
-            toString += getTypeAnimals().; // chercher comvertir string en class
+        /*else
+            toString += getTypeAnimals().;*/ // chercher comvertir string en class
+
+        return toString;
     }
 }

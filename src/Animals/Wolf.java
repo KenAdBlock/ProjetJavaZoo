@@ -70,7 +70,6 @@ public class Wolf extends Mammal implements IWander {
 
     public void reproduction(Wolf wolf){
 
-        /* un boolean qui si est a true appel un unbornWolf et gérer que ce soit deux sexes different */
         if ( (this.isSex() != wolf.isSex()) ){
 
             int random = Tools.Random(0, 2);
@@ -105,7 +104,10 @@ public class Wolf extends Mammal implements IWander {
             public void run() {
                 try {
                     sleep(timeUnborn - (timeUnborn/100*20));
-                    System.out.println(wolf.getName() + "(femelle) va bientôt mettre bas...");
+                    System.out.println(wolf.getName()
+                            + "(femelle) va bientôt mettre bas de "
+                            + nbChild
+                            + " petits...");
                     sleep(timeUnborn - (timeUnborn/100*80));
                     for (int i = 0; i < nbChild; ++i){
                         giveBirth(wolf);
