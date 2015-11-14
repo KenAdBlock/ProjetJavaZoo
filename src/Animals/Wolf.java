@@ -22,8 +22,8 @@ public class Wolf extends Mammal implements IWander {
 
     public Wolf(String name, boolean sex, int weight, int height, int age) {
         super(name, sex, weight, height, age);
-        timeUnborn = Tools.Random(6000, 6301); // 1000 ms égale 1 jour en vrai
-    } //
+        timeUnborn = Tools.Random(6000, 6301);// 1000 ms égale 1 jour en vrai
+    } //Constructor
 
 
 
@@ -33,7 +33,7 @@ public class Wolf extends Mammal implements IWander {
                 "\n\tnom = " + getName();
         if (isSex())
             tostring += "\n\tsexe = mâle ";
-         else
+        else
             tostring += "\n\tsexe = femelle";
         if (getWeight()>999)
             tostring += "\n\tpoids = " + getWeight()/1000 + "kg";
@@ -44,10 +44,10 @@ public class Wolf extends Mammal implements IWander {
         else
             tostring += "\n\ttaille = " + getWeight() + "cm";
         tostring += "\n\tâge = " + getAge() + "an(s)\n\tindicateur de faim = " + getHungerIndicator() + "/100";
-         if(isSleepIndicator())
-             tostring += "\n\tindicateur de sommeil = endormi";
+        if(isSleepIndicator())
+            tostring += "\n\tindicateur de sommeil = endormi";
         else
-             tostring += "\n\tindicateur de sommeil = éveillé";
+            tostring += "\n\tindicateur de sommeil = éveillé";
         tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100";
 
         return tostring;
@@ -68,6 +68,7 @@ public class Wolf extends Mammal implements IWander {
         System.out.println("Je fais des bonds, encore des bonds, tout pleins de bonds !");
     }
 
+
     public void reproduction(Wolf wolf){
 
         /* un boolean qui si est a true appel un unbornWolf et gérer que ce soit deux sexes different */
@@ -79,12 +80,11 @@ public class Wolf extends Mammal implements IWander {
             Wolf w ;
 
             if(this.isSex())
-               w = wolf;
+                w = wolf;
             else
                 w = this;
 
             if(random < 1){
-                System.out.println("ça a marché");
                 unborn(w,randomNbChild);
             }
             else
@@ -94,8 +94,6 @@ public class Wolf extends Mammal implements IWander {
             System.out.println("\nCe sont des loups du même sexe ! Petit coquin");
     }
 
-
-    //private void unbornWolf(Wolf wolf){unborn(/* timeUnborn */);}//unbornWolf() je ne sais plus !!!!
 
     private void unborn(final Wolf wolf, final int nbChild){
 
@@ -120,9 +118,10 @@ public class Wolf extends Mammal implements IWander {
 
     private synchronized void giveBirth(Wolf wolf){
         nbWolf += 1;
-        new Wolf("wolf"+nbWolf, (Tools.Random(0,2) != 0), Tools.Random(100,200), Tools.Random(7, 14), 0);
-        System.out.println(wolf.getName() + "(femelle) vient de donner naissance à " + "wolf" + nbWolf);
-
+        Wolf w = new Wolf("wolf"+nbWolf, (Tools.Random(0,2) != 0), Tools.Random(100,200), Tools.Random(7, 14), 0);
+        System.out.println(wolf.getName() + "(femelle) vient de donner naissance à " + w.getName());
+        w.setPaddock(this.getPaddock());
+        this.getPaddock().add(w);
     }//giveBirth()  // accouchement
 
 } // class Wolf

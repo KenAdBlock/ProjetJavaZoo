@@ -6,6 +6,6 @@ package Paddock;
 public class Aquarium extends Paddock {
 
     public Aquarium(String name, int surface, int maxNbAnimals, int herNbAnimals, String typeAnimals, String cleanliness) {
-        super(name, surface, maxNbAnimals, herNbAnimals, typeAnimals, cleanliness);
+        super(name, surface, maxNbAnimals, cleanliness);
     }
 }
