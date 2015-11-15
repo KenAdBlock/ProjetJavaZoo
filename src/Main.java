@@ -7,19 +7,20 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Le zoo ouvre ses portes. Bienvenue !");
-/*
+
         Wolf loupGoerges = new Wolf("wolf1",true, 30000, 160, 5);
         Wolf loupMelissa = new Wolf("wolf2",false, 35000, 165, 4);
         Wolf loupKenny = new Wolf("wolf3",true, 30000, 155, 6);
         Wolf loupLynda = new Wolf("wolf4",false, 30000, 155, 6);
         loupGoerges.setNbWolf(4);
 
-        loupGoerges.reproduction(loupKenny);
+        Paddock paddock1 = new Paddock("paddock1", 32, 8, "bon");
+
         loupGoerges.reproduction(loupMelissa);
         loupLynda.reproduction(loupKenny);
         System.out.println(paddock1.toString());
-*/
 
+/*
         boolean bool = true; // bool => zooOpened
         boolean bool2 = true; // bool2 => askAgain
         Scanner in1 = new Scanner(System.in);
@@ -41,7 +42,7 @@ public class Main {
                     System.out.println("Vous avez \"créer\" un tigre !");
                     break;
                 case "q":
-                    System.out.println("Le zoo ferme ses portes. A demain ! :)");
+                    System.out.println("Le zoo ferme ses portes. À demain ! :)");
                     bool = false;
                     bool2 = false;
                     break;
@@ -60,7 +61,7 @@ public class Main {
                         bool2 = false;
                         break;
                     case "n":
-                        System.out.println("Le zoo ferme ses portes. A demain ! :)");
+                        System.out.println("Le zoo ferme ses portes. À demain ! :)");
                         bool = false;
                         bool2 = false;
                         break;
@@ -70,5 +71,6 @@ public class Main {
                 } // switch
             }
         }
+    */
     } // main()
 } // class Main

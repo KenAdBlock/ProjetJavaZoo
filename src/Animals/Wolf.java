@@ -65,7 +65,7 @@ public class Wolf extends Mammal implements IWander {
 
     @Override
     public void wander() {
-        System.out.println("Je fais des bonds, encore des bonds, tout pleins de bonds !");
+        System.out.println("Je fais des bonds, encore des bonds, tout plein de bonds !");
     }
 
 
