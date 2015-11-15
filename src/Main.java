@@ -45,10 +45,13 @@ public class Main {
         System.out.println(paddock1.toString());
 */
 
-        boolean isZooOpened = true;
-        Scanner in1 = new Scanner(System.in);
-        Scanner in2 = new Scanner(System.in);
-        while (isZooOpened) {
+        // boolean isZooOpen = true;
+
+        Scanner scannerChoiceAnimal = new Scanner(System.in);
+        Scanner scannerChoiceAgain = new Scanner(System.in);
+
+        boolean isCreateAnimal = true;
+        while (isCreateAnimal) {
             boolean isAskAgain = true;
             System.out.print("\nQuel animal voulez-vous créer ?\n" +
                     "\t1: Loup\n" +
@@ -56,7 +59,7 @@ public class Main {
                     "\tq: QUITTER\n" +
                     "\nChoix : ");
 
-            String choiceAnimal = in1.next();
+            String choiceAnimal = scannerChoiceAnimal.next();
             choiceAnimal = choiceAnimal.toLowerCase();
             switch (choiceAnimal) {
                 case "1":
@@ -67,7 +70,7 @@ public class Main {
                     break;
                 case "q":
                     System.out.println("Le zoo ferme ses portes. À demain ! :)");
-                    isZooOpened = false;
+                    isCreateAnimal = false;
                     isAskAgain = false;
                     break;
                 default:
@@ -78,7 +81,7 @@ public class Main {
             while (isAskAgain) {
                 System.out.print("\nVoulez-vous faire une autre action ? (o/n)\n");
 
-                String choiceAgain = in2.next();
+                String choiceAgain = scannerChoiceAgain.next();
                 choiceAgain = choiceAgain.toLowerCase();
                 switch (choiceAgain) {
                     case "o":
@@ -86,7 +89,7 @@ public class Main {
                         break;
                     case "n":
                         System.out.println("Le zoo ferme ses portes. À demain ! :)");
-                        isZooOpened = false;
+                        isCreateAnimal = false;
                         isAskAgain = false;
                         break;
                     default:
