@@ -6,7 +6,7 @@ import Paddock.Paddock;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Le zoo ouvre ses portes. Bienvenue !");
+        System.out.println("\nLe zoo ouvre ses portes. Bienvenue !");
 /*
 
         Wolf loupGoerges = new Wolf("wolf1",true, 30000, 160, 5);
