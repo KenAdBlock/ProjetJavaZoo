@@ -1,0 +1,3 @@
+#ignore le dossier out qui ne sert que pour la compile
+*.class
+*.xml
