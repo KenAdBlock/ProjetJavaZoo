@@ -1,14 +1,13 @@
 package Paddock;
 
 import Species.Animal;
-import Species.Bird;
 
 /**
  * Created by Darkweizer on 12/11/2015.
  */
 public class Aviary extends Paddock {
     private int height;
-    public Aviary(String name, int surface, int maxNbAnimals, int herNbAnimals, String cleanliness, int height) {
+    public Aviary(String name, int surface, int maxNbAnimals, String cleanliness, int height) {
         super(name, surface, maxNbAnimals, cleanliness);
         this.height = height;
     }

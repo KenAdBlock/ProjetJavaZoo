@@ -7,7 +7,7 @@ public class Aquarium extends Paddock {
 
     private int depth;
 
-    public Aquarium(String name, int surface, int maxNbAnimals, int herNbAnimals, String cleanliness, int depth) {
+    public Aquarium(String name, int surface, int maxNbAnimals, String cleanliness, int depth) {
         super(name, surface, maxNbAnimals, cleanliness);
         this.depth = depth;
     }
