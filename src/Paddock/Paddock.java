@@ -3,8 +3,6 @@ package Paddock;
 import Species.Animal;
 import Tools.Tools;
 
-import javax.tools.Tool;
-import java.net.PasswordAuthentication;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,6 +21,7 @@ public class Paddock {
     private int foodIndicator = 0;
     private static ArrayList<Paddock> listPaddock = new ArrayList<>();
     protected boolean isGoodType = false;
+    protected boolean isKeepUp = false;
 
     public Paddock(String name, int surface, int maxNbAnimals,  String cleanliness) {
         this.name = name;
@@ -192,11 +191,14 @@ public class Paddock {
 
     public void keepUp(){
         if(cleanliness == "bon")
-            System.out.printf("Enclos propre, pas besoin d'entretenir");
+            System.out.println("Enclos propre, pas besoin d'entretenir");
         else if( hereNbAnimals != 0)
             System.out.println("Enclos non vide, l'entretient ne peut être effectué");
-        else
+        else {
             cleanliness = "bon";
+            System.out.println("L'enclos est maintenant propre");
+            isKeepUp = true;
+        }
     }
 
 }// class Paddock
