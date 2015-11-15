@@ -4,6 +4,7 @@ import Species.Animal;
 import Tools.Tools;
 
 import javax.tools.Tool;
+import java.net.PasswordAuthentication;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,6 +22,7 @@ public class Paddock {
     private static ArrayList<ArrayList<Animal>> totalAnimal = new ArrayList<>();
     private int foodIndicator = 0;
     private static ArrayList<Paddock> listPaddock = new ArrayList<>();
+    protected boolean isGoodType = false;
 
     public Paddock(String name, int surface, int maxNbAnimals,  String cleanliness) {
         this.name = name;
@@ -105,24 +107,28 @@ public class Paddock {
     }
 
     public void add(Animal type){
-        try{
-            if (hereNbAnimals < maxNbAnimals) {
-                if (animalPresent.isEmpty() || (animalPresent.get(0)).getClass().getName() == type.getClass().getName()) {
-                    animalPresent.add(type);
-                    typeAnimals = Tools.hashTypeAnimal(type.getClass().getName().substring(8));
-                    type.setPaddock(this);
-                    hereNbAnimals++;
-                    if (!totalAnimal.contains(animalPresent))
-                        totalAnimal.add(animalPresent);
-                    else
-                        totalAnimal.set(totalAnimal.indexOf(animalPresent), animalPresent);
-                }// on ajoute n'importe quel animal vu que l'enclos est vide ou si l'animal à ajouter est du même type que les animaux déjà présent dans l'enclos
-                else {
-                    System.out.println("Vous ne pouvais pas ajouter un " + Tools.hashTypeAnimal(type.getClass().getName().substring(8)) + " car il y a déja des " + typeAnimals);
-                }// l'animal à ajouter n'est pas du même type que les animaux déjà présent
+        try {
+            if (type.getTypeAnimal().equals("autre") || isGoodType) {
+
+                if (hereNbAnimals < maxNbAnimals) {
+                    if (animalPresent.isEmpty() || (animalPresent.get(0)).getClass().getName() == type.getClass().getName()) {
+                        animalPresent.add(type);
+                        typeAnimals = Tools.hashTypeAnimal(type.getClass().getName().substring(8));
+                        type.setPaddock(this);
+                        hereNbAnimals++;
+                        if (!totalAnimal.contains(animalPresent))
+                            totalAnimal.add(animalPresent);
+                        else
+                            totalAnimal.set(totalAnimal.indexOf(animalPresent), animalPresent);
+                    }// on ajoute n'importe quel animal vu que l'enclos est vide ou si l'animal à ajouter est du même type que les animaux déjà présent dans l'enclos
+                    else {
+                        System.out.println("Vous ne pouvais pas ajouter un " + Tools.hashTypeAnimal(type.getClass().getName().substring(8)) + " car il y a déja des " + typeAnimals);
+                    }// l'animal à ajouter n'est pas du même type que les animaux déjà présent
+                } else
+                    System.out.println("Enclos plein, vous ne pouvez pas ajouter plus d'animaux ici");
             }
             else
-                System.out.println("Enclos plein, vous ne pouvez pas ajouter plus d'animaux ici");
+                System.out.println(type.getName() + " ce peut pas entrer dans " + this.getName());
         }
         catch (Exception e){
             e.printStackTrace();
@@ -142,11 +148,13 @@ public class Paddock {
                 System.out.println("Dans quel enclos voulez-vous transferer " + type.getName() + " parmis : ");
                 int cpt = 0;
                 for(Paddock p : listPaddock){
-                    System.out.print(p.getName() + ", ");
-                    cpt++;
-                    if (cpt == 10) {
-                        System.out.println();
-                        cpt = 0;
+                    if (p.getName() != this.getName()){
+                        System.out.print(p.getName() + " ");
+                        cpt++;
+                        if (cpt == 5) {
+                            System.out.println();
+                            cpt = 0;
+                        }
                     }
                 }
                 System.out.println("?");
@@ -163,7 +171,7 @@ public class Paddock {
                 }
                 Paddock p = Tools.hashPaddock(PaddockChoice);
                 p.add(type);
-                System.out.println(type.getName() + " à bien été retiré de cette enclos\n");
+                System.out.println(type.getName() + " à bien été retiré de " + this.getName() + " pour être mis dans " + PaddockChoice +"\n");
 
             }// il est présent et est retiré
             else if(animalPresent.get(0).getClass().getName() != type.getClass().getName()){

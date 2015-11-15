@@ -23,6 +23,7 @@ public class Wolf extends Mammal implements IWander {
     public Wolf(String name, boolean sex, int weight, int height, int age) {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.Random(6000, 6301);// 1000 ms égale 1 jour en vrai
+        typeAnimal = "autre";
     } //Constructor
 
 

@@ -5,7 +5,7 @@ package Species;
  */
 public abstract class Mammal extends Animal {
 
-    protected long timeUnborn;
+
     protected Mammal(String name, boolean sex, int weight, int height, int age) {
         super(name, sex, weight, height, age);
     }

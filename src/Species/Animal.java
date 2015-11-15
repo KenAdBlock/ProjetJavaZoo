@@ -17,6 +17,8 @@ public abstract class Animal {
     private boolean sleepIndicator; // true si il dort
     private int healthIndicator = 100;
     private Paddock paddock;
+    protected long timeUnborn;
+    protected String typeAnimal;
 
     protected Animal(String name, boolean sex, int weight, int height, int age) {
         this.name = name;
@@ -33,6 +35,7 @@ public abstract class Animal {
     public void setHungerIndicator(int hungerIndicator) {
         this.hungerIndicator = hungerIndicator;
     }
+
 
     public String getName() {
         return name;
@@ -68,6 +71,10 @@ public abstract class Animal {
 
     public Paddock getPaddock() {
         return paddock;
+    }
+
+    public String getTypeAnimal() {
+        return typeAnimal;
     }
 
     public void eat() {
