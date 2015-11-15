@@ -1,6 +1,7 @@
 package Species;
 
 import Exception.HungerException;
+import Paddock.Paddock;
 
 /**
  * Created by c13003593 on 13/10/2015.
@@ -15,6 +16,7 @@ public abstract class Animal {
     private int hungerIndicator = 100;
     private boolean sleepIndicator; // true si il dort
     private int healthIndicator = 100;
+    private Paddock paddock;
 
     protected Animal(String name, boolean sex, int weight, int height, int age) {
         this.name = name;
@@ -23,6 +25,14 @@ public abstract class Animal {
         this.height = height;
         this.age = age;
     } // Constructor
+
+    public void setPaddock(Paddock paddock) {
+        this.paddock = paddock;
+    }
+
+    public void setHungerIndicator(int hungerIndicator) {
+        this.hungerIndicator = hungerIndicator;
+    }
 
     public String getName() {
         return name;
@@ -56,14 +66,27 @@ public abstract class Animal {
         return healthIndicator;
     }
 
+    public Paddock getPaddock() {
+        return paddock;
+    }
 
-    public void eat() throws HungerException {
+    public void eat() {
         if (!sleepIndicator) {
-            hungerIndicator = 100;
+            int needToFull = 100 - hungerIndicator;
+            int foodInside = paddock.getFoodIndicator();
+            if (foodInside == 0)
+                System.out.println("Pas de nourriture disponible dans l'enclos " + paddock.getName()); // faire en sorte que l'employer ajoute de la bouf !
+            else if((foodInside - needToFull) >= 0){
+                paddock.setFoodIndicator(foodInside -= needToFull);
+                hungerIndicator += needToFull;
+            }
+            else{
+                hungerIndicator += foodInside;
+                paddock.setFoodIndicator(0);
+            }
         }
-        else {
-            throw new HungerException();
-        }
+        else
+            System.out.println("il fait dodo !");
     } // eat()
 
     public abstract void makeSound(); // makeSound()

@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import Animals.Bear;
 import Animals.Wolf;
 import Paddock.Paddock;
 
@@ -13,8 +13,6 @@ public class Main {
         Wolf loupKenny = new Wolf("wolf3",true, 30000, 155, 6);
         Wolf loupLynda = new Wolf("wolf4",false, 30000, 155, 6);
         loupGoerges.setNbWolf(4);
-
-        Paddock paddock1 = new Paddock("paddock1", 32, 8, 4, "wolf", "propre");
 
         loupGoerges.reproduction(loupKenny);
         loupGoerges.reproduction(loupMelissa);
