@@ -2,9 +2,9 @@ package Paddock;
 
 import Species.Animal;
 import Tools.Tools;
-
 import java.util.ArrayList;
 import java.util.Scanner;
+import Zoo.Zoo;
 
 /**
  * Created by Darkweizer on 12/11/2015.
@@ -17,9 +17,7 @@ public class Paddock {
     private String typeAnimals = "pas d'animal présent";
     private String cleanliness;
     private ArrayList<Animal> animalPresent = new ArrayList<>();
-    private static ArrayList<ArrayList<Animal>> totalAnimal = new ArrayList<>();
     private int foodIndicator = 0;
-    private static ArrayList<Paddock> listPaddock = new ArrayList<>();
     protected boolean isGoodType = false;
     protected boolean isKeepUp = false;
 
@@ -28,7 +26,7 @@ public class Paddock {
         this.surface = surface;
         this.maxNbAnimals = maxNbAnimals;
         this.cleanliness = cleanliness;
-        listPaddock.add(this);
+        Zoo.getListPaddock().add(this);
         Tools.map1.put(this.name, this);
     }// Constructor
 
@@ -115,10 +113,10 @@ public class Paddock {
                         typeAnimals = Tools.hashTypeAnimal(type.getClass().getName().substring(8));
                         type.setPaddock(this);
                         hereNbAnimals++;
-                        if (!totalAnimal.contains(animalPresent))
-                            totalAnimal.add(animalPresent);
+                        if (!Zoo.getTotalAnimal().contains(animalPresent))
+                            Zoo.getTotalAnimal().add(animalPresent);
                         else
-                            totalAnimal.set(totalAnimal.indexOf(animalPresent), animalPresent);
+                            Zoo.getTotalAnimal().set(Zoo.getTotalAnimal().indexOf(animalPresent), animalPresent);
                     }// on ajoute n'importe quel animal vu que l'enclos est vide ou si l'animal à ajouter est du même type que les animaux déjà présent dans l'enclos
                     else {
                         System.out.println("Vous ne pouvais pas ajouter un " + Tools.hashTypeAnimal(type.getClass().getName().substring(8)) + " car il y a déja des " + typeAnimals);
@@ -146,12 +144,12 @@ public class Paddock {
                     typeAnimals = "pas d'animal présent";
                 System.out.println("Dans quel enclos voulez-vous transferer " + type.getName() + " parmis : ");
                 int cpt = 0;
-                for(Paddock p : listPaddock){
+                for(Paddock p : Zoo.getListPaddock()){
                     if (p.getName() != this.getName()){
                         System.out.print(p.getName() + " ");
                         cpt++;
                         if (cpt == 5) {
-                            System.out.println();
+                            System.out.println("");
                             cpt = 0;
                         }
                     }
@@ -163,7 +161,7 @@ public class Paddock {
                 while(b) {
                     PaddockChoice = in.next();
                     PaddockChoice = PaddockChoice.toLowerCase();
-                    for (Paddock p : listPaddock){
+                    for (Paddock p : Zoo.getListPaddock()){
                         if(p.getName().equals(PaddockChoice))
                             b = false;
                     }
