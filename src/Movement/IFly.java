@@ -5,5 +5,5 @@ package Movement;
  */
 public interface IFly {
 
-    public void fly();//fly()
+    public void fly(); //fly()
 }

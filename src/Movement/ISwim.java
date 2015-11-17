@@ -5,5 +5,5 @@ package Movement;
  */
 public interface ISwim {
 
-    public void swim();//swim()
+    public void swim(); //swim()
 }

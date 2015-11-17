@@ -4,7 +4,6 @@ import Movement.IWander;
 import Species.Mammal;
 import Tools.Tools;
 
-
 /**
  * Created by c13003593 on 13/10/2015.
  */
@@ -22,10 +21,9 @@ public class Wolf extends Mammal implements IWander {
 
     public Wolf(String name, boolean sex, int weight, int height, int age) {
         super(name, sex, weight, height, age);
-        timeUnborn = Tools.Random(6000, 6301);// 1000 ms égale 1 jour en vrai
+        timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "autre";
     } //Constructor
-
 
 
     @Override
@@ -74,8 +72,8 @@ public class Wolf extends Mammal implements IWander {
 
         if ( (this.isSex() != wolf.isSex()) ){
 
-            int random = Tools.Random(0, 2);
-            int randomNbChild = Tools.Random(4, 8);
+            int random = Tools.random(0, 2);
+            int randomNbChild = Tools.random(4, 8);
 
             Wolf w ;
 
@@ -119,9 +117,10 @@ public class Wolf extends Mammal implements IWander {
 
     }//unborn()     // gestation
 
+
     private synchronized void giveBirth(Wolf wolf){
         nbWolf += 1;
-        Wolf w = new Wolf("wolf"+nbWolf, (Tools.Random(0,2) != 0), Tools.Random(100,200), Tools.Random(7, 14), 0);
+        Wolf w = new Wolf("wolf"+nbWolf, (Tools.random(0,2) != 0), Tools.random(100,200), Tools.random(7, 14), 0);
         System.out.println(wolf.getName() + "(femelle) vient de donner naissance à " + w.getName());
         w.setPaddock(this.getPaddock());
         this.getPaddock().add(w);

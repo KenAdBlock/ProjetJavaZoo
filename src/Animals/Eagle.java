@@ -20,7 +20,7 @@ public class Eagle extends Bird implements IFly {
 
     public Eagle(String name, boolean sex, int weight, int height, int age) {
         super(name, sex, weight, height, age);
-        timeUnborn = Tools.Random(6000, 6301);// 1000 ms égale 1 jour en vrai
+        timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "volant";
         nbEagle += 1;
     } //Constructor
@@ -72,8 +72,8 @@ public class Eagle extends Bird implements IFly {
 
         if ( (this.isSex() != eagle.isSex()) ){
 
-            int random = Tools.Random(0, 2);
-            int randomNbChild = Tools.Random(4, 8);
+            int random = Tools.random(0, 2);
+            int randomNbChild = Tools.random(4, 8);
 
             Eagle e ;
 
@@ -119,7 +119,7 @@ public class Eagle extends Bird implements IFly {
     }//unborn()     // gestation
 
     private synchronized void giveBirth(Eagle eagle){
-        Eagle e = new Eagle("eagle"+nbEagle, (Tools.Random(0,2) != 0), Tools.Random(100,200), Tools.Random(7, 14), 0);
+        Eagle e = new Eagle("eagle"+nbEagle, (Tools.random(0,2) != 0), Tools.random(100,200), Tools.random(7, 14), 0);
         System.out.println("L'oeuf vient d'éclore et donne naissance à " + e.getName());
         e.setPaddock(this.getPaddock());
         this.getPaddock().add(e);

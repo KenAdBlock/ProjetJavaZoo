@@ -1,7 +1,6 @@
 package Tools;
 
 import Paddock.Paddock;
-
 import java.util.*;
 
 /**
@@ -20,10 +19,10 @@ public class Tools {
         put("Wolf","Loup");
     }};
 
-    public static int Random(int min, int max) {    /* Rename "Random" (ici & ds tte classe l'utilisant) en "random" */
-        Random r = new Random();                    /* Rename "Random" (ici & ds tte classe l'utilisant) en "random" */
-        return (min + r.nextInt(max - min));        /* Rename "Random" (ici & ds tte classe l'utilisant) en "random" */
-    } // Random()                                   /* Rename "Random" (ici & ds tte classe l'utilisant) en "random" */
+    public static int random(int min, int max) {
+        Random r = new Random();
+        return (min + r.nextInt(max - min));
+    } // random()
 
     public static Paddock hashPaddock(String str){
         return map1.get(str);

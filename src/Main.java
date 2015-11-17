@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
-import Tools.Tools;
 import Animals.Bear;
 import Animals.Eagle;
 import Animals.Wolf;
 import Paddock.Paddock;
 import Paddock.Aviary;
+import Tools.Tools;
 
 public class Main {
 

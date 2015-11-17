@@ -20,7 +20,7 @@ public class Bear extends Mammal {
 
     public Bear(String name, boolean sex, int weight, int height, int age) {
         super(name, sex, weight, height, age);
-        timeUnborn = Tools.Random(6000, 6301); // 1000 ms égale 1 jour en vrai
+        timeUnborn = Tools.random(6000, 6301); // 1000 ms égale 1 jour en vrai
         typeAnimal = "autre";
     } // Constructor
 
@@ -67,8 +67,8 @@ public class Bear extends Mammal {
         /* un boolean qui si est a true appel un unbornBear et gérer que ce soit deux sexes different */
         if ( (this.isSex() != bear.isSex()) ){
 
-            int random = Tools.Random(0, 2);
-            int randomNbChild = Tools.Random(4, 8);
+            int random = Tools.random(0, 2);
+            int randomNbChild = Tools.random(4, 8);
 
             Bear b ;
 
@@ -112,7 +112,7 @@ public class Bear extends Mammal {
 
     private synchronized void giveBirth(Bear bear){
         nbBear += 1;
-        Bear b =new Bear("bear"+nbBear, (Tools.Random(0,2) != 0), Tools.Random(100,200), Tools.Random(7, 14), 0);
+        Bear b =new Bear("bear"+nbBear, (Tools.random(0,2) != 0), Tools.random(100,200), Tools.random(7, 14), 0);
         System.out.println(bear.getName() + "(femelle) vient de donner naissance à " + "bear" + nbBear);
         b.setPaddock(this.getPaddock());
         this.getPaddock().add(b);

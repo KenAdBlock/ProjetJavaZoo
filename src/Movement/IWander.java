@@ -5,5 +5,5 @@ package Movement;
  */
 public interface IWander {
 
-    public void wander();//
+    public void wander(); //wander()
 }

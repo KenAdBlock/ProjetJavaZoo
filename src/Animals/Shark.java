@@ -21,7 +21,7 @@ public class Shark extends Fish implements ISwim {
 
     public Shark(String name, boolean sex, int weight, int height, int age) {
         super(name, sex, weight, height, age);
-        timeUnborn = Tools.Random(6000, 6301);// 1000 ms égale 1 jour en vrai
+        timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "nageant";
     } //Constructor
 
@@ -72,8 +72,8 @@ public class Shark extends Fish implements ISwim {
 
         if ( (this.isSex() != shark.isSex()) ){
 
-            int random = Tools.Random(0, 2);
-            int randomNbChild = Tools.Random(4, 8);
+            int random = Tools.random(0, 2);
+            int randomNbChild = Tools.random(4, 8);
 
             Shark s ;
 
@@ -121,7 +121,7 @@ public class Shark extends Fish implements ISwim {
 
     private synchronized void giveBirth(Shark shark){
         nbShark += 1;
-        Shark s = new Shark("shark"+nbShark, (Tools.Random(0,2) != 0), Tools.Random(100,200), Tools.Random(7, 14), 0);
+        Shark s = new Shark("shark"+nbShark, (Tools.random(0,2) != 0), Tools.random(100,200), Tools.random(7, 14), 0);
         System.out.println("L'oeuf vient d'éclore et donne naissance à " + s.getName());
         s.setPaddock(this.getPaddock());
         this.getPaddock().add(s);
