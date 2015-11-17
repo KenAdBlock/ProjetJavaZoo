@@ -2,17 +2,14 @@ package Tools;
 
 import Paddock.Paddock;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.WeakHashMap;
+import java.util.*;
 
 /**
  * Created by Darkweizer on 18/10/2015.
  */
 public class Tools {
     public static Map<String, Paddock> map1 = new WeakHashMap<>();
-    private static final Map<String, String> map2 = new HashMap<String, String>(){{
+    private static final Map<String, String> map2 = new HashMap<String, String>() {{
         put("Bear","Ours");
         put("Eagle","Aigle");
         put("Razorbill","Pingouin");
@@ -23,11 +20,10 @@ public class Tools {
         put("Wolf","Loup");
     }};
 
-    public static int Random(int min, int max){
-
-        Random r = new Random();
-        return (min + r.nextInt(max - min));
-    }
+    public static int Random(int min, int max) {    /* Rename "Random" (ici & ds tte classe l'utilisant) en "random" */
+        Random r = new Random();                    /* Rename "Random" (ici & ds tte classe l'utilisant) en "random" */
+        return (min + r.nextInt(max - min));        /* Rename "Random" (ici & ds tte classe l'utilisant) en "random" */
+    } // Random()                                   /* Rename "Random" (ici & ds tte classe l'utilisant) en "random" */
 
     public static Paddock hashPaddock(String str){
         return map1.get(str);
@@ -36,4 +32,24 @@ public class Tools {
     public static String hashTypeAnimal(String str){
         return map2.get(str);
     }
-}
+
+    public static void askAgain() {
+        System.out.print("\nVoulez-vous faire une autre action avant de quitter le zoo ? (o/n)\n");
+
+        Scanner scannerChoiceAgain = new Scanner(System.in);
+        String choiceAgain = scannerChoiceAgain.next();
+        choiceAgain = choiceAgain.toLowerCase();
+        switch (choiceAgain) {
+            case "o": case "y": case "oui": case "yes":
+                break;
+            case "n": case "non": case "no":
+                System.out.println("Le zoo ferme ses portes. À demain ! :)");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Cette option n'est pas proposée...");
+                break;
+        } // switch
+    } // askAgain()
+
+} // class Tools

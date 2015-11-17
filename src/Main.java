@@ -1,4 +1,6 @@
 import java.util.Scanner;
+
+import Tools.Tools;
 import Animals.Bear;
 import Animals.Eagle;
 import Animals.Wolf;
@@ -8,10 +10,14 @@ import Paddock.Aviary;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Le zoo ouvre ses portes. Bienvenue !");
+        run();
+    } // main()
+
+    public static void run() {
+        System.out.println("Le zoo ouvre ses portes ! Bienvenue.");
 /*
         Wolf loupGoerges = new Wolf("wolf1",true, 30000, 160, 5);
-        
+
         Wolf loupMelissa = new Wolf("wolf2",false, 32767, 165, 4);
         Wolf loupKenny = new Wolf("wolf3",true, 30000, 155, 6);
         Wolf loupLynda = new Wolf("wolf4",false, 30000, 155, 6);
@@ -45,58 +51,59 @@ public class Main {
         System.out.println(paddock1.toString());
 */
 
-        // boolean isZooOpen = true;
-
+        Scanner scannerChoiceAction = new Scanner(System.in);
         Scanner scannerChoiceAnimal = new Scanner(System.in);
-        Scanner scannerChoiceAgain = new Scanner(System.in);
 
-        boolean isCreateAnimal = true;
-        while (isCreateAnimal) {
-            boolean isAskAgain = true;
-            System.out.print("\nQuel animal voulez-vous créer ?\n" +
-                    "\t1: Loup\n" +
-                    "\t2: Tigre\n" +
+        while (true) {
+            System.out.print("\nQuel action voulez-vous faire ?\n" +
+                    "\t1: Créer un animal\n" +
+                    "\t2: Ajouter un enclos\n" +
                     "\tq: QUITTER\n" +
                     "\nChoix : ");
 
-            String choiceAnimal = scannerChoiceAnimal.next();
-            choiceAnimal = choiceAnimal.toLowerCase();
-            switch (choiceAnimal) {
+            String choiceAction = scannerChoiceAction.next();
+            choiceAction = choiceAction.toLowerCase();
+            switch (choiceAction) {
                 case "1":
-                    System.out.println("Vous avez \"créer\" un loup !");
+                    System.out.print("\nQuel animal voulez-vous créer ?\n" +
+                            "\t1: Loup\n" +
+                            "\t2: Tigre\n" +
+                            "\tq: QUITTER\n" +
+                            "\nChoix : ");
+
+                    String choiceAnimal = scannerChoiceAnimal.next();
+                    choiceAnimal = choiceAnimal.toLowerCase();
+                    switch (choiceAnimal) {
+                        case "1":
+                            System.out.println("Vous avez \"créer\" un loup !");
+                            Tools.askAgain();
+                            break;
+                        case "2":
+                            System.out.println("Vous avez \"créer\" un tigre !");
+                            Tools.askAgain();
+                            break;
+                        case "q":case "quit":case "quitter":
+                            System.out.println("Le zoo ferme ses portes. À demain ! :)");
+                            System.exit(0);
+                            break;
+                        default:
+                            System.out.println("Cette option n'est pas proposée...");
+                            break;
+                    } // switch choiceAnimal
                     break;
                 case "2":
-                    System.out.println("Vous avez \"créer\" un tigre !");
+                    System.out.println("Vous avez \"ajouter\" un enclos !");
+                    Tools.askAgain();
                     break;
-                case "q":
+                case "q":case "quit":case "quitter":
                     System.out.println("Le zoo ferme ses portes. À demain ! :)");
-                    isCreateAnimal = false;
-                    isAskAgain = false;
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Cette option n'est pas proposée...");
                     break;
-            } // switch
+            } // switch choiceAction
+        } // while ()
+    } // run()
 
-            while (isAskAgain) {
-                System.out.print("\nVoulez-vous faire une autre action ? (o/n)\n");
-
-                String choiceAgain = scannerChoiceAgain.next();
-                choiceAgain = choiceAgain.toLowerCase();
-                switch (choiceAgain) {
-                    case "o":
-                        isAskAgain = false;
-                        break;
-                    case "n":
-                        System.out.println("Le zoo ferme ses portes. À demain ! :)");
-                        isCreateAnimal = false;
-                        isAskAgain = false;
-                        break;
-                    default:
-                        System.out.println("Cette option n'est pas proposée...");
-                        break;
-                } // switch
-            }
-        }
-    } // main()
 } // class Main
