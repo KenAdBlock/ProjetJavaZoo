@@ -8,7 +8,7 @@ import Species.Fish;
  */
 public class Whale extends Fish implements ISwim {
 
-    public Whale(String name, boolean sex, int weight, int height, int age) {
+    public Whale(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
     } // Constructor
 

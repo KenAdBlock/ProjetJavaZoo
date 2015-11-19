@@ -5,7 +5,7 @@ package Species;
  */
 public abstract class Bird extends Animal{
 
-    protected Bird(String name, boolean sex, int weight, int height, int age) {
+    protected Bird(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
     }
 }

@@ -19,7 +19,7 @@ public class Shark extends Fish implements ISwim {
         return nbShark;
     }
 
-    public Shark(String name, boolean sex, int weight, int height, int age) {
+    public Shark(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "nageant";

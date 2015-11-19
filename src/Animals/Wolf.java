@@ -11,15 +11,15 @@ public class Wolf extends Mammal implements IWander {
 
     static int nbWolf;
 
-    public void setNbWolf(int nbWolf) {
-        this.nbWolf = nbWolf;
+    public static void setNbWolf(int nbWolf) {
+        Wolf.nbWolf = nbWolf;
     }
 
-    public int getNbWolf() {
+    public static int getNbWolf() {
         return nbWolf;
     }
 
-    public Wolf(String name, boolean sex, int weight, int height, int age) {
+    public Wolf(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "autre";

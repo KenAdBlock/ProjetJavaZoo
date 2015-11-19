@@ -10,7 +10,7 @@ import Paddock.Paddock;
 public abstract class Animal {
     private String name;
     private boolean sex; // true = male, false = femelle
-    private int weight; // en gramme
+    private long weight; // en gramme
     private int height; // en cm
     private int age;
     private int hungerIndicator = 100;
@@ -20,7 +20,7 @@ public abstract class Animal {
     protected long timeUnborn;
     protected String typeAnimal;
 
-    protected Animal(String name, boolean sex, int weight, int height, int age) {
+    protected Animal(String name, boolean sex, long weight, int height, int age) {
         this.name = name;
         this.sex = sex;
         this.weight = weight;
@@ -45,7 +45,7 @@ public abstract class Animal {
         return sex;
     }
 
-    public int getWeight() {
+    public long getWeight() {
         return weight;
     }
 

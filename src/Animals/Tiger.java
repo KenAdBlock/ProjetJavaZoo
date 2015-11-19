@@ -8,7 +8,7 @@ import Species.Fish;
  */
 public class Tiger extends Fish implements IWander {
 
-    public Tiger(String name, boolean sex, int weight, int height, int age) {
+    public Tiger(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
     } // Constructor
 

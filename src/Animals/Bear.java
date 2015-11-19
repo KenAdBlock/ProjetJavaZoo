@@ -18,7 +18,7 @@ public class Bear extends Mammal {
         return nbBear;
     }
 
-    public Bear(String name, boolean sex, int weight, int height, int age) {
+    public Bear(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301); // 1000 ms égale 1 jour en vrai
         typeAnimal = "autre";
@@ -112,7 +112,7 @@ public class Bear extends Mammal {
 
     private synchronized void giveBirth(Bear bear){
         nbBear += 1;
-        Bear b =new Bear("bear"+nbBear, (Tools.random(0,2) != 0), Tools.random(100,200), Tools.random(7, 14), 0);
+        Bear b = new Bear("bear"+nbBear, (Tools.random(0,2) != 0), Tools.random(100,200), Tools.random(7, 14), 0);
         System.out.println(bear.getName() + "(femelle) vient de donner naissance à " + "bear" + nbBear);
         b.setPaddock(this.getPaddock());
         this.getPaddock().add(b);

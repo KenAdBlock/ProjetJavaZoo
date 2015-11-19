@@ -9,7 +9,7 @@ import Species.Bird;
  */
 public class Razorbill extends Bird implements ISwim, IFly {
 
-    public Razorbill(String name, boolean sex, int weight, int height, int age) {
+    public Razorbill(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
     } // Constructor
 
@@ -20,7 +20,7 @@ public class Razorbill extends Bird implements ISwim, IFly {
 
     @Override
     public void move() {
-        System.out.println("\nLe petit pingouin se déplace...");
+        System.out.println("\nLe petit pingouin se dï¿½place...");
     } // move()
 
     @Override
