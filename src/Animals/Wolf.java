@@ -50,7 +50,7 @@ public class Wolf extends Mammal implements IWander {
         tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100";
 
         return tostring;
-    }
+    } // toString()
 
     @Override
     public void makeSound() {
@@ -65,7 +65,7 @@ public class Wolf extends Mammal implements IWander {
     @Override
     public void wander() {
         System.out.println("Je fais des bonds, encore des bonds, tout plein de bonds !");
-    }
+    } // wander()
 
 
     public void reproduction(Wolf wolf){
@@ -90,7 +90,7 @@ public class Wolf extends Mammal implements IWander {
         }
         else
             System.out.println("\nCe sont des loups du même sexe ! Petit coquin");
-    }
+    } // reproduction()
 
 
     private void unborn(final Wolf wolf, final int nbChild){

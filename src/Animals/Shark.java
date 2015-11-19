@@ -15,7 +15,7 @@ public class Shark extends Fish implements ISwim {
         this.nbShark = nbShark;
     }
 
-    public int getNbShark() {
+    public static int getNbShark() {
         return nbShark;
     }
 
@@ -51,7 +51,7 @@ public class Shark extends Fish implements ISwim {
         tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100";
 
         return tostring;
-    }
+    } // toString()
 
     @Override
     public void makeSound() {
@@ -66,7 +66,7 @@ public class Shark extends Fish implements ISwim {
     @Override
     public void swim() {
         System.out.println("\nLe requin nage.");
-    }
+    } // swim()
 
     public void reproduction(Shark shark){
 
@@ -90,7 +90,7 @@ public class Shark extends Fish implements ISwim {
         }
         else
             System.out.println("\nCe sont des requins du même sexe ! Petit coquin");
-    }
+    } // reproduction()
 
 
     private void unborn(final Shark shark, final int nbChild){

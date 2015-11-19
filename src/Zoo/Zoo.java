@@ -190,7 +190,7 @@ public class Zoo {
                     break;*/
                 case "1":
                     System.out.print("\nQuel type d'enclos voulez-vous créer ?\n" +
-                            "\t1: Enclos classique\n" +
+                            "\t1: Enclos (classique)\n" +
                             "\t2: Aquarium\n" +
                             "\t3: Volière\n" +
                             "\tq: QUITTER\n" +
@@ -199,7 +199,7 @@ public class Zoo {
                     String choicePaddock = scannerChoicePaddock.next();
                     choicePaddock = choicePaddock.toLowerCase();
                     switch (choicePaddock) {
-                        case "1":case "enclos classique":case "enclos":
+                        case "1":case "enclos":
                             Paddock paddock = new Paddock("paddock"+(Paddock.getNbPaddock()+1), Tools.random(40, 500),Tools.random(3,20),"bon");
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos classique !"));
                             this.showAllPaddock();
