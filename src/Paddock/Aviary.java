@@ -8,10 +8,17 @@ import Species.Animal;
 public class Aviary extends Paddock {
 
     private int height;
+    private static int nbAviary;
 
     public Aviary(String name, int surface, int maxNbAnimals, String cleanliness, int height) {
         super(name, surface, maxNbAnimals, cleanliness);
+        Paddock.setNbPaddock(Paddock.getNbPaddock() - 1);
         this.height = height;
+        nbAviary += 1;
+    }
+
+    public static int getNbAviary() {
+        return nbAviary;
     }
 
     public void add(Animal type){

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Paddock.Paddock;
+import Paddock.Aquarium;
+import Paddock.Aviary;
 import Species.Animal;
 import Tools.Tools;
 
@@ -178,7 +180,6 @@ public class Zoo {
                             break;
                         case "q":case "quit":case "quitter":case "exit":
                             Tools.exitZoo();
-                            scannerChoiceAnimal.nextLine();
                             break;
                         default:
                             Tools.notProposedOption();
@@ -248,7 +249,9 @@ public class Zoo {
                             scannerChoicePaddock.nextLine();
                             break;
                         case "2":case "aquarium":
+                            Aquarium aquarium = new Aquarium("aquarium"+(Aquarium.getNbAquarium()+1), Tools.random(40, 500),Tools.random(3,20),"bon", Tools.random(10, 50), 50);
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un aquarium !"));
+                            this.showAllPaddock();
                             isPaddockFill =  Tools.askPaddockFill(isPaddockFill);
                             if (isPaddockFill) {
                                 isPaddockFill = false;
@@ -303,7 +306,9 @@ public class Zoo {
                             scannerChoicePaddock.nextLine();
                             break;
                         case "3":case "volière":case "voliere":
+                            Aviary aviary = new Aviary("aviary"+(Aviary.getNbAviary()+1),Tools.random(40,500),Tools.random(3,10),"bon",Tools.random(5,20));
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" une volière !"));
+                            this.showAllPaddock();
                             isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                             if (isPaddockFill) {
                                 isPaddockFill = false;
@@ -331,9 +336,10 @@ public class Zoo {
                                 }
                                 /*isPaddockFill = false;*/
                             }
+                            scannerChoicePaddock.nextLine();
+                            break;
                         case "q":case "quit":case "quitter":case "exit":
                             Tools.exitZoo();
-                            scannerChoicePaddock.nextLine();
                             break;
                         default:
                             Tools.notProposedOption();
@@ -344,7 +350,6 @@ public class Zoo {
                     break;
                 case "q":case "quit":case "quitter":case "exit":
                     Tools.exitZoo();
-                    scannerChoiceAction.nextLine();
                     break;
                 default:
                     Tools.notProposedOption();
