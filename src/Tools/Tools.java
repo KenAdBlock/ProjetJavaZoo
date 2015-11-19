@@ -52,6 +52,26 @@ public class Tools {
         } // switch
     } // askAgain()
 
+    public static boolean askPaddockFill(boolean choice) {
+
+        Scanner scannerChoicePaddockFill = new Scanner(System.in);
+        System.out.println("Voulez-vous ajouter un animal ? o/n");
+        String choicePaddockFill = scannerChoicePaddockFill.next();
+        choicePaddockFill = choicePaddockFill.toLowerCase();
+        switch (choicePaddockFill) {
+            case "o":case "y":case "oui":case "yes":
+                choice = true;
+                break;
+            case "n":case "non":case "no":
+                choice = false;
+                break;
+            default:
+                notProposedOption();
+                break;
+        }
+        return choice;
+    }
+
     public static void exitZoo() {
         System.out.println(strColorBlue("Le zoo ferme ses portes. À demain ! :)"));
         System.exit(0);

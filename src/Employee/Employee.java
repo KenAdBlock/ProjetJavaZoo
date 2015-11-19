@@ -12,10 +12,16 @@ public class Employee {
     private boolean sex;
     private int age;
 
-    public Employee(String name, boolean sex, int age) {
+    private Employee(String name, boolean sex, int age) {
         this.name = name;
         this.sex = sex;
         this.age = age;
+    }
+
+    private static Employee INSTANCE = new Employee("Gerard",true,58);
+
+    public static Employee getINSTANCE() {
+        return INSTANCE;
     }
 
     public String examine(Paddock paddock){

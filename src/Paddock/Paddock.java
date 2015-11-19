@@ -20,6 +20,7 @@ public class Paddock {
     private int foodIndicator = 0;
     protected boolean isGoodType = false;
     protected boolean isKeepUp = false;
+    private static int nbPaddock = 0;
 
     public Paddock(String name, int surface, int maxNbAnimals,  String cleanliness) {
         this.name = name;
@@ -28,6 +29,7 @@ public class Paddock {
         this.cleanliness = cleanliness;
         Zoo.getListPaddock().add(this);
         Tools.map1.put(this.name, this);
+        nbPaddock+=1;
     }// Constructor
 
 
@@ -59,6 +61,10 @@ public class Paddock {
         this.foodIndicator = foodIndicator;
     }// Setter
 
+    public static void setNbPaddock(int nbPaddock) {
+        Paddock.nbPaddock = nbPaddock;
+    }
+
 
 
     public String getName() {
@@ -88,6 +94,10 @@ public class Paddock {
     public int getFoodIndicator() {
         return foodIndicator;
     }// Getter
+
+    public static int getNbPaddock() {
+        return nbPaddock;
+    }
 
     @Override
     public String toString() {
