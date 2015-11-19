@@ -8,6 +8,8 @@ import java.util.*;
  */
 public class Tools {
     public static Map<String, Paddock> map1 = new WeakHashMap<>();
+
+    private static String colorReset = "\033[0m";
     private static final Map<String, String> map2 = new HashMap<String, String>() {{
         put("Bear","Ours");
         put("Eagle","Aigle");
@@ -18,11 +20,6 @@ public class Tools {
         put("Whale","Balaine");
         put("Wolf","Loup");
     }};
-    private static String white = "\033[0m";
-    private static String red = "\033[31m";
-    private static String blue = "\033[34m";
-//    private static String magenta = "\033[35m";
-//    private static String cyan = "\033[36m";
 
     public static int random(int min, int max) {
         Random r = new Random();
@@ -65,11 +62,13 @@ public class Tools {
     } // notProposedOption()
 
     public static String strColorRed(String str) {
-        return red + str + white;
+        String red = "\033[31m";
+        return red + str + colorReset;
     } // strColorRed()
 
     public static String strColorBlue(String str) {
-        return blue + str + white;
+        String blue = "\033[34m";
+        return blue + str + colorReset;
     } // strColorBlue()
 
 } // class Tools

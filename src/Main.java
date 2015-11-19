@@ -54,7 +54,7 @@ public class Main {
         while (true) {
             System.out.print("\nQuel action voulez-vous faire ?\n" +
                                 "\t1: Créer un animal\n" +
-                                "\t2: Ajouter un enclos\n" +
+                                "\t2: Créer un enclos\n" +
                                 "\tq: QUITTER\n" +
                                 "\nChoix : ");
 
@@ -68,7 +68,7 @@ public class Main {
                                         "\t3: Loup\n" +
                                         "\t4: Ours\n" +
                                         "\t5: Pingouin\n" +
-                                        "\t6: Poisson rouge\n" +
+                                        "\t6: Poisson (rouge)\n" +
                                         "\t7: Requin\n" +
                                         "\t8: Tigre\n" +
                                         "\tq: QUITTER\n" +
@@ -77,107 +77,131 @@ public class Main {
                     String choiceAnimal = scannerChoiceAnimal.next();
                     choiceAnimal = choiceAnimal.toLowerCase();
                     switch (choiceAnimal) {
-                        case "1":
+                        case "1":case "aigle":
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un aigle !"));
                             Tools.askAgain();
+                            scannerChoiceAnimal.nextLine();
                             break;
-                        case "2":
+                        case "2":case "baleine":
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" une baleine !"));
                             Tools.askAgain();
+                            scannerChoiceAnimal.nextLine();
                             break;
-                        case "3":
+                        case "3":case "loup":
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un loup !"));
                             Tools.askAgain();
+                            scannerChoiceAnimal.nextLine();
                             break;
-                        case "4":
+                        case "4":case "ours":
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un ours !"));
                             Tools.askAgain();
+                            scannerChoiceAnimal.nextLine();
                             break;
-                        case "5":
+                        case "5":case "pingouin":
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un pingouin !"));
                             Tools.askAgain();
+                            scannerChoiceAnimal.nextLine();
                             break;
-                        case "6":
+                        case "6":case "poisson":
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un poisson rouge !"));
                             Tools.askAgain();
+                            scannerChoiceAnimal.nextLine();
                             break;
-                        case "7":
+                        case "7":case "requin":
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un requin !"));
                             Tools.askAgain();
+                            scannerChoiceAnimal.nextLine();
                             break;
-                        case "8":
+                        case "8":case "tigre":
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un tigre !"));
                             Tools.askAgain();
+                            scannerChoiceAnimal.nextLine();
                             break;
                         case "q":case "quit":case "quitter":
                             Tools.exitZoo();
+                            scannerChoiceAnimal.nextLine();
                             break;
                         default:
                             Tools.notProposedOption();
+                            scannerChoiceAnimal.nextLine();
                             break;
                     } // switch choiceAnimal
+                    scannerChoiceAction.nextLine();
                     break;
                 case "2":
-                    System.out.print("\nQuel type d'enclos voulez-vous créer ?\n" +
-                                        "\t1: Enclos d'aigle\n" +
-                                        "\t2: Enclos de baleine\n" +
-                                        "\t3: Enclos de loup\n" +
-                                        "\t4: Enclos d'ours\n" +
-                                        "\t5: Enclos de pingouin\n" +
-                                        "\t6: Enclos de poisson rouge\n" +
-                                        "\t7: Enclos de requin\n" +
-                                        "\t8: Enclos de tigre\n" +
+                    System.out.print("\nVous voulez créer un enclos pour ... ?\n" +
+                                        "\t1: Aigle\n" +
+                                        "\t2: Baleine\n" +
+                                        "\t3: Loup\n" +
+                                        "\t4: Ours\n" +
+                                        "\t5: Pingouin\n" +
+                                        "\t6: Poisson (rouge)\n" +
+                                        "\t7: Requin\n" +
+                                        "\t8: Tigre\n" +
                                         "\tq: QUITTER\n" +
                                         "\nChoix : ");
 
                     String choicePaddock = scannerChoicePaddock.next();
                     choicePaddock = choicePaddock.toLowerCase();
                     switch (choicePaddock) {
-                        case "1":
-                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos d'aigle !"));
+                        case "1":case "aigle":
+                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" une volière pour aigle !"));
                             Tools.askAgain();
+                            scannerChoicePaddock.nextLine();
                             break;
-                        case "2":
-                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos de baleine !"));
+                        case "2":case "baleine":
+                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un aquarium pour baleine !"));
                             Tools.askAgain();
+                            scannerChoicePaddock.nextLine();
                             break;
-                        case "3":
-                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos de loup !"));
+                        case "3":case "loup":
+                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos pour loup !"));
                             Tools.askAgain();
+                            scannerChoicePaddock.nextLine();
                             break;
-                        case "4":
-                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos d'ours !"));
+                        case "4":case "ours":
+                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos pour ours !"));
                             Tools.askAgain();
+                            scannerChoicePaddock.nextLine();
                             break;
-                        case "5":
-                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos de pingouin !"));
+                        case "5":case "pingouin":
+                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un aquarium pour pingouin !"));
                             Tools.askAgain();
+                            scannerChoicePaddock.nextLine();
                             break;
-                        case "6":
-                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos de poisson rouge !"));
+                        case "6":case "poisson":case "poisson rouge":
+                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un aquarium pour poisson rouge !"));
                             Tools.askAgain();
+                            scannerChoicePaddock.nextLine();
                             break;
-                        case "7":
-                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos de requin !"));
+                        case "7":case "requin":
+                            System.out.println(Tools.strColorBlue("Vous avez \"créer\" un aquarium pour requin !"));
                             Tools.askAgain();
+                            scannerChoicePaddock.nextLine();
                             break;
-                        case "8":
+                        case "8":case "tigre":
                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un enclos de tigre !"));
                             Tools.askAgain();
+                            scannerChoicePaddock.nextLine();
                             break;
                         case "q":case "quit":case "quitter":
                             Tools.exitZoo();
+                            scannerChoicePaddock.nextLine();
                             break;
                         default:
                             Tools.notProposedOption();
+                            scannerChoicePaddock.nextLine();
                             break;
                     } // switch choicePaddock
+                    scannerChoiceAction.nextLine();
                     break;
                 case "q":case "quit":case "quitter":
                     Tools.exitZoo();
+                    scannerChoiceAction.nextLine();
                     break;
                 default:
                     Tools.notProposedOption();
+                    scannerChoiceAction.nextLine();
                     break;
             } // switch choiceAction
         } // while ()
