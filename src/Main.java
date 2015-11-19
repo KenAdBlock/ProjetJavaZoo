@@ -1,11 +1,7 @@
 import java.util.Scanner;
-
-import Animals.Bear;
-import Animals.Eagle;
-import Animals.Wolf;
-import Paddock.Paddock;
-import Paddock.Aviary;
 import Tools.Tools;
+import Animals.*;
+import Paddock.*;
 
 public class Main {
 
@@ -14,7 +10,7 @@ public class Main {
     } // main()
 
     public static void run() {
-        System.out.println("Le zoo ouvre ses portes ! Bienvenue.");
+        System.out.println(Tools.getBlue()+ "Le zoo ouvre ses portes ! Bienvenue." + Tools.getWhite());
 /*
         Wolf loupGoerges = new Wolf("wolf1",true, 30000, 160, 5);
 
@@ -53,6 +49,7 @@ public class Main {
 
         Scanner scannerChoiceAction = new Scanner(System.in);
         Scanner scannerChoiceAnimal = new Scanner(System.in);
+        Scanner scannerChoicePaddock = new Scanner(System.in);
 
         while (true) {
             System.out.print("\nQuel action voulez-vous faire ?\n" +
@@ -75,32 +72,52 @@ public class Main {
                     choiceAnimal = choiceAnimal.toLowerCase();
                     switch (choiceAnimal) {
                         case "1":
-                            System.out.println("Vous avez \"créer\" un loup !");
+                            System.out.println(Tools.getBlue() + "Vous avez \"créer\" un loup !" + Tools.getWhite());
                             Tools.askAgain();
                             break;
                         case "2":
-                            System.out.println("Vous avez \"créer\" un tigre !");
+                            System.out.println(Tools.getBlue() + "Vous avez \"créer\" un tigre !" + Tools.getWhite());
                             Tools.askAgain();
                             break;
                         case "q":case "quit":case "quitter":
-                            System.out.println("Le zoo ferme ses portes. À demain ! :)");
-                            System.exit(0);
+                            Tools.exitZoo();
                             break;
                         default:
-                            System.out.println("Cette option n'est pas proposée...");
+                            Tools.notProposedOption();
                             break;
                     } // switch choiceAnimal
                     break;
                 case "2":
-                    System.out.println("Vous avez \"ajouter\" un enclos !");
-                    Tools.askAgain();
+                    System.out.print("\nQuel enclos voulez-vous créer ?\n" +
+                            "\t1: Enclos de loups\n" +
+                            "\t2: Enclos de tigres\n" +
+                            "\tq: QUITTER\n" +
+                            "\nChoix : ");
+
+                    String choicePaddock = scannerChoicePaddock.next();
+                    choicePaddock = choicePaddock.toLowerCase();
+                    switch (choicePaddock) {
+                        case "1":
+                            System.out.println(Tools.getBlue() + "Vous avez \"créer\" un enclos de loups !" + Tools.getWhite());
+                            Tools.askAgain();
+                            break;
+                        case "2":
+                            System.out.println(Tools.getBlue() + "Vous avez \"créer\" un enclos de tigres !" + Tools.getWhite());
+                            Tools.askAgain();
+                            break;
+                        case "q":case "quit":case "quitter":
+                            Tools.exitZoo();
+                            break;
+                        default:
+                            Tools.notProposedOption();
+                            break;
+                    } // switch choicePaddock
                     break;
                 case "q":case "quit":case "quitter":
-                    System.out.println("Le zoo ferme ses portes. À demain ! :)");
-                    System.exit(0);
+                    Tools.exitZoo();
                     break;
                 default:
-                    System.out.println("Cette option n'est pas proposée...");
+                    Tools.notProposedOption();
                     break;
             } // switch choiceAction
         } // while ()

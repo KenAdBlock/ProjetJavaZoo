@@ -18,6 +18,11 @@ public class Tools {
         put("Whale","Balaine");
         put("Wolf","Loup");
     }};
+    private static String white = "\033[0m";
+    private static String red = "\033[31m";
+    private static String blue = "\033[34m";
+    private static String magenta = "\033[35m";
+    private static String cyan = "\033[36m";
 
     public static int random(int min, int max) {
         Random r = new Random();
@@ -33,7 +38,7 @@ public class Tools {
     }
 
     public static void askAgain() {
-        System.out.print("\nVoulez-vous faire une autre action avant de quitter le zoo ? (o/n)\n");
+        System.out.println("\nVoulez-vous faire une autre action avant de quitter le zoo ? (o/n)");
 
         Scanner scannerChoiceAgain = new Scanner(System.in);
         String choiceAgain = scannerChoiceAgain.next();
@@ -42,13 +47,30 @@ public class Tools {
             case "o": case "y": case "oui": case "yes":
                 break;
             case "n": case "non": case "no":
-                System.out.println("Le zoo ferme ses portes. À demain ! :)");
-                System.exit(0);
+                exitZoo();
                 break;
             default:
-                System.out.println("Cette option n'est pas proposée...");
+                notProposedOption();
                 break;
         } // switch
     } // askAgain()
 
+    public static void exitZoo() {
+        System.out.println(getBlue() + "Le zoo ferme ses portes. À demain ! :)" + getWhite());
+        System.exit(0);
+    } // exitZoo()
+
+    public static void notProposedOption() {
+        System.out.println(getRed() + "Cette option n'est pas proposée..." + getWhite());
+    } // notProposedOption()
+
+    public static String getWhite() {return white;} // getWhite()
+
+    public static String getRed() {return red;} // getRed()
+
+    public static String getBlue() {return blue;} // getBlue()
+
+//    public static String getMagenta() {return magenta;} // getMagenta()
+
+//    public static String getCyan() {return cyan;} // getCyan()
 } // class Tools
