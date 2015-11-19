@@ -14,7 +14,7 @@ public class Eagle extends Bird implements IFly {
         this.nbEagle = nbEagle;
     }
 
-    public int getNbEagle() {
+    public static int getNbEagle() {
         return nbEagle;
     }
 
@@ -51,7 +51,7 @@ public class Eagle extends Bird implements IFly {
         tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100";
 
         return tostring;
-    }
+    } // toString()
 
     @Override
     public void makeSound() {
@@ -66,7 +66,7 @@ public class Eagle extends Bird implements IFly {
     @Override
     public void fly() {
         System.out.println("\nL'aigle vole...");
-    }
+    } // fly()
 
     public void reproduction(Eagle eagle){
 
@@ -90,7 +90,7 @@ public class Eagle extends Bird implements IFly {
         }
         else
             System.out.println("\nCe sont des aigles du même sexe ! Petit coquin");
-    }
+    } // reproduction()
 
 
     private void unborn(final Eagle eagle, final int nbChild){

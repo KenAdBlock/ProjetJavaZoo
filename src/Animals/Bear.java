@@ -10,11 +10,11 @@ public class Bear extends Mammal {
 
     static int nbBear;
 
-    public void setNbBear(int nbBear) {
-        this.nbBear = nbBear;
+    public static void setNbBear(int nbBear) {
+        Bear.nbBear = nbBear;
     }
 
-    public int getNbBear() {
+    public static int getNbBear() {
         return nbBear;
     }
 
@@ -48,8 +48,7 @@ public class Bear extends Mammal {
         tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100";
 
         return tostring;
-    }
-
+    } // toString()
 
     @Override
     public void makeSound() {
@@ -61,10 +60,8 @@ public class Bear extends Mammal {
         System.out.println("\nL'ours se déplace...");
     } // move()
 
-
     public void reproduction(Bear bear){
 
-        /* un boolean qui si est a true appel un unbornBear et gérer que ce soit deux sexes different */
         if ( (this.isSex() != bear.isSex()) ){
 
             int random = Tools.random(0, 2);
@@ -86,7 +83,7 @@ public class Bear extends Mammal {
         }
         else
             System.out.println("\nCe sont des loups du même sexe ! Petit coquin");
-    }
+    } // reproduction()
 
 
     private void unborn(final Bear bear, final int nbChild){
