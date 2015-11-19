@@ -12,11 +12,11 @@ public class Bear extends Mammal {
 
     public static void setNbBear(int nbBear) {
         Bear.nbBear = nbBear;
-    }
+    } // setNbBear()
 
     public static int getNbBear() {
         return nbBear;
-    }
+    } // getNbBear()
 
     public Bear(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);

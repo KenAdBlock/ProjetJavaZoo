@@ -13,11 +13,11 @@ public class Shark extends Fish implements ISwim {
 
     public void setNbShark(int nbShark) {
         this.nbShark = nbShark;
-    }
+    } // setNbShark()
 
     public static int getNbShark() {
         return nbShark;
-    }
+    } // getNbShark()
 
     public Shark(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);

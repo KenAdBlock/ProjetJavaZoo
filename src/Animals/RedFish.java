@@ -19,11 +19,11 @@ public class RedFish extends Fish implements ISwim {
 
     public static void setNbRedFish(int nbRedFish) {
         RedFish.nbRedFish = nbRedFish;
-    }
+    } // setNbRedfish()
 
     public static int getNbRedfish() {
         return nbRedFish;
-    }
+    } // getNbRedfish()
 
     @Override
     public String toString() {

@@ -20,11 +20,11 @@ public class Whale extends Fish implements ISwim {
 
     public static void setNbWhale(int nbWhale) {
         Whale.nbWhale = nbWhale;
-    }
+    } // setNbWhale()
 
     public static int getNbWhale() {
         return nbWhale;
-    }
+    } // getNbWhale()
 
 
     @Override

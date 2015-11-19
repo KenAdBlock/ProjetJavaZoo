@@ -20,11 +20,11 @@ public class Tiger extends Fish implements IWander {
 
     public static void setNbTiger(int nbTiger) {
         Tiger.nbTiger = nbTiger;
-    }
+    } // setNbTiger()
 
     public static int getNbTiger() {
         return nbTiger;
-    }
+    } // getNbTiger()
 
     @Override
     public String toString() {

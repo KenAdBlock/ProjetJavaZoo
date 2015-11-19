@@ -21,11 +21,11 @@ public class Razorbill extends Bird implements ISwim, IFly {
 
     public static void setNbRazorbill(int nbRazorbill) {
         Razorbill.nbRazorbill = nbRazorbill;
-    }
+    } // setNbRazorbill()
 
     public static int getNbRazorbill() {
         return nbRazorbill;
-    }
+    } // getNbRazorbill()
 
     @Override
     public String toString() {

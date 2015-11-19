@@ -393,10 +393,11 @@ public class Zoo {
                     break;
                 case "3":case "gérer":case "gerer":
                     if(isAnimalCreated) {
-
+                        System.out.println(Tools.strColorBlue("Vous entrez dans le mode gestion du zoo.\n"));
                     }
                     else
                         Tools.notProposedOption();
+                    //scannerChoice____.nextLine();
                     break;
                 case "q":case "quit":case "quitter":case "exit":
                     Tools.exitZoo();

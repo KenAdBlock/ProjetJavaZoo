@@ -12,11 +12,11 @@ public class Eagle extends Bird implements IFly {
 
     public void setNbEagle(int nbEagle) {
         this.nbEagle = nbEagle;
-    }
+    } // setNbEagle()
 
     public static int getNbEagle() {
         return nbEagle;
-    }
+    } // getNbEagle()
 
     public Eagle(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);

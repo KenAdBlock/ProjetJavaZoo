@@ -13,11 +13,11 @@ public class Wolf extends Mammal implements IWander {
 
     public static void setNbWolf(int nbWolf) {
         Wolf.nbWolf = nbWolf;
-    }
+    } // setNbWolf()
 
     public static int getNbWolf() {
         return nbWolf;
-    }
+    } // getNbWolf()
 
     public Wolf(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
