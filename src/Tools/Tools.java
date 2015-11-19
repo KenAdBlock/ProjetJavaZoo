@@ -21,8 +21,8 @@ public class Tools {
     private static String white = "\033[0m";
     private static String red = "\033[31m";
     private static String blue = "\033[34m";
-    private static String magenta = "\033[35m";
-    private static String cyan = "\033[36m";
+//    private static String magenta = "\033[35m";
+//    private static String cyan = "\033[36m";
 
     public static int random(int min, int max) {
         Random r = new Random();
@@ -31,11 +31,11 @@ public class Tools {
 
     public static Paddock hashPaddock(String str){
         return map1.get(str);
-    }
+    } // hashPaddock()
 
     public static String hashTypeAnimal(String str){
         return map2.get(str);
-    }
+    } // hashTypeAnimal()
 
     public static void askAgain() {
         System.out.println("\nVoulez-vous faire une autre action avant de quitter le zoo ? (o/n)");
@@ -56,21 +56,20 @@ public class Tools {
     } // askAgain()
 
     public static void exitZoo() {
-        System.out.println(getBlue() + "Le zoo ferme ses portes. À demain ! :)" + getWhite());
+        System.out.println(strColorBlue("Le zoo ferme ses portes. À demain ! :)"));
         System.exit(0);
     } // exitZoo()
 
     public static void notProposedOption() {
-        System.out.println(getRed() + "Cette option n'est pas proposée..." + getWhite());
+        System.out.println(strColorRed("Cette option n'est pas proposée..."));
     } // notProposedOption()
 
-    public static String getWhite() {return white;} // getWhite()
+    public static String strColorRed(String str) {
+        return red + str + white;
+    } // strColorRed()
 
-    public static String getRed() {return red;} // getRed()
+    public static String strColorBlue(String str) {
+        return blue + str + white;
+    } // strColorBlue()
 
-    public static String getBlue() {return blue;} // getBlue()
-
-//    public static String getMagenta() {return magenta;} // getMagenta()
-
-//    public static String getCyan() {return cyan;} // getCyan()
 } // class Tools
