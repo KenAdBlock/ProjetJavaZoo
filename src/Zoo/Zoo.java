@@ -419,7 +419,9 @@ public class Zoo {
                     break;
                 case "3":case "gérer":case "gerer":
                     if(isAnimalCreated) {
-                        System.out.println(Tools.strColorBlue("Vous entrez dans le mode gestion du zoo.\n"));
+                        System.out.println(Tools.strColorBlue("\nVous entrez dans le mode gestion du zoo."));
+
+                        /* Code... */
                     }
                     else
                         Tools.notProposedOption();
