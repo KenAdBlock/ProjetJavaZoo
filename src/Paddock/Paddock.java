@@ -101,14 +101,14 @@ public class Paddock {
 
     @Override
     public String toString() {
-        String toString = "Enclos : " + "\n\tnom = " + name + "\n\tsurface = " + surface + "m²\n\tnombre d'animaux maximum = " + maxNbAnimals +
-                "\n\tnombre d'animaux présents = " + hereNbAnimals + "\n\ttype d'animal présent = " + typeAnimals + "\n\tdégré de saleté = " + cleanliness +
+        String toString = "Enclos : " + "\n\t\tnom = " + name + "\n\t\tsurface = " + surface + "m²\n\t\tnombre d'animaux maximum = " + maxNbAnimals +
+                "\n\t\tnombre d'animaux présents = " + hereNbAnimals + "\n\t\ttype d'animal présent = " + typeAnimals + "\n\t\tdégré de saleté = " + cleanliness +
                 "\n\n";
         if(getTypeAnimals().isEmpty())
             toString += "Aucune information sur les animaux car l'enclos est vide.";
 
         for (Animal a : animalPresent){
-            toString += ("\t" + a + "\n\n");
+            toString += ("\t\t" + a + "\n");
         }
         return toString;
     }

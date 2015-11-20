@@ -69,11 +69,12 @@ public class Tools {
                 notProposedOption();
                 break;
         }
+        System.out.println();
         return choice;
     }
 
     public static void exitZoo() {
-        System.out.println(strColorBlue("Le zoo ferme ses portes. À demain ! :)"));
+        System.out.println(strColorBlue("\nLe zoo ferme ses portes. À demain ! :)"));
         System.exit(0);
     } // exitZoo()
 
