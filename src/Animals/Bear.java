@@ -19,11 +19,11 @@ public class Bear extends Mammal {
 
     public static void setNbBear(int nbBear) {
         Bear.nbBear = nbBear;
-    }
+    } // setNbBear()
 
     public static int getNbBear() {
         return nbBear;
-    }
+    } // getNbBear()
 
     @Override
     public String toString() {
@@ -46,7 +46,7 @@ public class Bear extends Mammal {
             tostring += "\n\tindicateur de sommeil = endormi";
         else
             tostring += "\n\tindicateur de sommeil = éveillé";
-        tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100";
+        tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100\n\n";
 
         return tostring;
     } // toString()

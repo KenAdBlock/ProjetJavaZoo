@@ -10,7 +10,7 @@ import Tools.Tools;
 public class Shark extends Fish implements ISwim {
 
     static int nbShark;
-
+    
     public Shark(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
@@ -47,7 +47,7 @@ public class Shark extends Fish implements ISwim {
             tostring += "\n\tindicateur de sommeil = endormi";
         else
             tostring += "\n\tindicateur de sommeil = éveillé";
-        tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100";
+        tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100\n\n";
 
         return tostring;
     } // toString()

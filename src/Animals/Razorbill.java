@@ -21,11 +21,11 @@ public class Razorbill extends Bird implements ISwim, IFly {
 
     public static void setNbRazorbill(int nbRazorbill) {
         Razorbill.nbRazorbill = nbRazorbill;
-    }
+    } // setNbRazorbill()
 
     public static int getNbRazorbill() {
         return nbRazorbill;
-    }
+    } // getNbRazorbill()
 
     @Override
     public String toString() {
@@ -48,7 +48,7 @@ public class Razorbill extends Bird implements ISwim, IFly {
             tostring += "\n\tindicateur de sommeil = endormi";
         else
             tostring += "\n\tindicateur de sommeil = éveillé";
-        tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100";
+        tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100\n\n";
 
         return tostring;
     } // toString()

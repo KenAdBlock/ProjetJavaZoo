@@ -20,11 +20,11 @@ public class Whale extends Fish implements ISwim {
 
     public static void setNbWhale(int nbWhale) {
         Whale.nbWhale = nbWhale;
-    }
+    } // setNbWhale()
 
     public static int getNbWhale() {
         return nbWhale;
-    }
+    } // getNbWhale()
 
 
     @Override
@@ -48,7 +48,7 @@ public class Whale extends Fish implements ISwim {
             tostring += "\n\tindicateur de sommeil = endormi";
         else
             tostring += "\n\tindicateur de sommeil = éveillé";
-        tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100";
+        tostring += "\n\tindicateur de santé = " + getHealthIndicator() + "/100\n\n";
 
         return tostring;
     } // toString()
