@@ -117,6 +117,14 @@ public class Zoo {
         boolean isPaddockFill = false;
         boolean isPaddockCreated = false;
         boolean isAnimalCreated = false;
+        boolean isWolf = false;
+        boolean isBear = false;
+        boolean isTiger = false;
+        boolean isEagle = false;
+        boolean isRazobill = false;
+        boolean isShark = false;
+        boolean isWhale = false;
+        boolean isRedFish = false;
 
         while (true) {
             if(isPaddockCreated && !isAnimalCreated)
@@ -347,7 +355,239 @@ public class Zoo {
                     break;
                 case "2":
                     if(isPaddockCreated){
-                        System.out.print("\nQuel animal voulez-vous créer ?\n" +
+                        System.out.println("\nVoici les animaux que vous pouvez créer en fonction des enclos disponibles : ");
+                        String showAvailabilityAnimal = "";
+                        String showAvailabilityPaddock = "";
+                        ArrayList<Paddock> availabilityPaddock = new ArrayList<>();
+
+                        for (Paddock p : listPaddock) {
+                            if (!showAvailabilityAnimal.contains(p.getTypeAnimals())){
+                                if(p.getTypeAnimals().equals("pas d'animal présent")) {
+                                    if (!showAvailabilityAnimal.contains("Loup") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t1. Loup\n";isWolf=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Ours") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t2. Ours\n";isBear=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Tigre") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t3. Tigre\n";isTiger=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Aigle") && p.getName().substring(0,6).equals("avairy") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t4. Aigle\n";isEagle=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Pingouin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t5. Pingouin\n";isRazobill=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Baleine") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t6. Baleine\n";isWhale=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Requin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t7. Requin\n";isShark=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Poisson (rouge)") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t8. Poisson (rouge)\n";isRedFish=true;availabilityPaddock.add(p);}
+                                }
+                                else if(p.getHereNbAnimals()<p.getMaxNbAnimals()) {
+                                    showAvailabilityAnimal += "\t";
+                                    if(p.getTypeAnimals().equals("Loup")){showAvailabilityAnimal+="1. " + p.getTypeAnimals()+ "\n";isWolf=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Ours")){showAvailabilityAnimal+="2. " + p.getTypeAnimals()+ "\n";isBear=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Tigre")){showAvailabilityAnimal+="3. " + p.getTypeAnimals()+ "\n";isTiger=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Aigle")){showAvailabilityAnimal+="4. " + p.getTypeAnimals()+ "\n";isEagle=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Pingouin")){showAvailabilityAnimal+="5. " + p.getTypeAnimals()+ "\n";isRazobill=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Baleine")){showAvailabilityAnimal+="6. " + p.getTypeAnimals()+ "\n";isWhale=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Requin")){showAvailabilityAnimal+="7. " + p.getTypeAnimals()+ "\n";isShark=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Poisson rouge")){showAvailabilityAnimal+="8. " + p.getTypeAnimals()+ "\n";isRedFish=true;availabilityPaddock.add(p);}
+                                }
+                            }
+                        }
+                        System.out.print(showAvailabilityAnimal + "\tq: QUITTER\nChoix : ");
+                        /*for(Paddock p : listPaddock){
+                            System.out.print("\t" + cpt2 +". " + p.getName() + " ");
+                            cpt++;
+                            if (cpt == 5) {
+                                System.out.println("");
+                                cpt = 0;
+                            }
+                        }*/
+                        String choiceAnimal = scannerChoiceAnimal.next();
+                        choiceAnimal = choiceAnimal.toLowerCase();
+                        switch (choiceAnimal){
+                            case"1":case"loup":
+                                if(isWolf){
+                                    while(true) {
+                                        isWolf = false;
+                                        System.out.println("Parmis les enclos suivants, dans lequel voulez-vous ajouter un loup ?");
+                                        int cpt = 0;
+                                        for (Paddock p : availabilityPaddock) {
+                                            if ((p.getTypeAnimals().equals("Loup") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0, 7).equals("paddock")) {
+                                                System.out.print(p.getName() + " ");
+                                                ++cpt;
+                                                if (cpt == 5) {
+                                                    System.out.println("");
+                                                    cpt = 0;
+                                                }
+                                            } else
+                                                Tools.notProposedOption();
+                                        }
+                                        if(cpt<5)
+                                            System.out.println("\n");
+                                    }//faire la boucle pour demander si on veut encore ajouter (boucle inifini pour le moment à cause du while(true)), et effectivement ajouter les animaux ( à copier des ajouts du case"1")
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"2":case"ours":
+                                if(isBear){
+                                    isBear=false;
+                                    System.out.println("Parmis les enclos suivants, dans lequel voulez-vous ajouter un ours ?");
+                                    int cpt = 0;
+                                    for (Paddock p : availabilityPaddock){
+                                        if((p.getTypeAnimals().equals("Ours") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0,7).equals("paddock")){
+                                            System.out.print(p.getName() + " ");
+                                            ++cpt;
+                                            if (cpt == 5){System.out.println("");cpt=0;}
+                                        }
+                                        else
+                                            Tools.notProposedOption();
+                                    }
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"3":case"tigre":
+                                if(isTiger){
+                                    isTiger=false;
+                                    System.out.println("Parmis les enclos suivants, dans lequel voulez-vous ajouter un tigre ?");
+                                    int cpt = 0;
+                                    for (Paddock p : availabilityPaddock){
+                                        if((p.getTypeAnimals().equals("Tigre") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0,7).equals("paddock")){
+                                            System.out.print(p.getName() + " ");
+                                            ++cpt;
+                                            if (cpt == 5){System.out.println("");cpt=0;}
+                                        }
+                                        else
+                                            Tools.notProposedOption();
+                                    }
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"4":case"aigle":
+                                if(isEagle){
+                                    isEagle=false;
+                                    System.out.println("Parmis les volières suivantes, dans lequel voulez-vous ajouter un aigle ?");
+                                    int cpt = 0;
+                                    for (Paddock p : availabilityPaddock){
+                                        if((p.getTypeAnimals().equals("Aigle") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0,6).equals("aviary")){
+                                            System.out.print(p.getName() + " ");
+                                            ++cpt;
+                                            if (cpt == 5){System.out.println("");cpt=0;}
+                                        }
+                                        else
+                                            Tools.notProposedOption();
+                                    }
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"5":case"pingouin":
+                                if(isRazobill){
+                                    isRazobill=false;
+                                    System.out.println("Parmis les aquarium suivants, dans lequel voulez-vous ajouter un pingouin ?");
+                                    int cpt = 0;
+                                    for (Paddock p : availabilityPaddock){
+                                        if((p.getTypeAnimals().equals("pingouin") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0,8).equals("aquarium")){
+                                            System.out.print(p.getName() + " ");
+                                            ++cpt;
+                                            if (cpt == 5){System.out.println("");cpt=0;}
+                                        }
+                                        else
+                                            Tools.notProposedOption();
+                                    }
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"6":case"baleine":
+                                if(isWhale){
+                                    isWhale=false;
+                                    System.out.println("Parmis les aquarium suivants, dans lequel voulez-vous ajouter une baleine ?");
+                                    int cpt = 0;
+                                    for (Paddock p : availabilityPaddock){
+                                        if((p.getTypeAnimals().equals("baleine") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0,8).equals("aquarium")){
+                                            System.out.print(p.getName() + " ");
+                                            ++cpt;
+                                            if (cpt == 5){System.out.println("");cpt=0;}
+                                        }
+                                        else
+                                            Tools.notProposedOption();
+                                    }
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"7":case"requin":
+                                if(isShark){
+                                    isShark=false;
+                                    System.out.println("Parmis les aquarium suivants, dans lequel voulez-vous ajouter un requin ?");
+                                    int cpt = 0;
+                                    for (Paddock p : availabilityPaddock){
+                                        if((p.getTypeAnimals().equals("requin") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0,8).equals("aquarium")){
+                                            System.out.print(p.getName() + " ");
+                                            ++cpt;
+                                            if (cpt == 5){System.out.println("");cpt=0;}
+                                        }
+                                        else
+                                            Tools.notProposedOption();
+                                    }
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"8":case"poisson":
+                                if(isRedFish){
+                                    isRedFish=false;
+                                    System.out.println("Parmis les aquarium suivants, dans lequel voulez-vous ajouter un poisson rouge?");
+                                    int cpt = 0;
+                                    for (Paddock p : availabilityPaddock){
+                                        if((p.getTypeAnimals().equals("poisson rouge") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0,8).equals("aquarium")){
+                                            System.out.print(p.getName() + " ");
+                                            ++cpt;
+                                            if (cpt == 5){System.out.println("");cpt=0;}
+                                        }
+                                        else
+                                            Tools.notProposedOption();
+                                    }
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case "q":case "quit":case "quitter":case "exit":
+                                Tools.exitZoo();
+                                break;
+                            default:
+                                Tools.notProposedOption();
+                                scannerChoiceAnimal.nextLine();
+                                break;
+                        }
+                        /*switch (choiceAnimal.substring(0,4)){
+                            case "padd":
+                                for (Paddock p: listPaddock){
+                                    if(p.getName().substring(0,7).equals("paddock")){
+                                        System.out.println("Prout 1");
+                                    }
+                                }
+                                break;
+                            case "aqua":
+                                for (Paddock p: listPaddock){
+                                    if(p.getName().substring(0,8).equals("aquarium")){
+                                        System.out.println("Prout 1");
+                                    }
+                                }
+                                break;
+                            case "avia":
+                                for (Paddock p: listPaddock){
+                                    if(p.getName().substring(0,6).equals("aviary")){
+                                        System.out.println("Prout 1");
+                                    }
+                                }
+                                break;
+                        }*/
+
+                       /* System.out.print("\nQuel animal voulez-vous créer ?\n" +
                                 "\t1: Aigle\n" +
                                 "\t2: Baleine\n" +
                                 "\t3: Loup\n" +
@@ -359,8 +599,6 @@ public class Zoo {
                                 "\tq: QUITTER\n" +
                                 "\nChoix : ");
 
-                        String choiceAnimal = scannerChoiceAnimal.next();
-                        choiceAnimal = choiceAnimal.toLowerCase();
                         switch (choiceAnimal) {
                             case "1":case "aigle":
                                 System.out.println(Tools.strColorBlue("Vous avez \"créer\" un aigle !"));
@@ -409,7 +647,7 @@ public class Zoo {
                                 Tools.notProposedOption();
                                 scannerChoiceAnimal.nextLine();
                                 break;
-                        }// switch choiceAnimal
+                        }// switch choiceAnimal*/
                     }
                     else
                         Tools.notProposedOption();
