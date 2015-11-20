@@ -362,34 +362,36 @@ public class Zoo {
                         ArrayList<Paddock> availabilityPaddock = new ArrayList<>();
 
                         for (Paddock p : listPaddock) {
-                            if (!showAvailabilityAnimal.contains(p.getTypeAnimals()) && p.getTypeAnimals().equals("pas d'animal présent")) {
-                                if (!showAvailabilityAnimal.contains("Loup") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
-                                    {showAvailabilityAnimal += "\t1. Loup\n";isWolf=true;availabilityPaddock.add(p);}
-                                if (!showAvailabilityAnimal.contains("Ours") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
-                                    {showAvailabilityAnimal += "\t2. Ours\n";isBear=true;availabilityPaddock.add(p);}
-                                if (!showAvailabilityAnimal.contains("Tigre") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
-                                    {showAvailabilityAnimal += "\t3. Tigre\n";isTiger=true;availabilityPaddock.add(p);}
-                                if (!showAvailabilityAnimal.contains("Aigle") && p.getName().substring(0,6).equals("avairy") && p.getHereNbAnimals()<p.getMaxNbAnimals())
-                                    {showAvailabilityAnimal += "\t4. Aigle\n";isEagle=true;availabilityPaddock.add(p);}
-                                if (!showAvailabilityAnimal.contains("Pingouin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
-                                    {showAvailabilityAnimal += "\t5. Pingouin\n";isRazobill=true;availabilityPaddock.add(p);}
-                                if (!showAvailabilityAnimal.contains("Baleine") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
-                                    {showAvailabilityAnimal += "\t6. Baleine\n";isWhale=true;availabilityPaddock.add(p);}
-                                if (!showAvailabilityAnimal.contains("Requin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
-                                    {showAvailabilityAnimal += "\t7. Requin\n";isShark=true;availabilityPaddock.add(p);}
-                                if (!showAvailabilityAnimal.contains("Poisson (rouge)") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
-                                    {showAvailabilityAnimal += "\t8. Poisson (rouge)\n";isRedFish=true;availabilityPaddock.add(p);}
-                            }
-                            else if(p.getHereNbAnimals()<p.getMaxNbAnimals()) {
-                                showAvailabilityAnimal += "\t";
-                                if(p.getTypeAnimals().equals("Loup")){showAvailabilityAnimal+="1. " + p.getTypeAnimals()+ "\n";isWolf=true;availabilityPaddock.add(p);}
-                                else if(p.getTypeAnimals().equals("Ours")){showAvailabilityAnimal+="2. " + p.getTypeAnimals()+ "\n";isBear=true;availabilityPaddock.add(p);}
-                                else if(p.getTypeAnimals().equals("Tigre")){showAvailabilityAnimal+="3. " + p.getTypeAnimals()+ "\n";isTiger=true;availabilityPaddock.add(p);}
-                                else if(p.getTypeAnimals().equals("Aigle")){showAvailabilityAnimal+="4. " + p.getTypeAnimals()+ "\n";isEagle=true;availabilityPaddock.add(p);}
-                                else if(p.getTypeAnimals().equals("Pingouin")){showAvailabilityAnimal+="5. " + p.getTypeAnimals()+ "\n";isRazobill=true;availabilityPaddock.add(p);}
-                                else if(p.getTypeAnimals().equals("Baleine")){showAvailabilityAnimal+="6. " + p.getTypeAnimals()+ "\n";isWhale=true;availabilityPaddock.add(p);}
-                                else if(p.getTypeAnimals().equals("Requin")){showAvailabilityAnimal+="7. " + p.getTypeAnimals()+ "\n";isShark=true;availabilityPaddock.add(p);}
-                                else if(p.getTypeAnimals().equals("Poisson rouge")){showAvailabilityAnimal+="8. " + p.getTypeAnimals()+ "\n";isRedFish=true;availabilityPaddock.add(p);}
+                            if (!showAvailabilityAnimal.contains(p.getTypeAnimals())) {
+                                if (p.getTypeAnimals().equals("pas d'animal présent")) {
+                                    if (!showAvailabilityAnimal.contains("Loup") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t1. Loup\n";isWolf=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Ours") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t2. Ours\n";isBear=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Tigre") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t3. Tigre\n";isTiger=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Aigle") && p.getName().substring(0,6).equals("avairy") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t4. Aigle\n";isEagle=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Pingouin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t5. Pingouin\n";isRazobill=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Baleine") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t6. Baleine\n";isWhale=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Requin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t7. Requin\n";isShark=true;availabilityPaddock.add(p);}
+                                    if (!showAvailabilityAnimal.contains("Poisson (rouge)") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                        {showAvailabilityAnimal += "\t8. Poisson (rouge)\n";isRedFish=true;availabilityPaddock.add(p);}
+                                }
+                                else if(p.getHereNbAnimals()<p.getMaxNbAnimals()) {
+                                    showAvailabilityAnimal += "\t";
+                                    if(p.getTypeAnimals().equals("Loup")){showAvailabilityAnimal+="1. " + p.getTypeAnimals()+ "\n";isWolf=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Ours")){showAvailabilityAnimal+="2. " + p.getTypeAnimals()+ "\n";isBear=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Tigre")){showAvailabilityAnimal+="3. " + p.getTypeAnimals()+ "\n";isTiger=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Aigle")){showAvailabilityAnimal+="4. " + p.getTypeAnimals()+ "\n";isEagle=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Pingouin")){showAvailabilityAnimal+="5. " + p.getTypeAnimals()+ "\n";isRazobill=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Baleine")){showAvailabilityAnimal+="6. " + p.getTypeAnimals()+ "\n";isWhale=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Requin")){showAvailabilityAnimal+="7. " + p.getTypeAnimals()+ "\n";isShark=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Poisson rouge")){showAvailabilityAnimal+="8. " + p.getTypeAnimals()+ "\n";isRedFish=true;availabilityPaddock.add(p);}
+                                }
                             }
                             else if(p.getHereNbAnimals()<p.getMaxNbAnimals())
                                 availabilityPaddock.add(p);
@@ -420,8 +422,7 @@ public class Zoo {
                                                 System.out.println("\t");
                                                 cpt = 0;
                                             }
-                                        } else
-                                            Tools.notProposedOption();
+                                        }
                                     }
                                     System.out.print("\n\nChoix : ");
 
@@ -463,8 +464,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -481,8 +480,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -499,8 +496,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -517,8 +512,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -535,8 +528,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -553,8 +544,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -571,8 +560,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
