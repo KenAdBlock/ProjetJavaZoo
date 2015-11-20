@@ -108,7 +108,7 @@ public class Paddock {
             toString += "Aucune information sur les animaux car l'enclos est vide.";
 
         for (Animal a : animalPresent){
-            toString += (a + "\n\n");
+            toString += ("\t" + a + "\n\n");
         }
         return toString;
     }

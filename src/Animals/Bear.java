@@ -10,6 +10,13 @@ public class Bear extends Mammal {
 
     static int nbBear;
 
+    public Bear(String name, boolean sex, long weight, int height, int age) {
+        super(name, sex, weight, height, age);
+        timeUnborn = Tools.random(6000, 6301); // 1000 ms égale 1 jour en vrai
+        typeAnimal = "autre";
+    } // Constructor
+
+
     public static void setNbBear(int nbBear) {
         Bear.nbBear = nbBear;
     }
@@ -17,12 +24,6 @@ public class Bear extends Mammal {
     public static int getNbBear() {
         return nbBear;
     }
-
-    public Bear(String name, boolean sex, long weight, int height, int age) {
-        super(name, sex, weight, height, age);
-        timeUnborn = Tools.random(6000, 6301); // 1000 ms égale 1 jour en vrai
-        typeAnimal = "autre";
-    } // Constructor
 
     @Override
     public String toString() {

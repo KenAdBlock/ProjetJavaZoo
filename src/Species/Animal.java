@@ -1,6 +1,5 @@
 package Species;
 
-import Exception.HungerException;
 import Paddock.Paddock;
 
 /**

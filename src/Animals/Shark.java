@@ -11,14 +11,6 @@ public class Shark extends Fish implements ISwim {
 
     static int nbShark;
 
-    public void setNbShark(int nbShark) {
-        this.nbShark = nbShark;
-    }
-
-    public static int getNbShark() {
-        return nbShark;
-    }
-
     public Shark(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
@@ -26,6 +18,13 @@ public class Shark extends Fish implements ISwim {
     } //Constructor
 
 
+    public static void setNbShark(int nbShark) {
+        Shark.nbShark = nbShark;
+    }
+
+    public static int getNbShark() {
+        return nbShark;
+    }
 
     @Override
     public String toString() {

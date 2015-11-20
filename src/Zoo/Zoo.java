@@ -1,9 +1,6 @@
 package Zoo;
 
-import Animals.Bear;
-import Animals.Tiger;
-import Animals.Whale;
-import Animals.Wolf;
+import Animals.*;
 import Employee.Employee;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -177,28 +174,33 @@ public class Zoo {
                                             Wolf.setNbWolf(Wolf.getNbWolf() + 1);
                                             paddock.add(wolf);
                                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un loup !"));
-                                            wolf.toString();
-                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                            System.out.println(wolf.toString());
+                                            if(paddock.getHereNbAnimals()!= paddock.getMaxNbAnimals())
+                                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                         }while(isPaddockFill && paddock.getHereNbAnimals()< paddock.getMaxNbAnimals());
                                         scannerChoiceAnimal.nextLine();
                                         break;
                                     case "2":case "ours":
                                         do {
-                                            Bear bear = new Bear("bear"+(Bear.getNbBear()+1), (Tools.random(0,2) != 0), Tools.random(100,500), Tools.random(120, 150), Tools.random(2,15));
+                                            Bear bear = new Bear("bear"+(Bear.getNbBear()+1), (Tools.random(0,2) != 0), Tools.random(10000,50000), Tools.random(120, 150), Tools.random(2,15));
+                                            Bear.setNbBear(Bear.getNbBear() + 1);
                                             paddock.add(bear);
                                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un ours !"));
-                                            bear.toString();
-                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                            System.out.println(bear.toString());
+                                            if(paddock.getHereNbAnimals()!= paddock.getMaxNbAnimals())
+                                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                         }while(isPaddockFill && paddock.getHereNbAnimals()< paddock.getMaxNbAnimals());
                                         scannerChoiceAnimal.nextLine();
                                         break;
                                     case "3":case "tigre":
                                         do {
-                                            Tiger tiger = new Tiger("tiger"+(Tiger.getNbTiger()+1), (Tools.random(0,2) != 0), Tools.random(100,500), Tools.random(120, 150), Tools.random(2,15));
+                                            Tiger tiger = new Tiger("tiger"+(Tiger.getNbTiger()+1), (Tools.random(0,2) != 0), Tools.random(10000,25000), Tools.random(120, 150), Tools.random(2,15));
+                                            Tiger.setNbTiger(Tiger.getNbTiger() + 1);
                                             paddock.add(tiger);
                                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un tigre !"));
-                                            tiger.toString();
-                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                            System.out.println(tiger.toString());
+                                            if(paddock.getHereNbAnimals()!= paddock.getMaxNbAnimals())
+                                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                         }while(isPaddockFill && paddock.getHereNbAnimals()< paddock.getMaxNbAnimals());
                                         scannerChoiceAnimal.nextLine();
                                         break;
@@ -233,31 +235,50 @@ public class Zoo {
                                 switch (choiceAnimal) {
                                     case "1":case "baleine":
                                         do {
-                                            Whale whale = new Whale("whale"+(Whale.getNbWhale()+1), (Tools.random(0,2) != 0), Tools.random(150000,170000), Tools.random(120, 150), Tools.random(2,15));
+                                            Whale whale = new Whale("whale"+(Whale.getNbWhale()+1), (Tools.random(0,2) != 0), Tools.random(150000000,170000000), Tools.random(2500, 3300), Tools.random(2,15));
+                                            Whale.setNbWhale(Whale.getNbWhale() + 1);
+                                            aquarium.add(whale);
                                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un baleine !"));
-                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                        }while(isPaddockFill);
+                                            System.out.println(whale.toString());
+                                            if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
+                                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                        }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
                                         scannerChoiceAnimal.nextLine();
                                         break;
                                     case "2":case "pingouin":
                                         do {
+                                            Razorbill razorbill = new Razorbill("razorbile"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
+                                            Razorbill.setNbRazorbill(Razorbill.getNbRazorbill() + 1);
+                                            aquarium.add(razorbill);
                                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un pingouin !"));
-                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                        }while(isPaddockFill);
+                                            System.out.println(razorbill.toString());
+                                            if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
+                                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                        }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
                                         scannerChoiceAnimal.nextLine();
                                         break;
                                     case "3":case "poisson":
                                         do {
+                                            RedFish redFish = new RedFish("redfish"+(RedFish.getNbRedfish()+1),(Tools.random(0,2) != 0), Tools.random(15,40), Tools.random(5, 20), Tools.random(2,8));
+                                            RedFish.setNbRedFish(RedFish.getNbRedfish() + 1);
+                                            aquarium.add(redFish);
                                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un poisson (rouge) !"));
-                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                        }while(isPaddockFill);
+                                            System.out.println(redFish.toString());
+                                            if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
+                                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                        }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
                                         scannerChoiceAnimal.nextLine();
                                         break;
                                     case "4":case "requin":
                                         do {
+                                            Shark shark = new Shark("shark"+(Shark.getNbShark()+1),(Tools.random(0,2) != 0), Tools.random(400000,2500000), Tools.random(150, 350), Tools.random(2,15));
+                                            Shark.setNbShark(Shark.getNbShark() + 1);
+                                            aquarium.add(shark);
                                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un requin !"));
-                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                        }while(isPaddockFill);
+                                            System.out.println(shark.toString());
+                                            if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
+                                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                        }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
                                         scannerChoiceAnimal.nextLine();
                                         break;
                                     case "q":case "quit":case "quitter":case "exit":
@@ -288,9 +309,14 @@ public class Zoo {
                                 switch (choiceAnimal) {
                                     case "1":case "aigle":
                                         do {
+                                            Eagle eagle = new Eagle("eagle"+(Eagle.getNbEagle()+1),(Tools.random(0,2) != 0), Tools.random(10000,25000), Tools.random(80, 120), Tools.random(2,15));
+                                            Eagle.setNbEagle(Eagle.getNbEagle()+1);
+                                            aviary.add(eagle);
                                             System.out.println(Tools.strColorBlue("Vous avez \"créer\" un aigle !"));
-                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                        } while (isPaddockFill);
+                                            System.out.println(eagle.toString());
+                                            if(aviary.getHereNbAnimals()!= aviary.getMaxNbAnimals())
+                                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                        } while (isPaddockFill && aviary.getHereNbAnimals()< aviary.getMaxNbAnimals());
                                         scannerChoiceAnimal.nextLine();
                                         break;
                                     case "q":case "quit":case "quitter":case "exit":
