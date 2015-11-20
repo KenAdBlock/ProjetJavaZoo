@@ -117,6 +117,13 @@ public class Zoo {
         boolean isPaddockFill = false;
         boolean isPaddockCreated = false;
         boolean isAnimalCreated = false;
+        boolean isWolf = false;
+        boolean isBear = false;
+        boolean isTiger = false;
+        boolean isEagle = false;
+        boolean isRazobill = false;
+        boolean isShark = false
+        boolean isWhale = false;
 
         while (true) {
             if(isPaddockCreated && !isAnimalCreated)
@@ -355,21 +362,21 @@ public class Zoo {
                             if (!showAvailability.contains(p.getTypeAnimals())){
                                 if(p.getTypeAnimals().equals("pas d'animal présent")) {
                                     if (!showAvailability.contains("Loup") && p.getName().substring(0,7).equals("paddock"))
-                                        showAvailability += "\t" + cpt + ". Loup\n";
+                                        showAvailability += "\t1. Loup\n";
                                     if (!showAvailability.contains("Ours") && p.getName().substring(0,7).equals("paddock"))
-                                        showAvailability += "\t" + cpt + ". Ours\n";
+                                        showAvailability += "\t2. Ours\n";
                                     if (!showAvailability.contains("Tigre") && p.getName().substring(0,7).equals("paddock"))
-                                        showAvailability += "\t" + cpt + ". Tigre\n";
+                                        showAvailability += "\t3. Tigre\n";
                                     if (!showAvailability.contains("Aigle") && p.getName().substring(0,6).equals("avairy"))
-                                        showAvailability += "\t" + cpt + ". Aigle\n";
+                                        showAvailability += "\t4. Aigle\n";
                                     if (!showAvailability.contains("Pingouin") && p.getName().substring(0,8).equals("aquarium"))
-                                        showAvailability += "\t" + cpt + ". Pingouin\n";
+                                        showAvailability += "\t5. Pingouin\n";
                                     if (!showAvailability.contains("Baleine") && p.getName().substring(0,8).equals("aquarium"))
-                                        showAvailability += "\t" + cpt + ". Baleine\n";
+                                        showAvailability += "\t6. Baleine\n";
                                     if (!showAvailability.contains("Requin") && p.getName().substring(0,8).equals("aquarium"))
-                                        showAvailability += "\t" + cpt + ". Requin\n";
+                                        showAvailability += "\t7. Requin\n";
                                     if (!showAvailability.contains("Poisson (rouge)") && p.getName().substring(0,8).equals("aquarium"))
-                                        showAvailability += "\t" + cpt + ". Poisson (rouge)\n";
+                                        showAvailability += "\t8. Poisson (rouge)\n";
                                 }
                                 else
                                     showAvailability +=  "\t" + cpt + ". " + p.getTypeAnimals()+ "\n";
@@ -388,6 +395,65 @@ public class Zoo {
                         String choiceAnimal = scannerChoiceAnimal.next();
                         choiceAnimal = choiceAnimal.toLowerCase();
                         String saveChoiceAnimal = choiceAnimal;
+                        switch (choiceAnimal){
+                            case"1":case"loup":
+                                if(isWolf){
+
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"2":case"ours":
+                                if(isWolf){
+
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"3":case"tigre":
+                                if(isWolf){
+
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"4":case"aigle":
+                                if(isWolf){
+
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"5":case"pingouin":
+                                if(isWolf){
+
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"6":case"baleine":
+                                if(isWolf){
+
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"7":case"requin":
+                                if(isWolf){
+
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+                            case"8":case"poisson":
+                                if(isWolf){
+
+                                }
+                                else
+                                    Tools.notProposedOption();
+                                break;
+
+                        }
                         switch (choiceAnimal.substring(0,4)){
                             case "padd":
                                 for (Paddock p: listPaddock){
