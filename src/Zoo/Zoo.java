@@ -433,6 +433,7 @@ public class Zoo {
                                         case "1":
                                             break;
                                         default:
+                                            boolean isNotValid = false;
                                             for(Paddock p : listPaddock){
                                                 if (p.getName().equals(choicePaddock)) {
                                                     do {
@@ -445,7 +446,11 @@ public class Zoo {
                                                             isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                     }while(isPaddockFill && p.getHereNbAnimals()< p.getMaxNbAnimals());
                                                 }
+                                                else
+                                                    isNotValid = true;
                                             }
+                                            if(isNotValid)
+                                                Tools.notProposedOption();
                                             scannerChoicePaddock.nextLine();
                                             break;
                                     }//faire la boucle pour demander si on veut encore ajouter (boucle inifini pour le moment à cause du while(true)), et effectivement ajouter les animaux ( à copier des ajouts du case"1")
