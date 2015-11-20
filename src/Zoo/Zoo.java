@@ -347,7 +347,72 @@ public class Zoo {
                     break;
                 case "2":
                     if(isPaddockCreated){
-                        System.out.print("\nQuel animal voulez-vous créer ?\n" +
+                        System.out.println("\nVoici les animaux que vous pouvez créer en fonction des enclos disponibles : ");
+                        int cpt = 1;
+                        String showAvailability = "";
+
+                        for (Paddock p : listPaddock) {
+                            if (!showAvailability.contains(p.getTypeAnimals())){
+                                if(p.getTypeAnimals().equals("pas d'animal présent")) {
+                                    if (!showAvailability.contains("Loup") && p.getName().substring(0,7).equals("paddock"))
+                                        showAvailability += "\t" + cpt + ". Loup\n";
+                                    if (!showAvailability.contains("Ours") && p.getName().substring(0,7).equals("paddock"))
+                                        showAvailability += "\t" + cpt + ". Ours\n";
+                                    if (!showAvailability.contains("Tigre") && p.getName().substring(0,7).equals("paddock"))
+                                        showAvailability += "\t" + cpt + ". Tigre\n";
+                                    if (!showAvailability.contains("Aigle") && p.getName().substring(0,6).equals("avairy"))
+                                        showAvailability += "\t" + cpt + ". Aigle\n";
+                                    if (!showAvailability.contains("Pingouin") && p.getName().substring(0,8).equals("aquarium"))
+                                        showAvailability += "\t" + cpt + ". Pingouin\n";
+                                    if (!showAvailability.contains("Baleine") && p.getName().substring(0,8).equals("aquarium"))
+                                        showAvailability += "\t" + cpt + ". Baleine\n";
+                                    if (!showAvailability.contains("Requin") && p.getName().substring(0,8).equals("aquarium"))
+                                        showAvailability += "\t" + cpt + ". Requin\n";
+                                    if (!showAvailability.contains("Poisson (rouge)") && p.getName().substring(0,8).equals("aquarium"))
+                                        showAvailability += "\t" + cpt + ". Poisson (rouge)\n";
+                                }
+                                else
+                                    showAvailability +=  "\t" + cpt + ". " + p.getTypeAnimals()+ "\n";
+                                cpt++;
+                            }
+                        }
+                        System.out.print(showAvailability + "\tq: QUITTER\nChoix : ");
+                        /*for(Paddock p : listPaddock){
+                            System.out.print("\t" + cpt2 +". " + p.getName() + " ");
+                            cpt++;
+                            if (cpt == 5) {
+                                System.out.println("");
+                                cpt = 0;
+                            }
+                        }*/
+                        String choiceAnimal = scannerChoiceAnimal.next();
+                        choiceAnimal = choiceAnimal.toLowerCase();
+                        String saveChoiceAnimal = choiceAnimal;
+                        switch (choiceAnimal.substring(0,4)){
+                            case "padd":
+                                for (Paddock p: listPaddock){
+                                    if(p.getName().substring(0,7).equals("paddock")){
+                                        System.out.println("Prout 1");
+                                    }
+                                }
+                                break;
+                            case "aqua":
+                                for (Paddock p: listPaddock){
+                                    if(p.getName().substring(0,8).equals("aquarium")){
+                                        System.out.println("Prout 1");
+                                    }
+                                }
+                                break;
+                            case "avia":
+                                for (Paddock p: listPaddock){
+                                    if(p.getName().substring(0,6).equals("aviary")){
+                                        System.out.println("Prout 1");
+                                    }
+                                }
+                                break;
+                        }
+
+                       /* System.out.print("\nQuel animal voulez-vous créer ?\n" +
                                 "\t1: Aigle\n" +
                                 "\t2: Baleine\n" +
                                 "\t3: Loup\n" +
@@ -359,8 +424,6 @@ public class Zoo {
                                 "\tq: QUITTER\n" +
                                 "\nChoix : ");
 
-                        String choiceAnimal = scannerChoiceAnimal.next();
-                        choiceAnimal = choiceAnimal.toLowerCase();
                         switch (choiceAnimal) {
                             case "1":case "aigle":
                                 System.out.println(Tools.strColorBlue("Vous avez \"créer\" un aigle !"));
@@ -409,7 +472,7 @@ public class Zoo {
                                 Tools.notProposedOption();
                                 scannerChoiceAnimal.nextLine();
                                 break;
-                        }// switch choiceAnimal
+                        }// switch choiceAnimal*/
                     }
                     else
                         Tools.notProposedOption();
