@@ -362,8 +362,8 @@ public class Zoo {
                         ArrayList<Paddock> availabilityPaddock = new ArrayList<>();
 
                         for (Paddock p : listPaddock) {
-                            if (!showAvailabilityAnimal.contains(p.getTypeAnimals())){
-                                if(p.getTypeAnimals().equals("pas d'animal présent")) {
+                            if (!showAvailabilityAnimal.contains(p.getTypeAnimals())) {
+                                if (p.getTypeAnimals().equals("pas d'animal présent")) {
                                     if (!showAvailabilityAnimal.contains("Loup") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t1. Loup\n";isWolf=true;availabilityPaddock.add(p);}
                                     if (!showAvailabilityAnimal.contains("Ours") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
@@ -422,8 +422,7 @@ public class Zoo {
                                                 System.out.println("\t");
                                                 cpt = 0;
                                             }
-                                        } else
-                                            Tools.notProposedOption();
+                                        }
                                     }
                                     System.out.print("\n\nChoix : ");
 
@@ -470,8 +469,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -488,8 +485,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -506,8 +501,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -524,8 +517,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -542,8 +533,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -560,8 +549,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -570,7 +557,7 @@ public class Zoo {
                             case"8":case"poisson":
                                 if(isRedFish){
                                     isRedFish=false;
-                                    System.out.println("Parmis les aquarium suivants, dans lequel voulez-vous ajouter un poisson rouge?");
+                                    System.out.println("Parmis les aquarium suivants, dans lequel voulez-vous ajouter un poisson rouge ?");
                                     int cpt = 0;
                                     for (Paddock p : availabilityPaddock){
                                         if((p.getTypeAnimals().equals("poisson rouge") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0,8).equals("aquarium")){
@@ -578,8 +565,6 @@ public class Zoo {
                                             ++cpt;
                                             if (cpt == 5){System.out.println("");cpt=0;}
                                         }
-                                        else
-                                            Tools.notProposedOption();
                                     }
                                 }
                                 else
@@ -687,7 +672,9 @@ public class Zoo {
                     break;
                 case "3":case "gérer":case "gerer":
                     if(isAnimalCreated) {
-                        System.out.println(Tools.strColorBlue("Vous entrez dans le mode gestion du zoo.\n"));
+                        System.out.println(Tools.strColorBlue("\nVous entrez dans le mode gestion du zoo."));
+
+                        /* Code... */
                     }
                     else
                         Tools.notProposedOption();
