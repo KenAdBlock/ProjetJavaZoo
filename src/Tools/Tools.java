@@ -82,13 +82,8 @@ public class Tools {
     } // exitZoo()
 
     public static void notProposedOption() {
-        System.out.println(strColorRed("\nCette option n'est pas proposée..."));
+        System.err.println("\nCette option n'est pas proposée...");
     } // notProposedOption()
-
-    public static String strColorRed(String str) {
-        String red = "\033[31m";
-        return red + str + colorReset;
-    } // strColorRed()
 
     public static String strColorBlue(String str) {
         String blue = "\033[34m";

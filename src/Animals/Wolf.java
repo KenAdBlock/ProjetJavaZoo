@@ -15,6 +15,7 @@ public class Wolf extends Mammal implements IWander {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "autre";
+        beAlive();
     } //Constructor
 
 
@@ -67,9 +68,30 @@ public class Wolf extends Mammal implements IWander {
         System.out.println("Je fais des bonds, encore des bonds, tout plein de bonds !");
     } // wander()
 
+    public void beAlive(){
+        new Thread( new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        if (isSleepIndicator())
+                            wakeAnimal();
+                        else if (getHealthIndicator() < 22)
+                            sleepAnimal();
+                        
+                        if (!isSleepIndicator() && getHungerIndicator() < 25)
+                            eat();
+                        sleep(6000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
+
 
     public void reproduction(Wolf wolf){
-
         if ( (this.isSex() != wolf.isSex()) ){
 
             int random = Tools.random(0, 2);

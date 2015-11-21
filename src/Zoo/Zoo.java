@@ -82,42 +82,30 @@ public class Zoo {
         }
     }
 
+    private void threadDecrementation(){
+        new Thread(new Thread() {
+            @Override
+            public void run() {
+                while(true) {
+                    try {
+                        ArrayList<Animal> animalArrayList = totalAnimal.get(Tools.random(0, totalAnimal.size()));
+                        Animal animal = animalArrayList.get(Tools.random(0, animalArrayList.size()));
+                        boolean random = (Tools.random(0,2) != 0);
+                        if (random)
+                            animal.setHungerIndicator(animal.getHungerIndicator() - Tools.random(Tools.random(0, 11), Tools.random(11, 21)));
+                        else
+                            animal.setHealthIndicator(animal.getHealthIndicator() - Tools.random(Tools.random(1, 11), Tools.random(11, 21)));
+                        System.out.println("\n" + animal.toString());
+                        sleep(Tools.random(1000, 5001));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
+
     public void run() {
-
-/*      Wolf loupGoerges = new Wolf("wolf1",true, 30000, 160, 5);
-
-        Wolf loupMelissa = new Wolf("wolf2",false, 32767, 165, 4);
-        Wolf loupKenny = new Wolf("wolf3",true, 30000, 155, 6);
-        Wolf loupLynda = new Wolf("wolf4",false, 30000, 155, 6);
-        loupGoerges.setNbWolf(4);
-
-        Paddock paddock1 = new Paddock("paddock1", 32, 8, "bon");
-        Paddock paddock2 = new Paddock("paddock2", 32, 8, "bon");
-
-        paddock1.add(loupMelissa);
-        paddock1.add(loupLynda);
-        paddock1.add(loupGoerges);
-        paddock1.add(loupKenny);
-
-        loupGoerges.reproduction(loupMelissa);
-        loupLynda.reproduction(loupKenny);
-        System.out.println(paddock1.toString());
-
-
-        Eagle eagle1 = new Eagle("eagle1",true,12,12,2);
-        Aviary aviary1 = new Aviary("aviary1",32,8,0,"bon",60);
-
-        aviary1.add(eagle1);
-        aviary1.add(loupGoerges);
-
-        paddock1.add(loupGoerges);
-        paddock1.add(eagle1);
-
-        paddock1.move(eagle1);
-
-        System.out.println(aviary1.toString());
-        System.out.println(paddock1.toString());
-*/
 
         Scanner scannerChoiceAction = new Scanner(System.in);
         Scanner scannerChoiceAnimal = new Scanner(System.in);
@@ -134,6 +122,7 @@ public class Zoo {
         boolean isShark = false;
         boolean isWhale = false;
         boolean isRedFish = false;
+        boolean isFirstAccesToCase3 = true;
 
         while (true) {
             if(isPaddockCreated && !isAnimalCreated)
@@ -142,13 +131,14 @@ public class Zoo {
                                     "\t2: Créer un animal\n" +
                                     "\tq: QUITTER (ZOO)\n" +
                                     "\nChoix : ");
-            else if(isAnimalCreated)
+            else if(isAnimalCreated) {
                 System.out.print("Quel action voulez-vous faire ?\n" +
                                     "\t1: Créer un enclos\n" +
                                     "\t2: Créer un animal\n" +
                                     "\t3: Gérer le zoo en tant qu'employé\n" +
                                     "\tq: QUITTER (ZOO)\n" +
                                     "\nChoix : ");
+            }
             else
                 System.out.print("\nQuel action voulez-vous faire ?\n" +
                                     "\t1: Créer un enclos\n" +
@@ -932,15 +922,19 @@ public class Zoo {
 
                 case "3":case "gérer":case "gerer":
                     if(isAnimalCreated) {
+                        if(isFirstAccesToCase3) {
+                            threadDecrementation();
+                            isFirstAccesToCase3 = false;
+                        }
                         System.out.println(Tools.strColorBlue("\nVous entrez dans le mode gestion du zoo.\n"));
                         System.out.print("Quel action voulez-vous faire ?\n" +
-                                            "Action(s) sur un animal : \n" +
-                                            "\t1: Déplacer un animal d'un enclos à un autre\n" +
-                                            "\t2: Soigner un animal\n\n" +
-                                            "Action(s) sur un enclos : \n" +
-                                            "\t3: Réapprovisionner un enclos en nourriture\n\n" +
-                                            "\tq: QUITTER (ZOO)\n" +
-                                            "\nChoix : ");
+                                "Action(s) sur un animal : \n" +
+                                "\t1: Déplacer un animal d'un enclos à un autre\n" +
+                                "\t2: Soigner un animal\n\n" +
+                                "Action(s) sur un enclos : \n" +
+                                "\t3: Réapprovisionner un enclos en nourriture\n\n" +
+                                "\tq: QUITTER (ZOO)\n" +
+                                "\nChoix : ");
 
                         String choiceActionManagement = scannerChoiceActionManagement.next();
                         choiceActionManagement = choiceActionManagement.toLowerCase();
