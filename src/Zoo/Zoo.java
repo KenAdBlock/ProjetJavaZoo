@@ -20,36 +20,92 @@ import Tools.Tools;
  */
 public class Zoo {
 
+    /**
+     * Le nom du zoo
+     */
     private String name;
+
+    /**
+     * Le nom de l'employé.
+     */
     private Employee employee;
+
+    /**
+     * Le nombre maximum d'enclos que peut contenir le zoo.
+     */
     private int maxNbPaddock;
+
+    /**
+     * La liste de tous les enclos du zoo.
+     */
     private static ArrayList<Paddock> listPaddock = new ArrayList<>();
+
+    /**
+     * La liste de tous les animaux (de tous les enclos) du zoo.
+     */
     private static ArrayList<ArrayList<Animal>> totalAnimal = new ArrayList<>();
 
-    private Zoo(String name, Employee employee, int maxNbPaddock) {
-        this.name = name;
-        this.employee = employee;
-        this.maxNbPaddock = maxNbPaddock;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    private static Zoo INSTANCE = new Zoo("Ho Land", Employee.getINSTANCE(), 10);
-
-    public static Zoo getINSTANCE() {
-        return INSTANCE;
-    }
-
+    /**
+     * Retourne la liste de tous les enclos du zoo.
+     *
+     * @return Une liste d'enclos.
+     */
     public static ArrayList<Paddock> getListPaddock() {
         return listPaddock;
     }
 
+    /**
+     * Retourne la liste de tous les animaux (de tous les enclos) du zoo.
+     *
+     * @return Une liste de liste d'animaux.
+     */
     public static ArrayList<ArrayList<Animal>> getTotalAnimal() {
         return totalAnimal;
     }
 
+    /**
+     * Le constructeur de la classe Zoo.
+     * Il permet de créer une et une seule instance de cette classe.
+     *
+     * @param name
+     *          Le nom du zoo.
+     * @param employee
+     *          Le nom de l'employé.
+     * @param maxNbPaddock
+     *          Le nombre maximum d'enclos que peut contenir le zoo.
+     */
+    private Zoo(String name, Employee employee, int maxNbPaddock) {
+        this.name = name;
+        this.employee = employee;
+        this.maxNbPaddock = maxNbPaddock;
+    } // Constructor
+
+    /**
+     *
+     */
+    private static Zoo INSTANCE = new Zoo("Ho Land", Employee.getINSTANCE(), 10);
+
+    /**
+     *
+     *
+     * @return
+     */
+    public static Zoo getINSTANCE() {
+        return INSTANCE;
+    } // getINSTANCE()
+
+    /**
+     *
+     *
+     * @return
+     */
+    public String getName() {
+        return name;
+    } // getName()
+
+    /**
+     *
+     */
     public void showNbTotalAnimal(){
         int cpt = 0;
         if(totalAnimal.isEmpty())
@@ -62,8 +118,11 @@ public class Zoo {
             }
         }
         System.out.println("Le nombre d'animal présent dans le zoo est de " + cpt + " animaux");
-    }
+    } // showNbTotalAnimal()
 
+    /**
+     *
+     */
     public void showTotalAnimal(){
         if(totalAnimal.isEmpty())
             System.out.println("\tIl n'y a pas d'animal dans le zoo !");
@@ -81,15 +140,21 @@ public class Zoo {
                 }
             }
         }
-    }
+    } // showTotalAnimal()
 
+    /**
+     *
+     */
     public void showAllPaddock(){
         System.out.println("\nListe de tous les enclos, avec les animaux présents à l'intérieur : ");
         for(Paddock p : listPaddock){
             System.out.println("\t" + p.toString());
         }
-    }
+    } // showAllPaddock()
 
+    /**
+     *
+     */
     private void threadDecrementation(){
         new Thread(new Thread() {
             @Override
@@ -110,10 +175,12 @@ public class Zoo {
                 }
             }
         }).start();
-    }
+    } // threadDecrementation()
 
+    /**
+     * Méthode appellée par la classe Main. Point d'entrée de l'application.
+     */
     public void run() {
-
         Scanner scannerChoiceAction = new Scanner(System.in);
         Scanner scannerChoiceAnimal = new Scanner(System.in);
         Scanner scannerChoicePaddock = new Scanner(System.in);
@@ -1192,4 +1259,4 @@ public class Zoo {
             } // switch choiceAction
         } // while (true)
     } // run()
-}
+} // class Zoo
