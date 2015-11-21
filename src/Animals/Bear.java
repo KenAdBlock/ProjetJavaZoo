@@ -4,7 +4,12 @@ import Species.Mammal;
 import Tools.Tools;
 
 /**
- * Created by c13003593 on 13/10/2015.
+ *  Bear est la classe représentant un Ours.
+ *  Elle hérite de la classe abstraite Mammal car un ours est un mammifère.
+ *
+ *  @author Charles-Henri CARLIER et Kenny COADALEN
+ *  @author Charles-Henri CARLIER et Kenny COADALEN
+ *  @see Species.Mammal
  */
 public class Bear extends Mammal {
 
@@ -82,7 +87,7 @@ public class Bear extends Mammal {
                 }
             }
         }).start();
-    }
+    } // beAlive()
 
     public void reproduction(Bear bear){
 
