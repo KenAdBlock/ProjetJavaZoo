@@ -67,6 +67,8 @@ public class Tools {
                 break;
             default:
                 notProposedOption();
+                System.out.println();
+                choice = Tools.askPaddockFill(choice);
                 break;
         }
         System.out.println();

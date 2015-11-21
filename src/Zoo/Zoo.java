@@ -427,7 +427,9 @@ public class Zoo {
                             else if(p.getHereNbAnimals()<p.getMaxNbAnimals())
                                 availabilityPaddock.add(p);
                         }
-                        System.out.print(showAvailabilityAnimal + "\tq: QUITTER (CHOIX)\n\nChoix : ");
+                        if(showAvailabilityAnimal.equals(""))
+                            showAvailabilityAnimal = "\tVous ne pouvez pas créer d'animal soit parce que vos enclos sont remplis au max\n";
+                        System.out.print(Tools.strColorBlue(showAvailabilityAnimal) + "\tq: QUITTER (CHOIX)\n\nChoix : ");
 
                         String choiceAnimal = scannerChoiceAnimal.next();
                         choiceAnimal = choiceAnimal.toLowerCase();
