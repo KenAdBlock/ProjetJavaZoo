@@ -666,7 +666,7 @@ public class Zoo {
                                             int cpt = 0;
                                             System.out.print("\t");
                                             for (Paddock p : availabilityPaddock) {
-                                                if ((p.getTypeAnimals().equals("Pingouin") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0, 8).equals("aquariumk")) {
+                                                if ((p.getTypeAnimals().equals("Pingouin") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0, 8).equals("aquarium")) {
                                                     System.out.print(p.getName() + " ");
                                                     ++cpt;
                                                     if (cpt == 5) {
@@ -723,7 +723,7 @@ public class Zoo {
                                             int cpt = 0;
                                             System.out.print("\t");
                                             for (Paddock p : availabilityPaddock) {
-                                                if ((p.getTypeAnimals().equals("Baleine") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0, 8).equals("aquariumk")) {
+                                                if ((p.getTypeAnimals().equals("Baleine") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0, 8).equals("aquarium")) {
                                                     System.out.print(p.getName() + " ");
                                                     ++cpt;
                                                     if (cpt == 5) {
@@ -779,7 +779,7 @@ public class Zoo {
                                             int cpt = 0;
                                             System.out.print("\t");
                                             for (Paddock p : availabilityPaddock) {
-                                                if ((p.getTypeAnimals().equals("Requin") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0, 8).equals("aquariumk")) {
+                                                if ((p.getTypeAnimals().equals("Requin") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0, 8).equals("aquarium")) {
                                                     System.out.print(p.getName() + " ");
                                                     ++cpt;
                                                     if (cpt == 5) {
@@ -835,7 +835,7 @@ public class Zoo {
                                             int cpt = 0;
                                             System.out.print("\t");
                                             for (Paddock p : availabilityPaddock) {
-                                                if ((p.getTypeAnimals().equals("Poisson rouge") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0, 8).equals("aquariumk")) {
+                                                if ((p.getTypeAnimals().equals("Poisson rouge") || p.getTypeAnimals().equals("pas d'animal présent")) && p.getName().substring(0, 8).equals("aquarium")) {
                                                     System.out.print(p.getName() + " ");
                                                     ++cpt;
                                                     if (cpt == 5) {
