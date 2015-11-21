@@ -79,7 +79,7 @@ public class Tools {
     } // exitZoo()
 
     public static void notProposedOption() {
-        System.out.println(strColorRed("Cette option n'est pas proposée..."));
+        System.out.println(strColorRed("\nCette option n'est pas proposée..."));
     } // notProposedOption()
 
     public static String strColorRed(String str) {
