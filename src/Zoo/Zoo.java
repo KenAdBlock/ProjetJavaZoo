@@ -906,6 +906,7 @@ public class Zoo {
                                     break;
                                 default:
                                     Tools.notProposedOption();
+                                    isNotFinishAddAnimal = false;
                                     scannerChoiceAnimal.nextLine();
                                     break;
                             }
