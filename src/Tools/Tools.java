@@ -71,6 +71,7 @@ public class Tools {
                 choice = Tools.askPaddockFill(choice);
                 break;
         }
+        scannerChoicePaddockFill.nextLine();
         System.out.println();
         return choice;
     }
