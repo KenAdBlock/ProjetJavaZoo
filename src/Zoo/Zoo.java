@@ -135,11 +135,11 @@ public class Zoo {
         /* A SUPPRIMER */
         /* A SUPPRIMER */
         /* A SUPPRIMER */
-        Paddock p1 = new Paddock("paddock1", 32, 5, "propre");
+        /*Paddock p1 = new Paddock("paddock1", 32, 5, "propre");
         Wolf w1 = new Wolf("wolf1", true, 50, 150, 4);
         Wolf w2 = new Wolf("wolf1", false, 40, 120, 5);
         p1.add(w1);
-        p1.add(w2);
+        p1.add(w2);*/
         /* A SUPPRIMER */
         /* A SUPPRIMER */
         /* A SUPPRIMER */
@@ -942,6 +942,28 @@ public class Zoo {
                     }
                     scannerChoiceAction.nextLine();
                     break;
+
+
+
+
+                /*Possibilité pour après : améliorer le case 2 pour le stockage des enclos/aquarium/volière dans une string
+                 et ne plus parcourir la liste des paddock après mais juste faire un string.contains(choice)
+                                                      _ _ _
+                                        |       |    |     |      |
+                                        |       |    |     |      |
+                                        |-------|    |     |      |
+                                        |       |    |     |      |
+                                        |       |    |_ _ _|      .
+
+
+                 */
+
+
+
+
+
+
+
                 case "3":case "gérer":case "gerer":
                     boolean isNotFinishChoiceMenuManagement = true;
                     if(isAnimalCreated) {
@@ -1031,36 +1053,47 @@ public class Zoo {
                                 case "2":
                                     boolean isNotFinishChoiceActionManagementHeal = true;
                                     while (isNotFinishChoiceActionManagementHeal) {
-                                        System.out.println("Voici la liste des animaux pouvant être soignés :\n");
-                                                            /* showAvailabilityAnimal ... */
-
-
-                                        System.out.println("Quel animal voulez-vous soigner ?\n" +
-                                                            "\tq: QUITTER (ZOO)\n" +
+                                        System.out.println("\nParmis les animaux suivants, lequel vouez-vous soigner ?");
+                                        int cpt = 0;
+                                        System.out.print("\t");
+                                        String animalToHeal = "";
+                                        for (ArrayList<Animal> a : totalAnimal) {
+                                            for (Animal a1 : a) {
+                                                if(a1.getHealthIndicator()<100) {
+                                                    animalToHeal += a1.getName() + " ";
+                                                    ++cpt;
+                                                }
+                                                if (cpt == 10) {
+                                                    cpt = 0;
+                                                    System.out.println("\t");
+                                                }
+                                            }
+                                        }
+                                        if(animalToHeal.equals(""))
+                                            animalToHeal = "Pas d'animaux à soigner !";
+                                        System.out.print(animalToHeal +
+                                                            "\n\tq: QUITTER (CHOIX)\n" +
                                                             "\nChoix : ");
                                         
                                         String choiceHeal = scannerChoiceHeal.next();
                                         choiceHeal = choiceHeal.toLowerCase();
                                         switch (choiceHeal) {
-                                            case "????":
-                                                boolean isNotFinishChoiceActionManagementHealAnimal = true;
-                                                while (isNotFinishChoiceActionManagementHealAnimal) {
-                                                    /*
-                                                    ...
-                                                    */
-                                                    System.out.println(Tools.strColorBlue("L'animal a été soigné"));
-
-                                                    isNotFinishChoiceActionManagementHealAnimal = false;
-                                                    isNotFinishChoiceActionManagementHeal = false;
-                                                }
-                                                scannerChoiceHeal.nextLine();
-                                                break;
                                             case "q":case "quit":case "quitter":case "exit":
                                                 isNotFinishChoiceActionManagementHeal = false;
                                                 break;
                                             default:
-                                                Tools.notProposedOption();
-                                                scannerChoiceActionManagement.nextLine();
+                                                if(animalToHeal.contains(choiceHeal)){
+                                                    for (ArrayList<Animal> a : totalAnimal) {
+                                                        for (Animal a1 : a) {
+                                                            if(choiceHeal.equals(a1.getName()))
+                                                                a1.beHealed();
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                    Tools.notProposedOption();
+                                                scannerChoiceHeal.nextLine();
+                                                //scannerChoiceActionManagement.nextLine();
                                                 break;
                                         }
                                     } //while (isNotFinishChoiceActionManagementHeal)
