@@ -392,21 +392,21 @@ public class Zoo {
                         for (Paddock p : listPaddock) {
                             if (!showAvailabilityAnimal.contains(p.getTypeAnimals())) {
                                 if (p.getTypeAnimals().equals("pas d'animal présent")) {
-                                    if (!showAvailabilityAnimal.contains("Loup") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Loup") && p.getName().substring(0,4).equals("padd") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t1: Loup\n";isWolf=true;}
-                                    if (!showAvailabilityAnimal.contains("Ours") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Ours") && p.getName().substring(0,4).equals("padd") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t2: Ours\n";isBear=true;}
-                                    if (!showAvailabilityAnimal.contains("Tigre") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Tigre") && p.getName().substring(0,4).equals("padd") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t3: Tigre\n";isTiger=true;}
-                                    if (!showAvailabilityAnimal.contains("Aigle") && p.getName().substring(0,6).equals("avairy") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Aigle") && p.getName().substring(0,4).equals("avia") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t4: Aigle\n";isEagle=true;}
-                                    if (!showAvailabilityAnimal.contains("Pingouin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Pingouin") && p.getName().substring(0,4).equals("aqua") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t5: Pingouin\n";isRazorbill=true;}
-                                    if (!showAvailabilityAnimal.contains("Baleine") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Baleine") && p.getName().substring(0,4).equals("aqua") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t6: Baleine\n";isWhale=true;}
-                                    if (!showAvailabilityAnimal.contains("Requin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Requin") && p.getName().substring(0,4).equals("aqua") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t7: Requin\n";isShark=true;}
-                                    if (!showAvailabilityAnimal.contains("Poisson (rouge)") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Poisson (rouge)") && p.getName().substring(0,4).equals("aqua") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t8: Poisson (rouge)\n";isRedFish=true;}
                                     availabilityPaddock.add(p);
                                 }
@@ -488,7 +488,9 @@ public class Zoo {
                                         } //while(isNotFinishAddAnimal)
                                     }
                                     else{
-                                        Tools.notProposedOption();}
+                                        Tools.notProposedOption();
+                                        isNotFinishAddAnimal = false;
+                                    }
                                     scannerChoiceAnimal.nextLine();
                                     break;
                                 case "2":case "ours":
@@ -544,7 +546,9 @@ public class Zoo {
                                         } //while(isNotFinishAddAnimal)
                                     }
                                     else{
-                                        Tools.notProposedOption();}
+                                        Tools.notProposedOption();
+                                        isNotFinishAddAnimal = false;
+                                    }
                                     scannerChoiceAnimal.nextLine();
                                     break;
                                 case "3":case "tigre":
@@ -600,7 +604,9 @@ public class Zoo {
                                         } //while(isNotFinishAddAnimal)
                                     }
                                     else{
-                                        Tools.notProposedOption();}
+                                        Tools.notProposedOption();
+                                        isNotFinishAddAnimal = false;
+                                    }
                                     scannerChoiceAnimal.nextLine();
                                     break;
                                 case "4":case "aigle":
@@ -656,7 +662,9 @@ public class Zoo {
                                         } //while(isNotFinishAddAnimal)
                                     }
                                     else{
-                                        Tools.notProposedOption();}
+                                        Tools.notProposedOption();
+                                        isNotFinishAddAnimal = false;
+                                    }
                                     scannerChoiceAnimal.nextLine();
                                     break;
                                 case "5":case "pingouin":
@@ -712,7 +720,9 @@ public class Zoo {
                                         } //while(isNotFinishAddAnimal)
                                     }
                                     else{
-                                        Tools.notProposedOption();}
+                                        Tools.notProposedOption();
+                                        isNotFinishAddAnimal = false;
+                                    }
                                     scannerChoiceAnimal.nextLine();
                                     break;
                                 case "6":
@@ -769,7 +779,9 @@ public class Zoo {
                                         } //while(isNotFinishAddAnimal)
                                     }
                                     else{
-                                        Tools.notProposedOption();}
+                                        Tools.notProposedOption();
+                                        isNotFinishAddAnimal = false;
+                                    }
                                     scannerChoiceAnimal.nextLine();
                                     break;
                                 case "7":case "requin":
@@ -825,7 +837,9 @@ public class Zoo {
                                         } //while(isNotFinishAddAnimal)
                                     }
                                     else{
-                                        Tools.notProposedOption();}
+                                        Tools.notProposedOption();
+                                        isNotFinishAddAnimal = false;
+                                    }
                                     scannerChoiceAnimal.nextLine();
                                     break;
                                 case "8":case "poisson":
@@ -881,7 +895,9 @@ public class Zoo {
                                         } //while(isNotFinishAddAnimal)
                                     }
                                     else{
-                                        Tools.notProposedOption();}
+                                        Tools.notProposedOption();
+                                        isNotFinishAddAnimal = false;
+                                    }
                                     scannerChoiceAnimal.nextLine();
                                     break;
                                 case "q":case "quit":case "quitter":case "exit":
