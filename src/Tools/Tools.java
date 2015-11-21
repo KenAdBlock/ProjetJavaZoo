@@ -35,16 +35,16 @@ public class Tools {
     } // hashTypeAnimal()
 
     public static void askAgain() {
-        System.out.println("\nVoulez-vous faire une autre action avant de quitter le zoo ? (o/n)");
+        System.out.println("\nÊtes-vous certain de vouloir quitter le zoo ? (o/n)");
 
         Scanner scannerChoiceAgain = new Scanner(System.in);
         String choiceAgain = scannerChoiceAgain.next();
         choiceAgain = choiceAgain.toLowerCase();
         switch (choiceAgain) {
             case "o": case "y": case "oui": case "yes":
+                exitZoo();
                 break;
             case "n": case "non": case "no":
-                exitZoo();
                 break;
             default:
                 notProposedOption();
