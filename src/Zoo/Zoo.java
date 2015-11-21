@@ -269,7 +269,7 @@ public class Zoo {
                                                 break;
                                             case "2":case "pingouin":
                                                 do {
-                                                    Razorbill razorbill = new Razorbill("razorbile"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
+                                                    Razorbill razorbill = new Razorbill("razorbill"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
                                                     Razorbill.setNbRazorbill(Razorbill.getNbRazorbill() + 1);
                                                     aquarium.add(razorbill);
                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un pingouin !"));
@@ -392,21 +392,21 @@ public class Zoo {
                         for (Paddock p : listPaddock) {
                             if (!showAvailabilityAnimal.contains(p.getTypeAnimals())) {
                                 if (p.getTypeAnimals().equals("pas d'animal présent")) {
-                                    if (!showAvailabilityAnimal.contains("Loup") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Loup") && p.getName().substring(0,4).equals("padd") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t1: Loup\n";isWolf=true;}
-                                    if (!showAvailabilityAnimal.contains("Ours") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Ours") && p.getName().substring(0,4).equals("padd") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t2: Ours\n";isBear=true;}
-                                    if (!showAvailabilityAnimal.contains("Tigre") && p.getName().substring(0,7).equals("paddock") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Tigre") && p.getName().substring(0,4).equals("padd") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t3: Tigre\n";isTiger=true;}
-                                    if (!showAvailabilityAnimal.contains("Aigle") && p.getName().substring(0,6).equals("avairy") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Aigle") && p.getName().substring(0,4).equals("avia") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t4: Aigle\n";isEagle=true;}
-                                    if (!showAvailabilityAnimal.contains("Pingouin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Pingouin") && p.getName().substring(0,4).equals("aqua") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t5: Pingouin\n";isRazorbill=true;}
-                                    if (!showAvailabilityAnimal.contains("Baleine") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Baleine") && p.getName().substring(0,4).equals("aqua") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t6: Baleine\n";isWhale=true;}
-                                    if (!showAvailabilityAnimal.contains("Requin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Requin") && p.getName().substring(0,4).equals("aqua") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t7: Requin\n";isShark=true;}
-                                    if (!showAvailabilityAnimal.contains("Poisson (rouge)") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
+                                    if (!showAvailabilityAnimal.contains("Poisson (rouge)") && p.getName().substring(0,4).equals("aqua") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t8: Poisson (rouge)\n";isRedFish=true;}
                                     availabilityPaddock.add(p);
                                 }
@@ -426,8 +426,8 @@ public class Zoo {
                                 availabilityPaddock.add(p);
                         }
                         if(showAvailabilityAnimal.equals(""))
-                            showAvailabilityAnimal = "\tVous ne pouvez pas créer d'animal parce que vos enclos sont remplis au max\n";
-                        System.out.print(Tools.strColorBlue(showAvailabilityAnimal) + "\tq: QUITTER (CHOIX)\n\nChoix : ");
+                            showAvailabilityAnimal = Tools.strColorBlue("\tVous ne pouvez pas créer d'animal parce que vos enclos sont remplis au max\n");
+                        System.out.print(showAvailabilityAnimal + "\tq: QUITTER (CHOIX)\n\nChoix : ");
 
                         String choiceAnimal = scannerChoiceAnimal.next();
                         choiceAnimal = choiceAnimal.toLowerCase();
@@ -690,7 +690,7 @@ public class Zoo {
                                                     for (Paddock p : listPaddock) {
                                                         if (p.getName().equals(choicePaddock)) {
                                                             do {
-                                                                Razorbill razorbill = new Razorbill("razorbile"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
+                                                                Razorbill razorbill = new Razorbill("razorbill"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
                                                                 Razorbill.setNbRazorbill(Razorbill.getNbRazorbill() + 1);
                                                                 p.add(razorbill);
                                                                 System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un pingouin !"));
