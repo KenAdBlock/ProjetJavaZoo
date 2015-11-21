@@ -485,7 +485,7 @@ public class Zoo {
                                                     scannerChoicePaddock.nextLine();
                                                     break;
                                             }
-                                        } //while()
+                                        } //while(isNotFinishAddAnimal)
                                     }
                                     else{
                                         Tools.notProposedOption();}
@@ -541,7 +541,7 @@ public class Zoo {
                                                     scannerChoicePaddock.nextLine();
                                                     break;
                                             }
-                                        } //while()
+                                        } //while(isNotFinishAddAnimal)
                                     }
                                     else{
                                         Tools.notProposedOption();}
@@ -597,7 +597,7 @@ public class Zoo {
                                                     scannerChoicePaddock.nextLine();
                                                     break;
                                             }
-                                        } //while()
+                                        } //while(isNotFinishAddAnimal)
                                     }
                                     else{
                                         Tools.notProposedOption();}
@@ -653,7 +653,7 @@ public class Zoo {
                                                     scannerChoicePaddock.nextLine();
                                                     break;
                                             }
-                                        } //while()
+                                        } //while(isNotFinishAddAnimal)
                                     }
                                     else{
                                         Tools.notProposedOption();}
@@ -709,7 +709,7 @@ public class Zoo {
                                                     scannerChoicePaddock.nextLine();
                                                     break;
                                             }
-                                        } //while()
+                                        } //while(isNotFinishAddAnimal)
                                     }
                                     else{
                                         Tools.notProposedOption();}
@@ -766,7 +766,7 @@ public class Zoo {
                                                     scannerChoicePaddock.nextLine();
                                                     break;
                                             }
-                                        } //while()
+                                        } //while(isNotFinishAddAnimal)
                                     }
                                     else{
                                         Tools.notProposedOption();}
@@ -822,7 +822,7 @@ public class Zoo {
                                                     scannerChoicePaddock.nextLine();
                                                     break;
                                             }
-                                        } //while()
+                                        } //while(isNotFinishAddAnimal)
                                     }
                                     else{
                                         Tools.notProposedOption();}
@@ -878,7 +878,7 @@ public class Zoo {
                                                     scannerChoicePaddock.nextLine();
                                                     break;
                                             }
-                                        } //while()
+                                        } //while(isNotFinishAddAnimal)
                                     }
                                     else{
                                         Tools.notProposedOption();}
