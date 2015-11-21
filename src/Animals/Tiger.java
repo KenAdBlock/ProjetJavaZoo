@@ -1,16 +1,37 @@
 package Animals;
 
 import Movement.IWander;
-import Species.Fish;
+import Species.Mammal;
 import Tools.Tools;
 
 /**
- * Created by c13003593 on 13/10/2015.
+ *  Tiger est la classe représentant un tigre.
+ *  Elle hérite de la classe abstraite Mammal car sémantiquement un tigre est un mammifère.
+ *
+ *  @author Charles-Henri CARLIER et Kenny COADALEN
+ *  @see Species.Mammal
  */
-public class Tiger extends Fish implements IWander {
-
+public class Tiger extends Mammal implements IWander {
+    /**
+     * Le nombre de tigres présents dans l'application.
+     */
     static int nbTiger;
 
+    /**
+     * Le constructeur de la classe Tiger.
+     * Il permet de créer de nouvelles instances de cette classe.
+     *
+     * @param name
+     *          Le nom du tigre.
+     * @param sex
+     *          Le sexe du tigre.
+     * @param weight
+     *          Le poids du tigre.
+     * @param height
+     *          La taille du tigre.
+     * @param age
+     *          L'âge du tigre.
+     */
     public Tiger(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
@@ -18,15 +39,30 @@ public class Tiger extends Fish implements IWander {
         beAlive();
     } //Constructor
 
-
+    /**
+     * Modifie le nombre de tigre.
+     *
+     * @param nbTiger
+     *          Le nouveau nombre de tigre.
+     */
     public static void setNbTiger(int nbTiger) {
         Tiger.nbTiger = nbTiger;
     } // setNbTiger()
 
+    /**
+     * Retourne le nombre de tigres présents dans l'application.
+     *
+     * @return Le nombre de tigres.
+     */
     public static int getNbTiger() {
         return nbTiger;
     } // getNbTiger()
 
+    /**
+     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     *
+     * @return Une string.
+     */
     @Override
     public String toString() {
         String tostring = "Tigre : " +
@@ -53,16 +89,33 @@ public class Tiger extends Fish implements IWander {
         return tostring;
     } // toString()
 
+    /**
+     * "Simule" le bruit que fait le tigre.
+     */
     @Override
     public void makeSound() {
         System.out.println("\nHurlement du tigre.");
     } // makeSound()
 
+    /**
+     * "Simule" le déplacement que fait le tigre.
+     */
     @Override
     public void move() {
         System.out.println("\nLe tigre vagabonde.");
     } // move()
 
+    /**
+     * "Simule" la façon de vagabonder du tigre.
+     */
+    @Override
+    public void wander() {
+        System.out.println("Je fais des bonds, encore des bonds, tout plein de bonds !");
+    } // wander()
+
+    /**
+     * Thread simulant la "vie" du tigre.
+     */
     public void beAlive(){
         new Thread( new Thread() {
             @Override
@@ -83,28 +136,27 @@ public class Tiger extends Fish implements IWander {
                 }
             }
         }).start();
-    }
+    } // beAlive()
 
-    @Override
-    public void wander() {
-        System.out.println("Je fais des bonds, encore des bonds, tout plein de bonds !");
-    } // wander()
-
-
+    /**
+     * Donne la possibilité à un tigre de se reproduire avec un autre.
+     * Cela a autant de chance de fonctionner ou non.
+     * Si la reproduction a réussi, une période de gestation est nécessaire.
+     *
+     * @param tiger
+     *          Le tigre avec lequel se reproduire.
+     * @see Tiger#unborn(Tiger, int)
+     */
     public void reproduction(Tiger tiger){
-
-        if ( (this.isSex() != tiger.isSex()) ){
-
+        if ((this.isSex() != tiger.isSex())){
             int random = Tools.random(0, 2);
             int randomNbChild = Tools.random(4, 8);
 
             Tiger t ;
-
             if(this.isSex())
                 t = tiger;
             else
                 t = this;
-
             if(random < 1){
                 unborn(t,randomNbChild);
             }
@@ -115,10 +167,17 @@ public class Tiger extends Fish implements IWander {
             System.out.println("\nCe sont des tigres du même sexe ! Petit coquin");
     } // reproduction()
 
-
+    /**
+     * Simule le temps de gestation d'un tigre.
+     * Un message est affiché lorsque 80% du processus est effectué.
+     *
+     * @param tiger
+     *          Le tigre en période de gestation.
+     * @param nbChild
+     *          Le nombre de futurs enfants.
+     * @see Tiger#giveBirth(Tiger)
+     */
     private void unborn(final Tiger tiger, final int nbChild){
-
-        //timer()
         new Thread( new Thread(){
             @Override
             public void run() {
@@ -137,15 +196,19 @@ public class Tiger extends Fish implements IWander {
                 }
             }
         }).start();
+    }//unborn()
 
-    }//unborn()     // gestation
-
-
+    /**
+     * Permet de donner naissance à un nouveau tigre.
+     *
+     * @param tiger
+     *          Le nouveau tigre à créer.
+     */
     private synchronized void giveBirth(Tiger tiger){
         nbTiger += 1;
         Tiger t = new Tiger("tiger"+nbTiger, (Tools.random(0,2) != 0), Tools.random(100,200), Tools.random(7, 14), 0);
         System.out.println(tiger.getName() + "(femelle) vient de donner naissance à " + t.getName());
         t.setPaddock(this.getPaddock());
         this.getPaddock().add(t);
-    }//giveBirth()  // accouchement
+    }//giveBirth()
 } // class Tiger

@@ -1,16 +1,37 @@
 package Animals;
 
 import Movement.ISwim;
-import Species.Fish;
+import Species.Mammal;
 import Tools.Tools;
 
 /**
- * Created by c13003593 on 13/10/2015.
+ *  Whale est la classe représentant une baleine.
+ *  Elle hérite de la classe abstraite Mammal car sémantiquement une baleine est un mammifère.
+ *
+ *  @author Charles-Henri CARLIER et Kenny COADALEN
+ *  @see Species.Mammal
  */
-public class Whale extends Fish implements ISwim {
-
+public class Whale extends Mammal implements ISwim {
+    /**
+     * Le nombre de baleines présents dans l'application.
+     */
     static int nbWhale;
 
+    /**
+     * Le constructeur de la classe Whale.
+     * Il permet de créer de nouvelles instances de cette classe.
+     *
+     * @param name
+     *          Le nom de la baleine.
+     * @param sex
+     *          Le sexe de la baleine.
+     * @param weight
+     *          Le poids de la baleine.
+     * @param height
+     *          La taille de la baleine.
+     * @param age
+     *          L'âge de la baleine.
+     */
     public Whale(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
@@ -18,15 +39,30 @@ public class Whale extends Fish implements ISwim {
         beAlive();
     } //Constructor
 
+    /**
+     * Modifie le nombre de baleine.
+     *
+     * @param nbWhale
+     *          Le nouveau nombre de baleine.
+     */
     public static void setNbWhale(int nbWhale) {
         Whale.nbWhale = nbWhale;
     } // setNbWhale()
 
+    /**
+     * Retourne le nombre de baleines présents dans l'application.
+     *
+     * @return Le nombre de baleines.
+     */
     public static int getNbWhale() {
         return nbWhale;
     } // getNbWhale()
 
-
+    /**
+     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     *
+     * @return Une string.
+     */
     @Override
     public String toString() {
         String tostring = "Baleine : " +
@@ -53,16 +89,33 @@ public class Whale extends Fish implements ISwim {
         return tostring;
     } // toString()
 
+    /**
+     * "Simule" le bruit que fait la baleine.
+     */
     @Override
     public void makeSound() {
         System.out.println("\nChant de la baleine.");
     } // makeSound()
 
+    /**
+     * "Simule" le déplacement que fait la baleine.
+     */
     @Override
     public void move() {
         System.out.println("\nLa baleine se déplace.");
     } // move()
 
+    /**
+     * "Simule" la façon de nager de la baleine.
+     */
+    @Override
+    public void swim() {
+        System.out.println("\nLa balaine nage");
+    } // swim()
+
+    /**
+     * Thread simulant la "vie" de la baleine.
+     */
     public void beAlive(){
         new Thread( new Thread() {
             @Override
@@ -83,27 +136,27 @@ public class Whale extends Fish implements ISwim {
                 }
             }
         }).start();
-    }
+    } // beAlive()
 
-    @Override
-    public void swim() {
-        System.out.println("\nLa balaine nage");
-    } // swim()
-
+    /**
+     * Donne la possibilité à une balein de se reproduire avec une autre.
+     * Cela a autant de chance de fonctionner ou non.
+     * Si la reproduction a réussi, une période de gestation est nécessaire.
+     *
+     * @param whale
+     *          La baleine avec lequel se reproduire.
+     * @see Whale#unborn(Whale, int)
+     */
     public void reproduction(Whale whale){
-
-        if ( (this.isSex() != whale.isSex()) ){
-
+        if ((this.isSex() != whale.isSex())){
             int random = Tools.random(0, 2);
             int randomNbChild = Tools.random(4, 8);
 
             Whale w ;
-
             if(this.isSex())
                 w = whale;
             else
                 w = this;
-
             if(random < 1){
                 unborn(w,randomNbChild);
             }
@@ -114,10 +167,17 @@ public class Whale extends Fish implements ISwim {
             System.out.println("\nCe sont des baleines du même sexe ! Petit coquin");
     } // reproduction()
 
-
+    /**
+     * Simule le temps de gestation d'une balein.
+     * Un message est affiché lorsque 80% du processus est effectué.
+     *
+     * @param whale
+     *          La baleine en période de gestation.
+     * @param nbChild
+     *          Le nombre de futurs enfants.
+     * @see Whale#giveBirth(Whale)
+     */
     private void unborn(final Whale whale, final int nbChild){
-
-        //timer()
         new Thread( new Thread(){
             @Override
             public void run() {
@@ -136,15 +196,19 @@ public class Whale extends Fish implements ISwim {
                 }
             }
         }).start();
+    }//unborn()
 
-    }//unborn()     // gestation
-
+    /**
+     * Permet de donner naissance à une nouvelle baleine.
+     *
+     * @param whale
+     *          La nouvelle baleine à créer.
+     */
     private synchronized void giveBirth(Whale whale){
         nbWhale += 1;
         Whale w = new Whale("whale"+nbWhale, (Tools.random(0,2) != 0), Tools.random(100,200), Tools.random(7, 14), 0);
         System.out.println("L'oeuf vient d'éclore et donne naissance à " + w.getName());
         w.setPaddock(this.getPaddock());
         this.getPaddock().add(w);
-    }//giveBirth()  // accouchement
-
+    }//giveBirth()
 } // class Whale
