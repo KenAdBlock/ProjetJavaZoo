@@ -113,6 +113,7 @@ public class Zoo {
         Scanner scannerChoiceAction = new Scanner(System.in);
         Scanner scannerChoiceAnimal = new Scanner(System.in);
         Scanner scannerChoicePaddock = new Scanner(System.in);
+        Scanner scannerChoiceActionManagement = new Scanner(System.in);
         boolean isPaddockFill = false;
         boolean isPaddockCreated = false;
         boolean isAnimalCreated = false;
@@ -917,15 +918,69 @@ public class Zoo {
                     }
                     scannerChoiceAction.nextLine();
                     break;
+
+
+
                 case "3":case "gérer":case "gerer":
                     if(isAnimalCreated) {
-                        System.out.println(Tools.strColorBlue("\nVous entrez dans le mode gestion du zoo."));
+                        System.out.println(Tools.strColorBlue("\nVous entrez dans le mode gestion du zoo.\n"));
+                        System.out.print("Quel action voulez-vous faire ?\n" +
+                                            "Action(s) sur un animal : \n" +
+                                            "\t1: Déplacer un animal d'un enclos à un autre\n" +
+                                            "\t2: Soigner un animal\n\n" +
+                                            "Action(s) sur un enclos : \n" +
+                                            "\t3: Réapprovisionner un enclos en nourriture\n\n" +
+                                            "\tq: QUITTER (ZOO)\n" +
+                                            "\nChoix : ");
 
-                        /* Code... */
+                        String choiceActionManagement = scannerChoiceActionManagement.next();
+                        choiceActionManagement = choiceActionManagement.toLowerCase();
+                        switch(choiceActionManagement) {
+                            case "1":
+                                System.out.println("Parmi ceux présents dans le zoo, quel animal voulez-vous déplacer ?\n" +
+                                                    /* showAvailabilityAnimal ... */
+                                                    "\tq: QUITTER (ZOO)\n" +
+                                                    "\nChoix : ");
+                                /*
+                                ...
+                                */
+                                System.out.println("Dans quel enclos voulez-vous déplacer cet animal ?\n" +
+                                                    /* showAvailabilityPaddock ... */
+                                                    "\tq: QUITTER (ZOO)\n" +
+                                                    "\nChoix : ");
+
+                                break;
+                            case "2":
+                                System.out.println("Parmi ceux présents dans le zoo, quel animal voulez-vous soigner ?\n" +
+                                                    /* showAvailabilityAnimal ... */
+                                                    "\tq: QUITTER (ZOO)\n" +
+                                                    "\nChoix : ");
+                                /*
+                                ...
+                                */
+
+                                break;
+                            case "3":
+                                System.out.println("Quel enclos voulez-vous réaprovisionner ?\n" +
+                                                    /* showAvailabilityPaddock ... */
+                                                    "\tq: QUITTER (ZOO)\n" +
+                                                    "\nChoix : ");
+                                /*
+                                ...
+                                */
+
+                                break;
+                            case "q":case "quit":case "quitter":case "exit":
+                                Tools.exitZoo();
+                                break;
+                            default:
+                                Tools.notProposedOption();
+                                scannerChoiceActionManagement.nextLine();
+                                break;
+                        }
                     }
                     else
                         Tools.notProposedOption();
-                    //scannerChoice____.nextLine();
                     break;
                 case "q":case "quit":case "quitter":case "exit":
                     Tools.exitZoo();
@@ -935,6 +990,6 @@ public class Zoo {
                     scannerChoiceAction.nextLine();
                     break;
             } // switch choiceAction
-        } // while ()
+        } // while (true)
     } // run()
 }
