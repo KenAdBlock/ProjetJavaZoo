@@ -35,7 +35,7 @@ public class Tools {
     } // hashTypeAnimal()
 
     public static void askAgain() {
-        System.out.println("\nÊtes-vous certain de vouloir quitter le zoo ? (o/n)");
+        System.err.println("\nÊtes-vous certain de vouloir quitter le zoo ? (o/n)");
 
         Scanner scannerChoiceAgain = new Scanner(System.in);
         String choiceAgain = scannerChoiceAgain.next();

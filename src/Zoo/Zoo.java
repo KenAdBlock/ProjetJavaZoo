@@ -95,7 +95,6 @@ public class Zoo {
                             animal.setHungerIndicator(animal.getHungerIndicator() - Tools.random(Tools.random(0, 11), Tools.random(11, 21)));
                         else
                             animal.setHealthIndicator(animal.getHealthIndicator() - Tools.random(Tools.random(1, 11), Tools.random(11, 21)));
-                        System.out.println("\n" + animal.toString());
                         sleep(Tools.random(1000, 5001));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -113,6 +112,8 @@ public class Zoo {
         Scanner scannerChoiceActionManagement = new Scanner(System.in);
         Scanner scannerChoiceMoveAnimal = new Scanner(System.in);
         Scanner scannerChoiceMoveAnimalPaddock = new Scanner(System.in);
+        Scanner scannerChoiceHeal = new Scanner(System.in);
+        Scanner scannerChoiceRestock = new Scanner(System.in);
 
         boolean isPaddockFill = false;
         boolean isPaddockCreated = false;
@@ -126,6 +127,18 @@ public class Zoo {
         boolean isWhale = false;
         boolean isRedFish = false;
         boolean isFirstAccesToCase3 = true;
+
+        /* A SUPPRIMER */
+        /* A SUPPRIMER */
+        /* A SUPPRIMER */
+        Paddock p1 = new Paddock("paddock1", 32, 5, "propre");
+        Wolf w1 = new Wolf("wolf1", true, 50, 150, 4);
+        Wolf w2 = new Wolf("wolf1", false, 40, 120, 5);
+        p1.add(w1);
+        p1.add(w2);
+        /* A SUPPRIMER */
+        /* A SUPPRIMER */
+        /* A SUPPRIMER */
 
         while (true) {
             if(isPaddockCreated && !isAnimalCreated) {
@@ -924,21 +937,21 @@ public class Zoo {
                     break;
                 case "3":case "gérer":case "gerer":
                     boolean isNotFinishChoiceMenuManagement = true;
-                    while(isNotFinishChoiceMenuManagement) {
-                        if(isAnimalCreated) {
+                    if(isAnimalCreated) {
+                        while(isNotFinishChoiceMenuManagement) {
                             if(isFirstAccesToCase3) {
+                                System.out.println(Tools.strColorBlue("\nVous êtes maintenant dans le mode gestion du zoo.\n"));
                                 threadDecrementation();
                                 isFirstAccesToCase3 = false;
                             }
-                            System.out.println(Tools.strColorBlue("\nVous êtes maintenant dans le mode gestion du zoo.\n"));
                             System.out.print("Quel action voulez-vous faire ?\n" +
-                                    "\tAction(s) sur un animal : \n" +
-                                    "\t\t1: Déplacer un animal d'un enclos à un autre\n" +
-                                    "\t\t2: Soigner un animal\n" +
-                                    "\tAction(s) sur un enclos : \n" +
-                                    "\t\t3: Réapprovisionner un enclos en nourriture\n" +
-                                    "\tq: QUITTER (MODE GERER)\n" +
-                                    "\nChoix : ");
+                                                "\tAction(s) sur un animal : \n" +
+                                                "\t\t1: Déplacer un animal d'un enclos à un autre\n" +
+                                                "\t\t2: Soigner un animal\n" +
+                                                "\tAction(s) sur un enclos : \n" +
+                                                "\t\t3: Réapprovisionner un enclos en nourriture\n" +
+                                                "\tq: QUITTER (MODE GESTION)\n" +
+                                                "\nChoix : ");
 
                             String choiceActionManagement = scannerChoiceActionManagement.next();
                             choiceActionManagement = choiceActionManagement.toLowerCase();
@@ -961,14 +974,13 @@ public class Zoo {
                                             case "????":
                                                 boolean isNotFinishChoiceActionManagementMoveAnimal = true;
                                                 while (isNotFinishChoiceActionManagementMoveAnimal) {
-                                                    /*
-                                                    ...
-                                                    */
                                                     System.out.println("Dans quel enclos voulez-vous déplacer cet animal ?\n" +
                                                                         /* showAvailabilityPaddock ... */
                                                                         "\tq: QUITTER (CHOIX)\n" +
                                                                         "\nChoix : ");
-
+                                                    /*
+                                                    ...
+                                                     */
                                                     String choiceMoveAnimalPaddock = scannerChoiceMoveAnimalPaddock.next();
                                                     choiceMoveAnimalPaddock = choiceMoveAnimalPaddock.toLowerCase();
                                                     switch (choiceMoveAnimalPaddock) {
@@ -978,14 +990,17 @@ public class Zoo {
                                                                 /*
                                                                 ...
                                                                 */
+                                                                System.out.println(Tools.strColorBlue("L'animal a bien été déplacé."));
 
-                                                                isNotFinishChoiceActionManagementMoveAnimalPaddock = false; // quand l'animal est déplacé, on sort de la boucle !
+                                                                isNotFinishChoiceActionManagementMoveAnimalPaddock = false;
+                                                                isNotFinishChoiceActionManagementMoveAnimal = false;
+                                                                isNotFinishChoiceActionManagementMove = false;
                                                             }
                                                             scannerChoiceMoveAnimalPaddock.nextLine();
                                                             break;
                                                         case "q":case "quit":case "quitter":case "exit":
-                                                            isNotFinishChoiceActionManagementMove = false;
                                                             isNotFinishChoiceActionManagementMoveAnimal = false;
+                                                            isNotFinishChoiceActionManagementMove = false;
                                                             break;
                                                         default:
                                                             Tools.notProposedOption();
@@ -1007,37 +1022,73 @@ public class Zoo {
                                     scannerChoiceActionManagement.nextLine();
                                     break;
                                 case "2":
-                                    boolean isNotFinishchoiceActionManagementHeal = true;
-                                    while (isNotFinishchoiceActionManagementHeal) {
+                                    boolean isNotFinishChoiceActionManagementHeal = true;
+                                    while (isNotFinishChoiceActionManagementHeal) {
                                         System.out.println("Parmi ceux présents dans le zoo, quel animal voulez-vous soigner ?\n" +
-                                                        /* showAvailabilityAnimal ... */
-                                                "\tq: QUITTER (ZOO)\n" +
-                                                "\nChoix : ");
+                                                            /* showAvailabilityAnimal ... */
+                                                            "\tq: QUITTER (ZOO)\n" +
+                                                            "\nChoix : ");
+                                        
+                                        String choiceHeal = scannerChoiceHeal.next();
+                                        choiceHeal = choiceHeal.toLowerCase();
+                                        switch (choiceHeal) {
+                                            case "????":
+                                                boolean isNotFinishChoiceActionManagementHealAnimal = true;
+                                                while (isNotFinishChoiceActionManagementHealAnimal) {
+                                                    /*
+                                                    ...
+                                                    */
+                                                    System.out.println(Tools.strColorBlue("L'animal a été soigné"));
 
-
-                                        /*
-                                        ...
-                                        */
-                                        isNotFinishchoiceActionManagementHeal = false;
-                                    } //while (choiceActionManagementHeal)
-
+                                                    isNotFinishChoiceActionManagementHealAnimal = false;
+                                                    isNotFinishChoiceActionManagementHeal = false;
+                                                }
+                                                scannerChoiceHeal.nextLine();
+                                                break;
+                                            case "q":case "quit":case "quitter":case "exit":
+                                                isNotFinishChoiceActionManagementHeal = false;
+                                                break;
+                                            default:
+                                                Tools.notProposedOption();
+                                                scannerChoiceActionManagement.nextLine();
+                                                break;
+                                        }
+                                    } //while (isNotFinishChoiceActionManagementHeal)
                                     scannerChoiceActionManagement.nextLine();
                                     break;
                                 case "3":
-                                    boolean isNotFinishchoiceActionManagementRestock = true;
-                                    while (isNotFinishchoiceActionManagementRestock) {
-                                        System.out.println("Quel enclos voulez-vous réaprovisionner ?\n" +
-                                                        /* showAvailabilityPaddock ... */
-                                                "\tq: QUITTER (ZOO)\n" +
-                                                "\nChoix : ");
+                                    boolean isNotFinishChoiceActionManagementRestock = true;
+                                    while (isNotFinishChoiceActionManagementRestock) {
+                                        System.out.println("Quel enclos voulez-vous réapprovisionner ?\n" +
+                                                            /* showAvailabilityPaddock ... */
+                                                            "\tq: QUITTER (ZOO)\n" +
+                                                            "\nChoix : ");
+                                        
+                                        String choiceRestock = scannerChoiceRestock.next();
+                                        choiceRestock = choiceRestock.toLowerCase();
+                                        switch (choiceRestock) {
+                                            case "????":
+                                                boolean isNotFinishChoiceActionManagementRestockPaddock = true;
+                                                while (isNotFinishChoiceActionManagementRestockPaddock) {
+                                                    /*
+                                                    ...
+                                                    */
+                                                    System.out.println(Tools.strColorBlue("L'enclos a été réapprovisionné"));
 
-
-                                        /*
-                                        ...
-                                        */
-                                        isNotFinishchoiceActionManagementRestock = false;
-                                    } // while (choiceActionManagementRestock)
-
+                                                    isNotFinishChoiceActionManagementRestockPaddock = false;
+                                                    isNotFinishChoiceActionManagementRestock = false;
+                                                }
+                                                scannerChoiceRestock.nextLine();
+                                                break;
+                                            case "q":case "quit":case "quitter":case "exit":
+                                                isNotFinishChoiceActionManagementRestock = false;
+                                                break;
+                                            default:
+                                                Tools.notProposedOption();
+                                                scannerChoiceActionManagement.nextLine();
+                                                break;
+                                        }
+                                    } //while (isNotFinishChoiceActionManagementHeal)
                                     scannerChoiceActionManagement.nextLine();
                                     break;
                                 case "q":case "quit":case "quitter":case "exit":
@@ -1048,10 +1099,10 @@ public class Zoo {
                                     scannerChoiceActionManagement.nextLine();
                                     break;
                             } // switch choiceActionManagement
-                        }
-                        else
-                            Tools.notProposedOption();
-                    } // while(isNotFinishChoiceMenuManagement)
+                        } // while(isNotFinishChoiceMenuManagement)
+                    }
+                    else
+                        Tools.notProposedOption();
                     break;
                 case "q":case "quit":case "quitter":case "exit":
                     isNotFinishChoiceMenuManagement = false;
