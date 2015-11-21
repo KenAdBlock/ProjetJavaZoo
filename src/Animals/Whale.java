@@ -2,12 +2,13 @@ package Animals;
 
 import Movement.ISwim;
 import Species.Fish;
+import Species.Mammal;
 import Tools.Tools;
 
 /**
  * Created by c13003593 on 13/10/2015.
  */
-public class Whale extends Fish implements ISwim {
+public class Whale extends Mammal implements ISwim {
 
     static int nbWhale;
 

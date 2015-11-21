@@ -2,12 +2,13 @@ package Animals;
 
 import Movement.IWander;
 import Species.Fish;
+import Species.Mammal;
 import Tools.Tools;
 
 /**
  * Created by c13003593 on 13/10/2015.
  */
-public class Tiger extends Fish implements IWander {
+public class Tiger extends Mammal implements IWander {
 
     static int nbTiger;
 

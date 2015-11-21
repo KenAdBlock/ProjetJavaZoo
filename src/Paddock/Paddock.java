@@ -17,7 +17,8 @@ public class Paddock {
     private String typeAnimals = "pas d'animal présent";
     private String cleanliness;
     private ArrayList<Animal> animalPresent = new ArrayList<>();
-    private int foodIndicator = 0;
+    private int maxQuantityFood = 2000;
+    private int foodIndicator = 125;//maxQuantityFood;
     protected boolean isGoodType = false;
     protected boolean isKeepUp = false;
     private static int nbPaddock = 0;
@@ -97,6 +98,10 @@ public class Paddock {
 
     public static int getNbPaddock() {
         return nbPaddock;
+    }
+
+    public int getMaxQuantityFood() {
+        return maxQuantityFood;
     }
 
     @Override
@@ -195,6 +200,7 @@ public class Paddock {
 
     public void restockFood(int food){
         foodIndicator += food;
+
     }// restockFood
 
     public void keepUp(){
