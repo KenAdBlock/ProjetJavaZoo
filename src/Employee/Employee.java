@@ -4,7 +4,10 @@ import Paddock.Paddock;
 import Species.Animal;
 
 /**
- * Created by Darkweizer on 15/11/2015.
+ * Employee est la classe représentant l'employé (unique) de l'application.
+ * Son unicité fait d'elle un singleton.
+ *
+ * @author Charles-Henri CARLIER et Kenny COADALEN
  */
 public class Employee {
 

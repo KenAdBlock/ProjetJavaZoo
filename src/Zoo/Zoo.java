@@ -1,11 +1,10 @@
 package Zoo;
 
-import Animals.*;
-import Employee.Employee;
-
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Animals.*;
+import Employee.Employee;
 
 import Paddock.Paddock;
 import Paddock.Aquarium;
@@ -13,10 +12,11 @@ import Paddock.Aviary;
 import Species.Animal;
 import Tools.Tools;
 
-import javax.swing.*;
-
 /**
- * Created by Darkweizer on 15/11/2015.
+ * Zoo est la classe représentant le zoo (unique) soit l'application.
+ * Son unicité fait d'elle un singleton.
+ *
+ * @author Charles-Henri CARLIER et Kenny COADALEN
  */
 public class Zoo {
 
