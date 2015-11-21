@@ -32,6 +32,10 @@ public class Zoo {
         this.maxNbPaddock = maxNbPaddock;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private static Zoo INSTANCE = new Zoo("Ho Land", Employee.getINSTANCE(), 10);
 
     public static Zoo getINSTANCE() {
@@ -118,6 +122,7 @@ public class Zoo {
         Scanner scannerChoiceMoveAnimalPaddock = new Scanner(System.in);
         Scanner scannerChoiceHeal = new Scanner(System.in);
         Scanner scannerChoiceRestock = new Scanner(System.in);
+        Scanner scannerChoiceRestockQuantity = new Scanner(System.in);
 
         boolean isPaddockFill = false;
         boolean isPaddockCreated = false;
@@ -137,23 +142,22 @@ public class Zoo {
         /* A SUPPRIMER */
         /*Paddock p1 = new Paddock("paddock1", 32, 5, "propre");
         Wolf w1 = new Wolf("wolf1", true, 50, 150, 4);
-        Wolf w2 = new Wolf("wolf1", false, 40, 120, 5);
         p1.add(w1);
-        p1.add(w2);*/
+        isAnimalCreated = true;*/
         /* A SUPPRIMER */
         /* A SUPPRIMER */
         /* A SUPPRIMER */
 
         while (true) {
             if(isPaddockCreated && !isAnimalCreated) {
-                System.out.print("Quel action voulez-vous faire ?\n" +
+                System.out.print("\nQuel action voulez-vous faire ?\n" +
                                     "\t1: Créer un enclos\n" +
                                     "\t2: Créer un animal\n" +
                                     "\tq: QUITTER (ZOO)\n" +
                                     "\nChoix : ");
             }
             else if(isAnimalCreated) {
-                System.out.print("Quel action voulez-vous faire ?\n" +
+                System.out.print("\nQuel action voulez-vous faire ?\n" +
                                     "\t1: Créer un enclos\n" +
                                     "\t2: Créer un animal\n" +
                                     "\t3: Gérer le zoo en tant qu'employé\n" +
@@ -192,7 +196,7 @@ public class Zoo {
                                     boolean isNotFinishChoiceAnimal = true;
                                     while(isNotFinishChoiceAnimal){
                                         isPaddockFill = false;
-                                        System.out.print("Pour cet enclos, voici les animaux que vous pouvez créer : \n" +
+                                        System.out.print("\nPour cet enclos, voici les animaux que vous pouvez créer : \n" +
                                                         "\t1: Loup\n" +
                                                         "\t2: Ours\n" +
                                                         "\t3: Tigre\n" +
@@ -265,7 +269,7 @@ public class Zoo {
                                     boolean isNotFinishChoiceAnimal = true;
                                     while(isNotFinishChoiceAnimal){
                                         isPaddockFill = false;
-                                        System.out.print("Pour cet aquarium, voici les animaux que vous pouvez créer : \n" +
+                                        System.out.print("\nPour cet aquarium, voici les animaux que vous pouvez créer : \n" +
                                                 "\t1: Baleine\n" +
                                                 "\t2: Pingouin\n" +
                                                 "\t3: Poisson (rouge)\n" +
@@ -353,7 +357,7 @@ public class Zoo {
                                     boolean isNotFinishChoiceAnimal = true;
                                     while(isNotFinishChoiceAnimal){
                                         isPaddockFill = false;
-                                        System.out.print("Pour cette voilière, voici les animaux que vous pouvez créer : \n" +
+                                        System.out.print("\nPour cette voilière, voici les animaux que vous pouvez créer : \n" +
                                                 "\t1: Aigle\n" +
                                                 "\tq: QUITTER (CHOIX)\n" +
                                                 "\nChoix : ");
@@ -989,7 +993,7 @@ public class Zoo {
                                 case "1":
                                     boolean isNotFinishChoiceActionManagementMove = true;
                                     while (isNotFinishChoiceActionManagementMove) {
-                                        System.out.println("Parmi ceux présents dans le zoo, quel animal voulez-vous déplacer ?\n" +
+                                        System.out.print("\nParmi ceux présents dans le zoo, quel animal voulez-vous déplacer ?" +
                                                             /* showAvailabilityAnimal ... */
                                                             "\tq: QUITTER (CHOIX)\n" +
                                                             "\nChoix : ");
@@ -1003,7 +1007,7 @@ public class Zoo {
                                             case "????":
                                                 boolean isNotFinishChoiceActionManagementMoveAnimal = true;
                                                 while (isNotFinishChoiceActionManagementMoveAnimal) {
-                                                    System.out.println("Dans quel enclos voulez-vous déplacer cet animal ?\n" +
+                                                    System.out.print("\nDans quel enclos voulez-vous déplacer cet animal ?" +
                                                                         /* showAvailabilityPaddock ... */
                                                                         "\tq: QUITTER (CHOIX)\n" +
                                                                         "\nChoix : ");
@@ -1033,7 +1037,7 @@ public class Zoo {
                                                             break;
                                                         default:
                                                             Tools.notProposedOption();
-                                                            scannerChoiceMoveAnimal.nextLine();
+                                                            scannerChoiceMoveAnimalPaddock.nextLine();
                                                             break;
                                                     }
                                                 } // while (isNotFinishChoiceActionManagementMoveAnimal)
@@ -1044,7 +1048,7 @@ public class Zoo {
                                                 break;
                                             default:
                                                 Tools.notProposedOption();
-                                                scannerChoiceActionManagement.nextLine();
+                                                scannerChoiceMoveAnimal.nextLine();
                                                 break;
                                         } // switch choiceMoveAnimal
                                     } // while (choiceActionManagementMove)
@@ -1086,14 +1090,13 @@ public class Zoo {
                                                     for (ArrayList<Animal> a : totalAnimal) {
                                                         for (Animal a1 : a) {
                                                             if(choiceHeal.equals(a1.getName()))
-                                                                a1.beHealed();
+                                                                employee.heal(a1);
                                                         }
                                                     }
                                                 }
                                                 else
                                                     Tools.notProposedOption();
                                                 scannerChoiceHeal.nextLine();
-                                                //scannerChoiceActionManagement.nextLine();
                                                 break;
                                         }
                                     } //while (isNotFinishChoiceActionManagementHeal)
@@ -1102,33 +1105,64 @@ public class Zoo {
                                 case "3":
                                     boolean isNotFinishChoiceActionManagementRestock = true;
                                     while (isNotFinishChoiceActionManagementRestock) {
-                                        System.out.println("Quel enclos voulez-vous réapprovisionner ?\n" +
-                                                            /* showAvailabilityPaddock ... */
-                                                            "\tq: QUITTER (ZOO)\n" +
-                                                            "\nChoix : ");
+                                        System.out.println("\nQuel enclos voulez-vous réapprovisionner ?");
+                                        int cpt = 0;
+                                        System.out.print("\t");
+                                        String paddockToRestockFood = "";
+                                        for (Paddock p : listPaddock) {
+                                            if( p.getFoodIndicator() < p.getMaxQuantityFood()) {
+                                                paddockToRestockFood += p.getName() + " ";
+                                                ++cpt;
+                                            }
+                                            if (cpt == 5) {
+                                                cpt = 0;
+                                                System.out.println("\t");
+                                            }
+                                        }
+                                        if(paddockToRestockFood.equals(""))
+                                            paddockToRestockFood = "Pas d'enclos à réapprovisionner !";
+                                        System.out.print(paddockToRestockFood +
+                                                "\n\tq: QUITTER (CHOIX)\n" +
+                                                "\nChoix : ");
                                         
                                         String choiceRestock = scannerChoiceRestock.next();
                                         choiceRestock = choiceRestock.toLowerCase();
                                         switch (choiceRestock) {
-                                            case "????":
-                                                boolean isNotFinishChoiceActionManagementRestockPaddock = true;
-                                                while (isNotFinishChoiceActionManagementRestockPaddock) {
-                                                    /*
-                                                    ...
-                                                    */
-                                                    System.out.println(Tools.strColorBlue("L'enclos a été réapprovisionné"));
-
-                                                    isNotFinishChoiceActionManagementRestockPaddock = false;
-                                                    isNotFinishChoiceActionManagementRestock = false;
-                                                }
-                                                scannerChoiceRestock.nextLine();
-                                                break;
                                             case "q":case "quit":case "quitter":case "exit":
                                                 isNotFinishChoiceActionManagementRestock = false;
                                                 break;
                                             default:
-                                                Tools.notProposedOption();
-                                                scannerChoiceActionManagement.nextLine();
+                                                if(paddockToRestockFood.contains(choiceRestock)) {
+                                                    boolean isNotFinishChoiceActionManagementRestockQuantity = true;
+                                                    while (isNotFinishChoiceActionManagementRestockQuantity) {
+                                                        System.out.print("\nCombien voulez-vous ajouter de nourriture ? ( maximum : 2000 )\n\tq: QUITTER\n\nChoix : ");
+                                                        String choiceRestockQuantity = scannerChoiceRestockQuantity.next();
+                                                        if(choiceRestockQuantity.toLowerCase().equals("q") || choiceRestockQuantity.toLowerCase().equals("quitter"))
+                                                            isNotFinishChoiceActionManagementRestockQuantity = false;
+                                                        else {
+                                                            int quantityFood = 0;
+                                                            boolean isNumber = true;
+                                                            try {
+                                                                quantityFood = Integer.parseInt(choiceRestockQuantity);
+                                                            }
+                                                            catch (NumberFormatException e) {
+                                                                System.out.println(Tools.strColorRed("\nVeuillez entrer un chiffre entier."));
+                                                                isNumber = false;
+                                                            }
+                                                            if (isNumber){
+                                                                for (Paddock p : listPaddock) {
+                                                                    if (choiceRestock.equals(p.getName()))
+                                                                        employee.restockFood(p, quantityFood);
+                                                                }
+                                                                isNotFinishChoiceActionManagementRestockQuantity = false;
+                                                            }
+                                                        }
+                                                        scannerChoiceRestockQuantity.nextLine();
+                                                    }
+                                                }
+                                                else
+                                                    Tools.notProposedOption();
+                                                scannerChoiceRestock.nextLine();
                                                 break;
                                         }
                                     } //while (isNotFinishChoiceActionManagementHeal)

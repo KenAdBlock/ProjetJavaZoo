@@ -12,9 +12,11 @@ import Tools.Tools;
  *  @see Species.Mammal
  */
 public class Whale extends Mammal implements ISwim {
+
     /**
      * Le nombre de baleines présents dans l'application.
      */
+
     static int nbWhale;
 
     /**

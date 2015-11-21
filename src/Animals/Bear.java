@@ -11,6 +11,7 @@ import Tools.Tools;
  *  @see Species.Mammal
  */
 public class Bear extends Mammal {
+
     /**
      * Le nombre d'ours présents dans l'application.
      */

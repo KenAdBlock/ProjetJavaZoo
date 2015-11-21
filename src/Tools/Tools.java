@@ -2,6 +2,7 @@ package Tools;
 
 import Paddock.Paddock;
 import java.util.*;
+import Zoo.Zoo;
 
 /**
  * Created by Darkweizer on 18/10/2015.
@@ -72,12 +73,11 @@ public class Tools {
                 break;
         }
         scannerChoicePaddockFill.nextLine();
-        System.out.println();
         return choice;
     }
 
     public static void exitZoo() {
-        System.out.println(strColorBlue("\nLe zoo ferme ses portes. À demain ! :)"));
+        System.out.println(strColorBlue("\nLe zoo " + Zoo.getINSTANCE().getName() + " ferme ses portes. À demain ! :)"));
         System.exit(0);
     } // exitZoo()
 

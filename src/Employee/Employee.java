@@ -2,6 +2,7 @@ package Employee;
 
 import Paddock.Paddock;
 import Species.Animal;
+import Tools.Tools;
 
 /**
  * Employee est la classe représentant l'employé (unique) de l'application.
@@ -36,7 +37,22 @@ public class Employee {
     }
 
     public void restockFood(Paddock paddock, int food){
-        paddock.restockFood(food);
+
+        if(food > paddock.getMaxQuantityFood()+1){
+            paddock.restockFood(paddock.getMaxQuantityFood());
+            System.out.println(Tools.strColorBlue("\nL'employé " + name + " à réapprovisionné de seulement " + paddock.getMaxQuantityFood() + " unités de nourriture " + paddock.getName() + "."));
+        }
+        else {
+            paddock.restockFood(food);
+            if(paddock.getFoodIndicator() > paddock.getMaxQuantityFood()+1)
+                paddock.restockFood(paddock.getMaxQuantityFood());
+            System.out.println(Tools.strColorBlue("\nL'employé " + name + " à réapprovisionné de " + food + " unités de nourriture " + paddock.getName() + "."));
+        }
+    }
+
+    public void heal(Animal animal){
+        animal.beHealed();
+        System.out.println(Tools.strColorBlue("\nL'employé " + name + " a soigné " + animal.getName() + "."));
     }
 
     public void moveAnimal(Paddock paddockOut, Animal animal){

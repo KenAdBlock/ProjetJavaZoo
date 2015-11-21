@@ -12,6 +12,7 @@ import Tools.Tools;
  *  @see Species.Fish
  */
 public class Shark extends Fish implements ISwim {
+
     /**
      * Le nombre de requins présents dans l'application.
      */

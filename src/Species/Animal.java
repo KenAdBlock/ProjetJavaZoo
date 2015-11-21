@@ -115,7 +115,6 @@ public abstract class Animal {
 
     public void beHealed() {
         healthIndicator = 100;
-        System.out.println(Tools.strColorBlue("\n" + name + " a été soigné."));
     } // beHealed()
 
     public void sleepAnimal() {
