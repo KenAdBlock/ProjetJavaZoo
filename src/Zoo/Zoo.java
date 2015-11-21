@@ -269,7 +269,7 @@ public class Zoo {
                                                 break;
                                             case "2":case "pingouin":
                                                 do {
-                                                    Razorbill razorbill = new Razorbill("razorbile"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
+                                                    Razorbill razorbill = new Razorbill("razorbill"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
                                                     Razorbill.setNbRazorbill(Razorbill.getNbRazorbill() + 1);
                                                     aquarium.add(razorbill);
                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un pingouin !"));
@@ -426,8 +426,8 @@ public class Zoo {
                                 availabilityPaddock.add(p);
                         }
                         if(showAvailabilityAnimal.equals(""))
-                            showAvailabilityAnimal = "\tVous ne pouvez pas créer d'animal parce que vos enclos sont remplis au max\n";
-                        System.out.print(Tools.strColorBlue(showAvailabilityAnimal) + "\tq: QUITTER (CHOIX)\n\nChoix : ");
+                            showAvailabilityAnimal = Tools.strColorBlue("\tVous ne pouvez pas créer d'animal parce que vos enclos sont remplis au max\n");
+                        System.out.print(showAvailabilityAnimal + "\tq: QUITTER (CHOIX)\n\nChoix : ");
 
                         String choiceAnimal = scannerChoiceAnimal.next();
                         choiceAnimal = choiceAnimal.toLowerCase();
@@ -698,7 +698,7 @@ public class Zoo {
                                                     for (Paddock p : listPaddock) {
                                                         if (p.getName().equals(choicePaddock)) {
                                                             do {
-                                                                Razorbill razorbill = new Razorbill("razorbile"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
+                                                                Razorbill razorbill = new Razorbill("razorbill"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
                                                                 Razorbill.setNbRazorbill(Razorbill.getNbRazorbill() + 1);
                                                                 p.add(razorbill);
                                                                 System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un pingouin !"));
