@@ -8,13 +8,14 @@ import Tools.Tools;
  * Created by c13003593 on 13/10/2015.
  */
 public class Eagle extends Bird implements IFly {
+
     static int nbEagle;
 
     public Eagle(String name, boolean sex, long weight, int height, int age) {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "volant";
-        nbEagle += 1;
+        beAlive();
     } //Constructor
 
     public static void setNbEagle(int nbEagle) {
@@ -60,6 +61,28 @@ public class Eagle extends Bird implements IFly {
     public void move() {
         System.out.println("\nL'aigle marche.");
     } // move()
+
+    public void beAlive(){
+        new Thread( new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        if (isSleepIndicator())
+                            wakeAnimal();
+                        else if (getHealthIndicator() < 22)
+                            sleepAnimal();
+
+                        if (!isSleepIndicator() && getHungerIndicator() < 25)
+                            eat();
+                        sleep(6000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
 
     @Override
     public void fly() {

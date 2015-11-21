@@ -15,6 +15,7 @@ public class Tiger extends Fish implements IWander {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "autre";
+        beAlive();
     } //Constructor
 
 
@@ -61,6 +62,28 @@ public class Tiger extends Fish implements IWander {
     public void move() {
         System.out.println("\nLe tigre vagabonde.");
     } // move()
+
+    public void beAlive(){
+        new Thread( new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        if (isSleepIndicator())
+                            wakeAnimal();
+                        else if (getHealthIndicator() < 22)
+                            sleepAnimal();
+
+                        if (!isSleepIndicator() && getHungerIndicator() < 25)
+                            eat();
+                        sleep(6000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
 
     @Override
     public void wander() {

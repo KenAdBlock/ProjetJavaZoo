@@ -16,6 +16,7 @@ public class Razorbill extends Bird implements ISwim, IFly {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "nageant";
+        beAlive();
     } //Constructor
 
 
@@ -62,6 +63,28 @@ public class Razorbill extends Bird implements ISwim, IFly {
     public void move() {
         System.out.println("\nLe petit pingouin se déplace.");
     } // move()
+
+    public void beAlive(){
+        new Thread( new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        if (isSleepIndicator())
+                            wakeAnimal();
+                        else if (getHealthIndicator() < 22)
+                            sleepAnimal();
+
+                        if (!isSleepIndicator() && getHungerIndicator() < 25)
+                            eat();
+                        sleep(6000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
 
     @Override
     public void fly() {

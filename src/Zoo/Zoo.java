@@ -2,6 +2,8 @@ package Zoo;
 
 import Animals.*;
 import Employee.Employee;
+
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,6 +12,8 @@ import Paddock.Aquarium;
 import Paddock.Aviary;
 import Species.Animal;
 import Tools.Tools;
+
+import javax.swing.*;
 
 /**
  * Created by Darkweizer on 15/11/2015.
@@ -95,7 +99,6 @@ public class Zoo {
                             animal.setHungerIndicator(animal.getHungerIndicator() - Tools.random(Tools.random(0, 11), Tools.random(11, 21)));
                         else
                             animal.setHealthIndicator(animal.getHealthIndicator() - Tools.random(Tools.random(1, 11), Tools.random(11, 21)));
-                        System.out.println("\n" + animal.toString());
                         sleep(Tools.random(1000, 5001));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
