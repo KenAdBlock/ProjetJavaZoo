@@ -17,7 +17,7 @@ public class Paddock {
     private String typeAnimals = "pas d'animal présent";
     private String cleanliness;
     private ArrayList<Animal> animalPresent = new ArrayList<>();
-    private int foodIndicator = 150;
+    private int foodIndicator = 0;
     protected boolean isGoodType = false;
     protected boolean isKeepUp = false;
     private static int nbPaddock = 0;
