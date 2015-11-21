@@ -135,7 +135,7 @@ public class Paddock {
                     System.out.println("Enclos plein, vous ne pouvez pas ajouter plus d'animaux ici");
             }
             else
-                System.out.println(type.getName() + " ce peut pas entrer dans " + this.getName());
+                System.out.println(type.getName() + " ne peut pas entrer dans " + this.getName());
         }
         catch (Exception e){
             e.printStackTrace();
