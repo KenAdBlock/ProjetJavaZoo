@@ -11,8 +11,6 @@ import Paddock.Aviary;
 import Species.Animal;
 import Tools.Tools;
 
-import javax.tools.Tool;
-
 /**
  * Created by Darkweizer on 15/11/2015.
  */
@@ -69,7 +67,7 @@ public class Zoo {
     }
 
     public void showAllPaddock(){
-        System.out.println("\nListe de tout les enclos, avec les animaux présents à l'intérieur : ");
+        System.out.println("\nListe de tous les enclos, avec les animaux présents à l'intérieur : ");
         for(Paddock p : listPaddock){
             System.out.println("\t" + p.toString());
         }
@@ -122,7 +120,7 @@ public class Zoo {
         boolean isBear = false;
         boolean isTiger = false;
         boolean isEagle = false;
-        boolean isRazobill = false;
+        boolean isRazorbill = false;
         boolean isShark = false;
         boolean isWhale = false;
         boolean isRedFish = false;
@@ -260,7 +258,7 @@ public class Zoo {
                                                     Whale whale = new Whale("whale"+(Whale.getNbWhale()+1), (Tools.random(0,2) != 0), Tools.random(150000000,170000000), Tools.random(2500, 3300), Tools.random(2,15));
                                                     Whale.setNbWhale(Whale.getNbWhale() + 1);
                                                     aquarium.add(whale);
-                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un baleine !"));
+                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" une baleine !"));
                                                     System.out.println(whale.toString());
                                                     if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
                                                         isPaddockFill = Tools.askPaddockFill(isPaddockFill);
@@ -403,7 +401,7 @@ public class Zoo {
                                     if (!showAvailabilityAnimal.contains("Aigle") && p.getName().substring(0,6).equals("avairy") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t4: Aigle\n";isEagle=true;}
                                     if (!showAvailabilityAnimal.contains("Pingouin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
-                                        {showAvailabilityAnimal += "\t5: Pingouin\n";isRazobill=true;}
+                                        {showAvailabilityAnimal += "\t5: Pingouin\n";isRazorbill=true;}
                                     if (!showAvailabilityAnimal.contains("Baleine") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
                                         {showAvailabilityAnimal += "\t6: Baleine\n";isWhale=true;}
                                     if (!showAvailabilityAnimal.contains("Requin") && p.getName().substring(0,8).equals("aquarium") && p.getHereNbAnimals()<p.getMaxNbAnimals())
@@ -418,7 +416,7 @@ public class Zoo {
                                     else if(p.getTypeAnimals().equals("Ours")){showAvailabilityAnimal+="2: " + p.getTypeAnimals()+ "\n";isBear=true;availabilityPaddock.add(p);}
                                     else if(p.getTypeAnimals().equals("Tigre")){showAvailabilityAnimal+="3: " + p.getTypeAnimals()+ "\n";isTiger=true;availabilityPaddock.add(p);}
                                     else if(p.getTypeAnimals().equals("Aigle")){showAvailabilityAnimal+="4: " + p.getTypeAnimals()+ "\n";isEagle=true;availabilityPaddock.add(p);}
-                                    else if(p.getTypeAnimals().equals("Pingouin")){showAvailabilityAnimal+="5: " + p.getTypeAnimals()+ "\n";isRazobill=true;availabilityPaddock.add(p);}
+                                    else if(p.getTypeAnimals().equals("Pingouin")){showAvailabilityAnimal+="5: " + p.getTypeAnimals()+ "\n";isRazorbill=true;availabilityPaddock.add(p);}
                                     else if(p.getTypeAnimals().equals("Baleine")){showAvailabilityAnimal+="6: " + p.getTypeAnimals()+ "\n";isWhale=true;availabilityPaddock.add(p);}
                                     else if(p.getTypeAnimals().equals("Requin")){showAvailabilityAnimal+="7: " + p.getTypeAnimals()+ "\n";isShark=true;availabilityPaddock.add(p);}
                                     else if(p.getTypeAnimals().equals("Poisson rouge")){showAvailabilityAnimal+="8: " + p.getTypeAnimals()+ "\n";isRedFish=true;availabilityPaddock.add(p);}
@@ -660,7 +658,7 @@ public class Zoo {
                                     scannerChoiceAnimal.nextLine();
                                     break;
                                 case "5":case "pingouin":
-                                    if (isRazobill) {
+                                    if (isRazorbill) {
                                         while(isNotFinishAddAnimal) {
                                             System.out.println("\nParmis les aquariums suivants, dans lequel voulez-vous ajouter un pingouin ?");
                                             int cpt = 0;
@@ -699,7 +697,7 @@ public class Zoo {
                                                                     isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                             }
                                                             while (isPaddockFill && p.getHereNbAnimals() < p.getMaxNbAnimals());
-                                                            isRazobill = false;
+                                                            isRazorbill = false;
                                                             isNotFinishAddAnimal = false;
                                                         } else
                                                             isNotValid = true;
@@ -775,7 +773,7 @@ public class Zoo {
                                 case "7":case "requin":
                                     if (isShark) {
                                         while(isNotFinishAddAnimal) {
-                                            System.out.println("\nParmis les aquariums suivants, dans lequel voulez-vous ajouter un pingouin ?");
+                                            System.out.println("\nParmis les aquariums suivants, dans lequel voulez-vous ajouter un requin ?");
                                             int cpt = 0;
                                             System.out.print("\t");
                                             for (Paddock p : availabilityPaddock) {
