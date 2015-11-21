@@ -1,6 +1,7 @@
 package Species;
 
 import Paddock.Paddock;
+import Tools.Tools;
 
 /**
  * Created by c13003593 on 13/10/2015.
@@ -32,8 +33,21 @@ public abstract class Animal {
     }
 
     public void setHungerIndicator(int hungerIndicator) {
-        this.hungerIndicator = hungerIndicator;
+        if(hungerIndicator<0)
+            this.hungerIndicator = 0;
+        else
+            this.hungerIndicator = hungerIndicator;
     }
+
+    public void setHealthIndicator(int healthIndicator) {
+        if(healthIndicator<0)
+            this.healthIndicator= 0;
+        else
+            this.healthIndicator = healthIndicator;
+    }
+
+
+
 
 
     public String getName() {
@@ -81,7 +95,7 @@ public abstract class Animal {
             int needToFull = 100 - hungerIndicator;
             int foodInside = paddock.getFoodIndicator();
             if (foodInside == 0)
-                System.out.println("Pas de nourriture disponible dans l'enclos " + paddock.getName()); // faire en sorte que l'employer ajoute de la bouf !
+                System.err.println("Pas de nourriture disponible dans l'enclos " + paddock.getName()); // faire en sorte que l'employer ajoute de la bouf !
             else if((foodInside - needToFull) >= 0){
                 paddock.setFoodIndicator(foodInside -= needToFull);
                 hungerIndicator += needToFull;
@@ -103,11 +117,12 @@ public abstract class Animal {
         healthIndicator = 100;
     } // beHealed()
 
-    public void sleep() {
+    public void sleepAnimal() {
         sleepIndicator = true;
+        healthIndicator = 100;
     } // sleep()
 
-    public void wake() {
+    public void wakeAnimal() {
         sleepIndicator = false;
     } // wake()
 
