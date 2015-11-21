@@ -44,23 +44,32 @@ public class Zoo {
 
     public void showNbTotalAnimal(){
         int cpt = 0;
-        for(ArrayList<Animal> a : totalAnimal){
-            for(Animal a1 : a){
-                ++cpt;
+        if(totalAnimal.isEmpty())
+            ;
+        else {
+            for (ArrayList<Animal> a : totalAnimal) {
+                for (Animal a1 : a) {
+                    ++cpt;
+                }
             }
         }
-        System.out.println("Le nombre d'animal présent dans le zoo est de " + cpt);
+        System.out.println("Le nombre d'animal présent dans le zoo est de " + cpt + " animaux");
     }
 
     public void showTotalAnimal(){
-        int cpt = 0;
-        for(ArrayList<Animal> a : totalAnimal){
-            for(Animal a1 : a){
-                System.out.print(a1.getName() + " ");
-                ++cpt;
-                if (cpt == 10){
-                    cpt = 0;
-                    System.out.println("");
+        if(totalAnimal.isEmpty())
+            System.out.println("\tIl n'y a pas d'animal dans le zoo !");
+        else{
+            int cpt = 0;
+            System.out.print("\t");
+            for (ArrayList<Animal> a : totalAnimal) {
+                for (Animal a1 : a) {
+                    System.out.print(a1.getName() + " ");
+                    ++cpt;
+                    if (cpt == 10) {
+                        cpt = 0;
+                        System.out.println("\t");
+                    }
                 }
             }
         }
