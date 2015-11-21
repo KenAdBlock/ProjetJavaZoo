@@ -927,10 +927,13 @@ public class Zoo {
                                         isNotFinishAddAnimal = false;
                                         scannerChoiceAnimal.nextLine();
                                         break;
-                            }
-                        }//while(isNotFinishAddAnimal)
-                    }//while(isNotFinishChoiceMenuMain)
-                    if(!totalAnimal.isEmpty())
+                                }
+                            }//while(isNotFinishAddAnimal)
+                        }//while(isNotFinishChoiceMenuMain)
+                    }
+                    else
+                        Tools.notProposedOption();
+                    if(!totalAnimal.isEmpty()){
                         isAnimalCreated = true;//while(isNotFinishChoiceMenuMain)
                     }
                     scannerChoiceAction.nextLine();
@@ -1024,8 +1027,11 @@ public class Zoo {
                                 case "2":
                                     boolean isNotFinishChoiceActionManagementHeal = true;
                                     while (isNotFinishChoiceActionManagementHeal) {
-                                        System.out.println("Parmi ceux présents dans le zoo, quel animal voulez-vous soigner ?\n" +
+                                        System.out.println("Voici la liste des animaux pouvant être soignés :\n");
                                                             /* showAvailabilityAnimal ... */
+
+
+                                        System.out.println("Quel animal voulez-vous soigner ?\n" +
                                                             "\tq: QUITTER (ZOO)\n" +
                                                             "\nChoix : ");
                                         

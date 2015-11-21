@@ -35,7 +35,7 @@ public class Tools {
     } // hashTypeAnimal()
 
     public static void askAgain() {
-        System.err.println("\nÊtes-vous certain de vouloir quitter le zoo ? (o/n)");
+        System.out.println(strColorRed("\nÊtes-vous certain de vouloir quitter le zoo ? (o/n)"));
 
         Scanner scannerChoiceAgain = new Scanner(System.in);
         String choiceAgain = scannerChoiceAgain.next();
@@ -82,12 +82,17 @@ public class Tools {
     } // exitZoo()
 
     public static void notProposedOption() {
-        System.err.println("\nCette option n'est pas proposée...");
+        System.out.println(strColorRed("\nCette option n'est pas proposée..."));
     } // notProposedOption()
 
     public static String strColorBlue(String str) {
         String blue = "\033[34m";
         return blue + str + colorReset;
+    } // strColorBlue()
+
+    public static String strColorRed(String str) {
+        String red = "\033[31m";
+        return red + str + colorReset;
     } // strColorBlue()
 
 } // class Tools
