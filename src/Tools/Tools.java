@@ -22,7 +22,7 @@ public class Tools {
         put("RedFish","Poisson rouge");
         put("Shark","Requin");
         put("Tiger","Tigre");
-        put("Whale","Balaine");
+        put("Whale","Baleine");
         put("Wolf","Loup");
     }};
 
