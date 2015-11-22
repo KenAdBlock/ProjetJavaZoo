@@ -50,7 +50,7 @@ public class Employee {
     } // Constructor
 
     /**
-     * Retourne l'instance unique de l'employé.
+     * Récupère l'instance unique de l'employé.
      *
      * @return L'instance de l'employé (unique).
      */
@@ -83,7 +83,9 @@ public class Employee {
     } // keeUp()
 
     /**
-     * Permet de récupérer le nom de l'employé.
+     * Récupère le nom de l'employé.
+     *
+     * @return Le nom de l'employé.
      */
     public String getName() {
         return name;

@@ -208,7 +208,7 @@ public class Zoo {
     } // threadReproduction()
 
     /**
-     * Méthode appellée par la classe Main. Point d'entrée de l'application.
+     * Méthode appellée par la classe Main qui permet à l'utilisateur d'intérargir avec l'application.
      */
     public void run() {
         Scanner scannerChoiceAction = new Scanner(System.in);

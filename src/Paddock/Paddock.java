@@ -27,7 +27,7 @@ public class Paddock {
     private int surface;
 
     /**
-     * Le nombre maximum que peut acceuillir l'enclos.
+     * Le nombre maximum d'animaux que peut acceuillir l'enclos.
      */
     private int maxNbAnimals;
 
@@ -65,27 +65,32 @@ public class Paddock {
     private int foodIndicator = 125;
 
     /**
-     *
+     * Booléen permettant de vérifier, lors de l'ajout d'un animal dans l'enclos, que cet animal est du bon type.
      */
     protected boolean isGoodType = false;
 
     /**
-     *
+     * Booléen permettant de savoir si l'enclos a été nettoyé (s'il est propre).
      */
     protected boolean isKeepUp = false;
 
     /**
-     *
+     * Le nombre total d'enclos présents dans le zoo.
      */
     private static int nbPaddock = 0;
 
     /**
-     *
+     * Le constructeur de la classe Paddock.
+     * Il permet de créer de nouvelles instances de cette classe.
      *
      * @param name
+     *          Le nom de l'enclos.
      * @param surface
+     *          La surface de l'enclos.
      * @param maxNbAnimals
+     *          Le nombre maximum d'animaux présents dans l'enclos.
      * @param cleanliness
+     *          La propreté de l'enclos.
      */
     public Paddock(String name, int surface, int maxNbAnimals,  String cleanliness) {
         this.name = name;
@@ -95,76 +100,33 @@ public class Paddock {
         Zoo.getListPaddock().add(this);
         Tools.map1.put(this.name, this);
         nbPaddock+=1;
-    }
-    public Paddock(){}// Constructor
+    } // Constructor
 
     /**
-     *
+     * Modifie le nom de l'enclos par le nouveau mis en paramètre.
      *
      * @param name
+     *          Le nom du nouvel enclos.
      */
     public void setName(String name) {
         this.name = name;
     } // setName()
 
     /**
-     *
-     *
-     * @param surface
-     */
-    public void setSurface(int surface) {
-        this.surface = surface;
-    } // setSurface()
-
-    /**
-     *
-     *
-     * @param maxNbAnimals
-     */
-    public void setMaxNbAnimals(int maxNbAnimals) {
-        this.maxNbAnimals = maxNbAnimals;
-    } // setMaxNbAnimals()
-
-    /**
-     *
-     *
-     * @param hereNbAnimals
-     */
-    public void setHereNbAnimals(int hereNbAnimals) {
-        this.hereNbAnimals = hereNbAnimals;
-    } // setHereNbAnimals()
-
-    /**
-     *
-     *
-     * @param typeAnimals
-     */
-    public void setTypeAnimals(String typeAnimals) {
-        this.typeAnimals = typeAnimals;
-    } // setTypeAnimals()
-
-    /**
-     *
-     *
-     * @param cleanliness
-     */
-    public void setCleanliness(String cleanliness) {
-        this.cleanliness = cleanliness;
-    } // setCleanliness()
-
-    /**
-     *
+     * Modifie l'indicateur de nourriture de l'enclos par le nouveau mis en paramètre.
      *
      * @param foodIndicator
+     *          Le nouvel indicateur de nourriture.
      */
     public void setFoodIndicator(int foodIndicator) {
         this.foodIndicator = foodIndicator;
     } // setFoodIndicator()
 
     /**
-     *
+     * Modifie le nombre d'enclos présents dans le zoo.
      *
      * @param nbPaddock
+     *          Le nouveau nombre d'enclos.
      */
     public static void setNbPaddock(int nbPaddock) {
         Paddock.nbPaddock = nbPaddock;
@@ -172,88 +134,72 @@ public class Paddock {
 
 
     /**
+     * Récupère le nom de l'enclos.
      *
-     *
-     * @return
+     * @return Le nom de l'enclos.
      */
     public String getName() {
         return name;
     } // getName()
 
     /**
+     * Récupère le nombre maximum d'animaux que peut contenir l'enclos.
      *
-     *
-     * @return
-     */
-    public int getSurface() {
-        return surface;
-    } // getSurface()
-
-    /**
-     *
-     *
-     * @return
+     * @return Le nombre maximum d'animaux de l'enclos.
      */
     public int getMaxNbAnimals() {
         return maxNbAnimals;
     } // getMaxNbAnimals()
 
     /**
+     * Récupère le nombre d'animaux présents dans l'enclos.
      *
-     *
-     * @return
+     * @return Le nombre d'animaux présents.
      */
     public int getHereNbAnimals() {
         return hereNbAnimals;
     } // getHereNbAnimals()
 
     /**
+     * Récupère le type d'animal présent dans l'enclos.
      *
-     *
-     * @return
+     * @return Une chaîne de caractère, représentant le type d'animal.
      */
     public String getTypeAnimals() {
         return typeAnimals;
     } // getTypeAnimals()
 
     /**
+     * Récupère l'indicateur de nourriture de l'enclos.
      *
-     *
-     * @return
-     */
-    public String getCleanliness() {
-        return cleanliness;
-    } // getCleanliness()
-
-    /**
-     *
-     *
-     * @return
+     * @return L'indicateur de nourriture.
      */
     public int getFoodIndicator() {
         return foodIndicator;
     } // getFoodIndicator()
 
     /**
+     * Récupère le nombre total d'enclos du zoo.
      *
-     * @return
+     * @return Le nombre total d'enclos.
      */
     public static int getNbPaddock() {
         return nbPaddock;
     } // getNbPaddock()
 
     /**
+     * Récupère la quantité maximum de nourriture que peut contenir l'enclos.
      *
-     * @return
+     * @return La quantité maximum de nourriture de l'enclos.
      */
     public int getMaxQuantityFood() {
         return maxQuantityFood;
     } // getMaxQuantityFood()
 
     /**
+     * Permet d'obtenir, de façon textuelle, toutes les caractéristiques de l'enclos.
      *
-     *
-     * @return
+     * @return Une chaîne de caractères, représentant les caractéristiques de l'enclos
      */
     @Override
     public String toString() {
@@ -270,9 +216,10 @@ public class Paddock {
     } // toString()
 
     /**
-     *
+     * Permet d'ajouter un animal à l'enclos.
      *
      * @param type
+     *          L'animal à ajouter.
      */
     public void add(Animal type){
         try {
@@ -304,9 +251,10 @@ public class Paddock {
     } // add()
 
     /**
-     *
+     * Permet de déplacer un animal d'un enclos à un autre.
      *
      * @param animal
+     *          L'animal à déplacer.
      */
     public void move(Animal animal){
         Scanner scannerChoiceMoveAnimalPaddock = new Scanner(System.in);
@@ -362,13 +310,13 @@ public class Paddock {
     }// move()
 
     /**
-     *
+     * Permet de réapprovisionner l'enclos en nourriture.
      *
      * @param food
+     *          L'indicateur de nourriture à ajouter pour le réapprovisionnement.
      */
     public void restockFood(int food){
         foodIndicator += food;
-
     } // restockFood
 
     /**
