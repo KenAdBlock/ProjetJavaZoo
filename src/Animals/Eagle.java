@@ -14,7 +14,7 @@ import Tools.Tools;
 public class Eagle extends Bird implements IFly {
 
     /**
-     * Le nombre d'aigles présents dans l'application.
+     * Le nombre total d'aigles présents dans le zoo.
      */
     static int nbEagle;
 
@@ -51,7 +51,7 @@ public class Eagle extends Bird implements IFly {
     }
 
     /**
-     * Retourne le nombre d'aigles présents dans l'application.
+     * Retourne le nombre d'aigles présents dans le zoo.
      *
      * @return Le nombre d'aigles.
      */
@@ -60,7 +60,7 @@ public class Eagle extends Bird implements IFly {
     }
 
     /**
-     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     * Retourne une string représentant "textuellement" les caractéristiques de l'aigle.
      *
      * @return Une string.
      */

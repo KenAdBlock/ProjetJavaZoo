@@ -14,7 +14,7 @@ import Tools.Tools;
 public class Tiger extends Mammal implements IWander {
 
     /**
-     * Le nombre de tigres présents dans l'application.
+     * Le nombre total de tigres présents dans le zoo.
      */
     static int nbTiger;
 
@@ -51,7 +51,7 @@ public class Tiger extends Mammal implements IWander {
     } // setNbTiger()
 
     /**
-     * Retourne le nombre de tigres présents dans l'application.
+     * Retourne le nombre de tigres présents dans le zoo.
      *
      * @return Le nombre de tigres.
      */
@@ -60,7 +60,7 @@ public class Tiger extends Mammal implements IWander {
     } // getNbTiger()
 
     /**
-     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     * Retourne une string représentant "textuellement" les caractéristiques du tigre.
      *
      * @return Une string.
      */

@@ -1,9 +1,14 @@
 package Movement;
 
 /**
- * Created by c12010902 on 16/10/2015.
+ * ISwim est une interface signifiant que l'objet est capable de nager.
+ *
+ * @author Charles-Henri CARLIER et Kenny COADALEN
  */
 public interface ISwim {
 
+    /**
+     *
+     */
     public void swim(); //swim()
 }

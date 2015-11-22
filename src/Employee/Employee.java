@@ -83,11 +83,11 @@ public class Employee {
     } // keeUp()
 
     /**
-     * Permet de recupèrer le nom de l'employé.
+     * Permet de récupérer le nom de l'employé.
      */
     public String getName() {
         return name;
-    }
+    } // getName()
 
 
     /**

@@ -15,7 +15,7 @@ import Tools.Tools;
 public class Razorbill extends Bird implements ISwim, IFly {
 
     /**
-     * Le nombre de pingouins présents dans l'application.
+     * Le nombre total de pingouins présents dans le zoo.
      */
     static int nbRazorbill;
 
@@ -52,7 +52,7 @@ public class Razorbill extends Bird implements ISwim, IFly {
     } // setNbRazorbill()
 
     /**
-     * Retourne le nombre de pingouins présents dans l'application.
+     * Retourne le nombre de pingouins présents dans le zoo.
      *
      * @return Le nombre de pingouins.
      */
@@ -61,7 +61,7 @@ public class Razorbill extends Bird implements ISwim, IFly {
     } // getNbRazorbill()
 
     /**
-     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     * Retourne une string représentant "textuellement" les caractéristiques du pingouin.
      *
      * @return Une string.
      */

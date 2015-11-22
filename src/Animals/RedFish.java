@@ -14,7 +14,7 @@ import Tools.Tools;
 public class RedFish extends Fish implements ISwim {
 
     /**
-     * Le nombre de poissons rouges présents dans l'application.
+     * Le nombre total de poissons rouges présents dans le zoo.
      */
     static int nbRedFish;
 
@@ -51,7 +51,7 @@ public class RedFish extends Fish implements ISwim {
     } // setNbRedfish()
 
     /**
-     * Retourne le nombre de poissons rouges présents dans l'application.
+     * Retourne le nombre de poissons rouges présents dans le zoo.
      *
      * @return Le nombre de poissons rouges.
      */
@@ -60,7 +60,7 @@ public class RedFish extends Fish implements ISwim {
     } // getNbRedfish()
 
     /**
-     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     * Retourne une string représentant "textuellement" les caractéristiques du poisson rouge.
      *
      * @return Une string.
      */

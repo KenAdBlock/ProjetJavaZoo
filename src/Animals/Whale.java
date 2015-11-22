@@ -14,7 +14,7 @@ import Tools.Tools;
 public class Whale extends Mammal implements ISwim {
 
     /**
-     * Le nombre de baleines présents dans l'application.
+     * Le nombre total de baleines présents dans le zoo.
      */
 
     static int nbWhale;
@@ -52,7 +52,7 @@ public class Whale extends Mammal implements ISwim {
     } // setNbWhale()
 
     /**
-     * Retourne le nombre de baleines présents dans l'application.
+     * Retourne le nombre de baleines présents dans le zoo.
      *
      * @return Le nombre de baleines.
      */
@@ -61,7 +61,7 @@ public class Whale extends Mammal implements ISwim {
     } // getNbWhale()
 
     /**
-     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     * Retourne une string représentant "textuellement" les caractéristiques de la baleine.
      *
      * @return Une string.
      */

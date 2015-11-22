@@ -13,7 +13,7 @@ import Tools.Tools;
 public class Bear extends Mammal {
 
     /**
-     * Le nombre d'ours présents dans l'application.
+     * Le nombre total d'ours présents dans le zoo.
      */
     static int nbBear;
 
@@ -50,7 +50,7 @@ public class Bear extends Mammal {
     } // setNbBear()
 
     /**
-     * Retourne le nombre d'ours présents dans l'application.
+     * Retourne le nombre d'ours présents dans le zoo.
      *
      * @return Le nombre d'ours.
      */
@@ -59,7 +59,7 @@ public class Bear extends Mammal {
     } // getNbBear()
 
     /**
-     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     * Retourne une string représentant "textuellement" les caractéristiques de l'ours.
      *
      * @return Une string.
      */
