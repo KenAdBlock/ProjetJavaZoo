@@ -209,7 +209,7 @@ public abstract class Animal {
     } // isSex()
 
     /**
-     * Récupère un booléen indiquant si l'animal dort ou non (true -> il dort et false -> il ne dort pas).
+     * Récupère un booléen indiquant si l'animal dort ou non (true si il dort et false si il ne dort pas).
      *
      * @return L'indicateur de sommeil de l'animal.
      */
