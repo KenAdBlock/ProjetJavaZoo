@@ -184,6 +184,20 @@ public class Zoo {
         }).start();
     } // threadDecrementation()
 
+    private void threaadReproduction(){
+        new Thread(new Thread(){
+            @Override
+            public void run() {
+                while(true){
+                    ArrayList<Animal> animalArrayList = totalAnimal.get(Tools.random(0, totalAnimal.size()));
+                    Animal animal1 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
+                    Animal animal2 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
+                    //faire la reproduction entre les 2 animaux ; mais ceux sont des animaux donc pas de methode reproduction;
+                }
+            }
+        }).start();
+    }//threadReproduction()
+
     /**
      * Méthode appellée par la classe Main. Point d'entrée de l'application.
      */
