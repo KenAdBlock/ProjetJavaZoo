@@ -1,9 +1,14 @@
 package Movement;
 
 /**
- * Created by c12010902 on 16/10/2015.
+ * IWander est une interface signifiant que l'objet est capable de vagabonder.
+ *
+ * @author Charles-Henri CARLIER et Kenny COADALEN
  */
 public interface IWander {
 
+    /**
+     *
+     */
     public void wander(); //wander()
 }

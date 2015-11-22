@@ -1,28 +1,88 @@
 package Paddock;
 
-import Species.Animal;
-import Tools.Tools;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Tools.Tools;
+import Species.Animal;
 import Zoo.Zoo;
 
 /**
- * Created by Darkweizer on 12/11/2015.
+ * Paddock est une classe représentant un enclos "classique".
+ * Il possède des caractéristiques de base telles que le nom ou la surface.
+ *
+ * @author Charles-Henri CARLIER et Kenny COADALEN
  */
 public class Paddock {
+
+    /**
+     *
+     */
     private String name;
+
+    /**
+     *
+     */
     private int surface;
+
+    /**
+     *
+     */
     private int maxNbAnimals;
+
+    /**
+     *
+     */
     private int hereNbAnimals = 0;
+
+    /**
+     *
+     */
     private String typeAnimals = "pas d'animal présent";
+
+    /**
+     *
+     */
     private String cleanliness;
+
+    /**
+     *
+     */
     private ArrayList<Animal> animalPresent = new ArrayList<>();
+
+    /**
+     *
+     */
     private int maxQuantityFood = 2000;
+
+    /**
+     *
+     */
     private int foodIndicator = 125;//maxQuantityFood;
+
+    /**
+     *
+     */
     protected boolean isGoodType = false;
+
+    /**
+     *
+     */
     protected boolean isKeepUp = false;
+
+    /**
+     *
+     */
     private static int nbPaddock = 0;
 
+    /**
+     *
+     *
+     * @param name
+     * @param surface
+     * @param maxNbAnimals
+     * @param cleanliness
+     */
     public Paddock(String name, int surface, int maxNbAnimals,  String cleanliness) {
         this.name = name;
         this.surface = surface;
@@ -33,77 +93,163 @@ public class Paddock {
         nbPaddock+=1;
     }// Constructor
 
-
+    /**
+     *
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
-    }
+    } // setName()
 
+    /**
+     *
+     *
+     * @param surface
+     */
     public void setSurface(int surface) {
         this.surface = surface;
-    }
+    } // setSurface()
 
+    /**
+     *
+     *
+     * @param maxNbAnimals
+     */
     public void setMaxNbAnimals(int maxNbAnimals) {
         this.maxNbAnimals = maxNbAnimals;
-    }
+    } // setMaxNbAnimals()
 
+    /**
+     *
+     *
+     * @param hereNbAnimals
+     */
     public void setHereNbAnimals(int hereNbAnimals) {
         this.hereNbAnimals = hereNbAnimals;
-    }
+    } // setHereNbAnimals()
 
+    /**
+     *
+     *
+     * @param typeAnimals
+     */
     public void setTypeAnimals(String typeAnimals) {
         this.typeAnimals = typeAnimals;
-    }
+    } // setTypeAnimals()
 
+    /**
+     *
+     *
+     * @param cleanliness
+     */
     public void setCleanliness(String cleanliness) {
         this.cleanliness = cleanliness;
-    }
+    } // setCleanliness()
 
+    /**
+     *
+     *
+     * @param foodIndicator
+     */
     public void setFoodIndicator(int foodIndicator) {
         this.foodIndicator = foodIndicator;
-    }// Setter
+    } // setFoodIndicator()
 
+    /**
+     *
+     *
+     * @param nbPaddock
+     */
     public static void setNbPaddock(int nbPaddock) {
         Paddock.nbPaddock = nbPaddock;
-    }
+    } // setNbPaddock()
 
 
-
+    /**
+     *
+     *
+     * @return
+     */
     public String getName() {
         return name;
-    }
+    } // getName()
 
+    /**
+     *
+     *
+     * @return
+     */
     public int getSurface() {
         return surface;
-    }
+    } // getSurface()
 
+    /**
+     *
+     *
+     * @return
+     */
     public int getMaxNbAnimals() {
         return maxNbAnimals;
-    }
+    } // getMaxNbAnimals()
 
+    /**
+     *
+     *
+     * @return
+     */
     public int getHereNbAnimals() {
         return hereNbAnimals;
-    }
+    } // getHereNbAnimals()
 
+    /**
+     *
+     *
+     * @return
+     */
     public String getTypeAnimals() {
         return typeAnimals;
-    }
+    } // getTypeAnimals()
 
+    /**
+     *
+     *
+     * @return
+     */
     public String getCleanliness() {
         return cleanliness;
-    }
+    } // getCleanliness()
 
+    /**
+     *
+     *
+     * @return
+     */
     public int getFoodIndicator() {
         return foodIndicator;
-    }// Getter
+    } // getFoodIndicator()
 
+    /**
+     *
+     * @return
+     */
     public static int getNbPaddock() {
         return nbPaddock;
-    }
+    } // getNbPaddock()
 
+    /**
+     *
+     * @return
+     */
     public int getMaxQuantityFood() {
         return maxQuantityFood;
-    }
+    } // getMaxQuantityFood()
 
+    /**
+     *
+     *
+     * @return
+     */
     @Override
     public String toString() {
         String toString = "Enclos : " + "\n\t\tnom = " + name + "\n\t\tsurface = " + surface + "m²\n\t\tnombre d'animaux maximum = " + maxNbAnimals +
@@ -116,8 +262,13 @@ public class Paddock {
             toString += ("\t\t" + a + "\n");
         }
         return toString;
-    }
+    } // toString()
 
+    /**
+     *
+     *
+     * @param type
+     */
     public void add(Animal type){
         try {
             if (type.getTypeAnimal().equals("autre") || isGoodType) {
@@ -145,8 +296,13 @@ public class Paddock {
         catch (Exception e){
             e.printStackTrace();
         }
-    }
+    } // add()
 
+    /**
+     *
+     *
+     * @param type
+     */
     public void move(Animal type){
         try{
             if(animalPresent.isEmpty()) {
@@ -196,13 +352,21 @@ public class Paddock {
         catch (Exception e){
             e.printStackTrace();
         }
-    }// move()
+    } // move()
 
+    /**
+     *
+     *
+     * @param food
+     */
     public void restockFood(int food){
         foodIndicator += food;
 
-    }// restockFood
+    } // restockFood
 
+    /**
+     * Permet de nettoyer l'enclos.
+     */
     public void keepUp(){
         if(cleanliness == "bon")
             System.out.println("Enclos propre, pas besoin d'entretenir");
@@ -213,6 +377,5 @@ public class Paddock {
             System.out.println("L'enclos est maintenant propre");
             isKeepUp = true;
         }
-    }
-
-}// class Paddock
+    } // keepUp()
+} // class Paddock

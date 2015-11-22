@@ -14,7 +14,7 @@ import Tools.Tools;
 public class Shark extends Fish implements ISwim {
 
     /**
-     * Le nombre de requins présents dans l'application.
+     * Le nombre total de requins présents dans le zoo.
      */
     static int nbShark;
 
@@ -51,7 +51,7 @@ public class Shark extends Fish implements ISwim {
     } // setNbShark()
 
     /**
-     * Retourne le nombre de requins présents dans l'application.
+     * Retourne le nombre de requins présents dans le zoo.
      *
      * @return Le nombre de requins.
      */
@@ -60,7 +60,7 @@ public class Shark extends Fish implements ISwim {
     } // getNbShark()
 
     /**
-     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     * Retourne une string représentant "textuellement" les caractéristiques du requin.
      *
      * @return Une string.
      */

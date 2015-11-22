@@ -14,7 +14,7 @@ import Tools.Tools;
 public class Wolf extends Mammal implements IWander {
 
     /**
-     * Le nombre de loups présents dans l'application.
+     * Le nombre total de loups présents dans le zoo.
      */
     static int nbWolf;
 
@@ -51,7 +51,7 @@ public class Wolf extends Mammal implements IWander {
     } // setNbWolf()
 
     /**
-     * Retourne le nombre de loups présents dans l'application.
+     * Retourne le nombre de loups présents dans le zoo.
      *
      * @return Le nombre de loups.
      */
@@ -60,7 +60,7 @@ public class Wolf extends Mammal implements IWander {
     } // getNbWolf()
 
     /**
-     * Retourne une string représentant "textuellement" les caractéristiques de l'objet.
+     * Retourne une string représentant "textuellement" les caractéristiques du loup.
      *
      * @return Une string.
      */
