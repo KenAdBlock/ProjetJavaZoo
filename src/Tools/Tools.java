@@ -275,4 +275,8 @@ public class Tools {
         return red + str + colorReset;
     } // strColorBlue()
 
+    public static void notPossibilityAddPaddock() {
+        System.out.println(strColorRed("Le nombre maximum de paddock qui est de " + Zoo.getINSTANCE().getMaxNbPaddock() + " a été atteint."));
+    } // notPossibilityAddPaddock()
+
 } // class Tools

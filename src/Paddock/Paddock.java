@@ -17,49 +17,52 @@ import Zoo.Zoo;
 public class Paddock {
 
     /**
-     *
+     * Le nom de l'enclos.
      */
     private String name;
 
     /**
-     *
+     * La surface de l'enclos.
      */
     private int surface;
 
     /**
-     *
+     * Le nombre maximum que peut acceuillir l'enclos.
      */
     private int maxNbAnimals;
 
     /**
-     *
+     * Le nombre d'animaux présents dans l'enclos.
+     * Donnée initialisée à zéro puisqu'à la création d'un enclos, aucun animal n'y est présent.
      */
     private int hereNbAnimals = 0;
 
     /**
-     *
+     * Une chaîne de caractères représentant le type de(s) l'animal/animaux présent(s) dans l'enclos.
+     * Donnée initialisée à "pas d'animal présent" car à la création d'un enclos, aucun animal n'y est présent.
      */
     private String typeAnimals = "pas d'animal présent";
 
     /**
-     *
+     * La propreté de l'enclos.
      */
     private String cleanliness;
 
     /**
-     *
+     * La liste des animaux présents dans l'enclos.
      */
     private ArrayList<Animal> animalPresent = new ArrayList<>();
 
     /**
-     *
+     * La quantité maximum de nourriture que peut contenir l'enclos.
      */
     private int maxQuantityFood = 2000;
 
     /**
-     *
+     * L'indicateur de nourriture de l'enclos.
+     * Cette valeur ne pourra pas être supérieure à maxQuantityFood.
      */
-    private int foodIndicator = 125;//maxQuantityFood;
+    private int foodIndicator = 125;
 
     /**
      *

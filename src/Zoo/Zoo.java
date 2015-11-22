@@ -106,6 +106,15 @@ public class Zoo {
     } // getName()
 
     /**
+     * Retourne le nombre maximal d'enclos pouvant être créé dans le zoo.
+     *
+     * @return Le nombre maximal d'enclos.
+     */
+    public int getMaxNbPaddock() {
+        return maxNbPaddock;
+    } // getMaxNbPaddock()
+
+    /**
      * Affiche en console le nombre total d'animaux présents dans le zoo.
      */
     public void showNbTotalAnimal(){
@@ -250,7 +259,7 @@ public class Zoo {
                 }
             }
         }).start();
-    }//threadReproduction()
+    } // threadReproduction()
 
     /**
      * Méthode appellée par la classe Main. Point d'entrée de l'application.
@@ -279,17 +288,7 @@ public class Zoo {
         boolean isRedFish = false;
         boolean isFirstAccesToCase3 = true;
 
-        /* A SUPPRIMER */
-        /* A SUPPRIMER */
-        /* A SUPPRIMER */
-        /*Paddock p1 = new Paddock("paddock1", 32, 5, "propre");
-        Wolf w1 = new Wolf("wolf1", true, 50, 150, 4);
-        p1.add(w1);
-        isAnimalCreated = true;*/
-        /* A SUPPRIMER */
-        /* A SUPPRIMER */
-        /* A SUPPRIMER */
-
+        /*   Début de l'application   */
         while (true) {
             if(isPaddockCreated && !isAnimalCreated) {
                 System.out.print("\nQuel action voulez-vous faire ?\n" +
