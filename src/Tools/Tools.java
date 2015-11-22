@@ -16,57 +16,57 @@ import Zoo.Zoo;
 public class Tools {
 
     /**
-     * Stock tous les Paddock avec pour clé leur nom.
+     * Stock tous les enclos avec pour clé leur nom.
      */
     public static Map<String, Paddock> mapPaddock = new WeakHashMap<>();
 
     /**
-     * Stock tous les Animal avec pour clé leur nom.
+     * Stock tous les animaux avec pour clé leur nom.
      */
     public static Map<String, Animal> mapAnimal = new WeakHashMap<>();
 
     /**
-     * Stock tous les Wolf avec pour clé leur nom.
+     * Stock tous les loups avec pour clé leur nom.
      */
     public static Map<String, Wolf> mapWolf = new WeakHashMap<>();
 
     /**
-     * Stock tous les Bear avec pour clé leur nom.
+     * Stock tous les ours avec pour clé leur nom.
      */
     public static Map<String, Bear> mapBear = new WeakHashMap<>();
 
     /**
-     * Stock tous les Tiger avec pour clé leur nom.
+     * Stock tous les tigres avec pour clé leur nom.
      */
     public static Map<String, Tiger> mapTiger = new WeakHashMap<>();
 
     /**
-     * Stock tous les Whale avec pour clé leur nom.
+     * Stock tous les baleines avec pour clé leur nom.
      */
     public static Map<String, Whale> mapWhale = new WeakHashMap<>();
 
     /**
-     * Stock tous les Razorbill avec pour clé leur nom.
+     * Stock tous les pingouins avec pour clé leur nom.
      */
     public static Map<String, Razorbill> mapRazorbill = new WeakHashMap<>();
 
     /**
-     * Stock tous les RedFish avec pour clé leur nom.
+     * Stock tous les poissons rouges avec pour clé leur nom.
      */
     public static Map<String, RedFish> mapRedFish= new WeakHashMap<>();
 
     /**
-     * Stock tous les Shark avec pour clé leur nom.
+     * Stock tous les requins avec pour clé leur nom.
      */
     public static Map<String, Shark> mapShark = new WeakHashMap<>();
 
     /**
-     * Stock tous les Eagle avec pour clé leur nom.
+     * Stock tous les aigles avec pour clé leur nom.
      */
     public static Map<String, Eagle> mapEagle = new WeakHashMap<>();
 
     /**
-     * Stock tous les nom des animaux en français avec pour clé leur nom en anglais.
+     * Stock tous les noms des animaux en français avec pour clé leur nom en anglais.
      */
     private static final Map<String, String> mapTypeAnimal = new HashMap<String, String>() {{
         put("Bear","Ours");
@@ -79,152 +79,165 @@ public class Tools {
         put("Wolf","Loup");
     }};
 
+    /**
+     * La couleur de base de l'affichage en console.
+     */
     private static String colorReset = "\033[0m";
 
+    /**
+     * Permet d'obtenir aléatoirement un entier inclu dans les bornes passées en paramètre.
+     *
+     * @param min
+     *          La borne inférieure sur laquelle effectuée l'aléatoire.
+     * @param max
+     *          La borne supérieure (exclue) sur laquelle effectuée l'aléatoire.
+     *
+     * @return L'entier généré.
+     */
     public static synchronized int random(int min, int max) {
         Random r = new Random();
         return (min + r.nextInt(max - min));
     } // random()
 
     /**
-     * Retourne la classe Paddock correspondante à la string passait en paramètre
+     * Retourne la classe Paddock correspondante à la string passée en paramètre
      *
      * @param str
-     *          Le nom du paddock.
+     *          Le nom de l'enclos.
      *
-     * @return La classe Paddock correspondante à la string passait en paramètre.
+     * @return La classe Paddock correspondante à la string passée en paramètre.
      */
     public static synchronized Paddock hashPaddock(String str){
         return mapPaddock.get(str);
     } // hashPaddock()
 
     /**
-     * Retourne la classe Animal correspondante à la string passait en paramètre
+     * Retourne la classe Animal correspondante à la string passée en paramètre
      *
      * @param str
      *          Le nom de l'animal.
      *
-     * @return La classe Animal correspondante à la string passait en paramètre.
+     * @return La classe Animal correspondante à la string passée en paramètre.
      */
     public static Animal hashAnimal(String str){
         return mapAnimal.get(str);
-    }
+    } // hashAnimal()
 
     /**
-     * Retourne la classe Wolf correspondante à la string passait en paramètre
+     * Retourne la classe Wolf correspondante à la string passée en paramètre
      *
      * @param str
      *          Le nom du loup.
      *
-     * @return La classe Wolf correspondante à la string passait en paramètre.
+     * @return La classe Wolf correspondante à la string passée en paramètre.
      */
     public static Wolf hashWolf(String str){
         return mapWolf.get(str);
-    }
+    } // hashWolf()
 
     /**
-     * Retourne la classe Bear correspondante à la string passait en paramètre
+     * Retourne la classe Bear correspondante à la string passée en paramètre
      *
      * @param str
      *          Le nom de l'ours.
      *
-     * @return La classe Bear correspondante à la string passait en paramètre.
+     * @return La classe Bear correspondante à la string passée en paramètre.
      */
     public static Bear hashBear(String str){
         return mapBear.get(str);
-    }
+    } // hashBear()
 
     /**
-     * Retourne la classe Tiger correspondante à la string passait en paramètre
+     * Retourne la classe Tiger correspondante à la string passée en paramètre
      *
      * @param str
      *          Le nom du tigre.
      *
-     * @return La classe Tiger correspondante à la string passait en paramètre.
+     * @return La classe Tiger correspondante à la string passée en paramètre.
      */
     public static Tiger hashTiger(String str){
         return mapTiger.get(str);
-    }
+    } // hashTiger()
 
     /**
-     * Retourne la classe Whale correspondante à la string passait en paramètre
+     * Retourne la classe Whale correspondante à la string passée en paramètre
      *
      * @param str
      *          Le nom de la baleine.
      *
-     * @return La classe Whale correspondante à la string passait en paramètre.
+     * @return La classe Whale correspondante à la string passée en paramètre.
      */
     public static Whale hashWhale(String str){
         return mapWhale.get(str);
-    }
+    } // hashWhale()
 
     /**
-     * Retourne la classe Razorbill correspondante à la string passait en paramètre
+     * Retourne la classe Razorbill correspondante à la string passée en paramètre
      *
      * @param str
      *          Le nom du pingouin.
      *
-     * @return La classe Razorbille correspondante à la string passait en paramètre.
+     * @return La classe Razorbille correspondante à la string passée en paramètre.
      */
     public static Razorbill hashRazorbill(String str){
         return mapRazorbill.get(str);
-    }
+    } // hashRazorbill()
 
     /**
-     * Retourne la classe RedFish correspondante à la string passait en paramètre
+     * Retourne la classe RedFish correspondante à la string passée en paramètre
      *
      * @param str
      *          Le nom du poisson rouge.
      *
-     * @return La classe RedFish correspondante à la string passait en paramètre.
+     * @return La classe RedFish correspondante à la string passée en paramètre.
      */
     public static RedFish hashRedFish(String str){
         return mapRedFish.get(str);
-    }
+    } // hashRedFish()
 
     /**
-     * Retourne la classe Shark correspondante à la string passait en paramètre
+     * Retourne la classe Shark correspondante à la string passée en paramètre
      *
      * @param str
      *          Le nom du requin.
      *
-     * @return La classe Shark correspondante à la string passait en paramètre.
+     * @return La classe Shark correspondante à la string passée en paramètre.
      */
     public static Shark hashShark(String str){
         return mapShark.get(str);
-    }
+    } // hashShark()
 
     /**
-     * Retourne la classe Eagle correspondante à la string passait en paramètre
+     * Retourne la classe Eagle correspondante à la string passée en paramètre
      *
      * @param str
      *          Le nom de l'aigle.
      *
-     * @return La classe Eagle correspondante à la string passait en paramètre.
+     * @return La classe Eagle correspondante à la string passée en paramètre.
      */
     public static Eagle hashEagle(String str){
         return mapEagle.get(str);
-    }
+    } // hashEagle()
 
     /**
-     *Retourne le nom en français de l'animal correspondante au nom en anglais de l'animal passait en paramètre.
+     *Retourne le nom en français de l'animal correspondante au nom en anglais de l'animal passée en paramètre.
      *
      * @param str
      *          Le nom en anglais de l'animal.
      *
-     * @return Le nom en français de l'animal correspondante au nom en anglais de l'animal passait en paramètre.
+     * @return Le nom en français de l'animal correspondante au nom en anglais de l'animal passée en paramètre.
      */
     public static String hashTypeAnimal(String str){
         return mapTypeAnimal.get(str);
     } // hashTypeAnimal()
 
     /**
-     *
+     * Demande à l'utilisateur s'il souhaite remplir l'enclos d'un nouvel animal.
      *
      * @param choice
+     *          Le choix de l'utilisateur.
      *
-     *
-     * @return
+     * @return Un booléen représentant la réponse de l'utilisateur
      */
     public static boolean askPaddockFill(boolean choice) {
 
@@ -247,10 +260,10 @@ public class Tools {
         }
         scannerChoicePaddockFill.nextLine();
         return choice;
-    }
+    } // askPaddockFill()
 
     /**
-     *
+     * Demande à l'utilisateur s'il souhaite réellement quitter le zoo (sortie de la simulation).
      */
     public static void askAgain() {
         System.out.println(strColorRed("\nÊtes-vous certain de vouloir quitter le zoo ? (o/n)"));
@@ -271,7 +284,7 @@ public class Tools {
     } // askAgain()
 
     /**
-     *
+     * Point de sortie de la simulation.
      */
     public static void exitZoo() {
         System.out.println(strColorBlue("\nLe zoo " + Zoo.getINSTANCE().getName() + " ferme ses portes. À demain ! :)"));
@@ -279,19 +292,19 @@ public class Tools {
     } // exitZoo()
 
     /**
-     *
+     * Indique que l'option demandée par l'utilisateur n'est pas proposée parmis les choix proposés du menu.
      */
     public static void notProposedOption() {
         System.out.println(strColorRed("\nCette option n'est pas proposée..."));
     } // notProposedOption()
 
     /**
-     *
+     * Renvoie la même chaîne de caractères passée en paramètre mais colorée en bleue.
      *
      * @param str
+     *          La chaîne de caractères devant être changée de couleur.
      *
-     *
-     * @return
+     * @return La même chaîne de caractères mais colorée en bleue.
      */
     public static String strColorBlue(String str) {
         String blue = "\033[34m";
@@ -299,12 +312,12 @@ public class Tools {
     } // strColorBlue()
 
     /**
-     *
+     * Renvoie la même chaîne de caractères passée en paramètre mais colorée en rouge.
      *
      * @param str
+     *          La chaîne de caractères devant être changée de couleur.
      *
-     *
-     * @return
+     * @return La même chaîne de caractères mais colorée en rouge.
      */
     public static String strColorRed(String str) {
         String red = "\033[31m";
@@ -312,10 +325,10 @@ public class Tools {
     } // strColorBlue()
 
     /**
-     *
+     * Indique que le nombre d'enclos pouvant être ajouté au zoo a atteint sa limite.
      */
     public static void notPossibilityAddPaddock() {
-        System.out.println(strColorRed("Le nombre maximum de paddock qui est de " + Zoo.getINSTANCE().getMaxNbPaddock() + " a été atteint."));
+        System.out.println(strColorRed("Le nombre maximum d'enclos qui est de, " + Zoo.getINSTANCE().getMaxNbPaddock() + ", a été atteint."));
     } // notPossibilityAddPaddock()
 
 } // class Tools

@@ -197,9 +197,8 @@ public class Zoo {
      * Thread permettant de rendre la simulation plus ludique, en générant de l'aléatoire.
      * Ce thread est "actif" toutes les une à trois minutes.
      * Lorsqu'il l'est, il va selectionner deux animaux du même enclos (et donc du même type) pour tenter une reproduction entre eux.
-     * Cela peut échouer car l'aléatoire peut sélectionner deux animaux du même sexe. Ce n'est pas grave, au contraire cela donne plus
-     * de réalisme à la simulation.
-     * Cela permet entre autre à l'utilisateur d'intérargir avec le zoo et ses animaux.
+     * Cela peut échouer car l'aléatoire peut sélectionner deux animaux du même sexe.
+     * Ce n'est pas un problème, au contraire cela donne plus de réalisme à la simulation.
      */
     private void threadReproduction(){
         new Thread(new Thread(){
@@ -207,7 +206,7 @@ public class Zoo {
             public void run() {
                 while(true){
                     try {
-                        sleep(Tools.random(1000,2000));//(60000,180000));
+                        sleep(Tools.random(60000,180000));
                         ArrayList<Animal> animalArrayList = totalAnimal.get(Tools.random(0, totalAnimal.size()));
                         Animal animal1 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
                         Animal animal2 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
@@ -270,7 +269,6 @@ public class Zoo {
         Scanner scannerChoicePaddock = new Scanner(System.in);
         Scanner scannerChoiceActionManagement = new Scanner(System.in);
         Scanner scannerChoiceMoveAnimal = new Scanner(System.in);
-        Scanner scannerChoiceMoveAnimalPaddock = new Scanner(System.in);
         Scanner scannerChoiceHeal = new Scanner(System.in);
         Scanner scannerChoiceRestock = new Scanner(System.in);
         Scanner scannerChoiceRestockQuantity = new Scanner(System.in);
