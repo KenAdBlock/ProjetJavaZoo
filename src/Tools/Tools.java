@@ -315,7 +315,7 @@ public class Tools {
      *
      */
     public static void notPossibilityAddPaddock() {
-        System.out.println(strColorRed("Le nombre maximum de paddock qui est de " + Zoo.getINSTANCE().getMaxNbPaddock() + " a été atteint."));
+        System.out.println(strColorRed("\nLe nombre maximum d'enclos qui est de " + Zoo.getINSTANCE().getMaxNbPaddock() + " dans le zoo a été atteint."));
     } // notPossibilityAddPaddock()
 
 } // class Tools

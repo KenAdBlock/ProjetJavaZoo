@@ -92,7 +92,7 @@ public class Zoo {
      */
     public static synchronized Zoo getINSTANCE() {
         if (INSTANCE == null)
-            INSTANCE = new Zoo("Ho Land", Employee.getINSTANCE(), 10);
+            INSTANCE = new Zoo("Ho Land", Employee.getINSTANCE(), 20);
         return INSTANCE;
     } // getINSTANCE()
 
@@ -166,6 +166,30 @@ public class Zoo {
     } // showAllPaddock()
 
     /**
+     * Affiche en console le nombre total d'enclos présents dans le zoo.
+     */
+    public void showNbPaddock(){
+        int cpt = 0;
+        for(Paddock p : listPaddock){
+            ++cpt;
+        }
+        System.out.println(Tools.strColorBlue("\nIl y a " + cpt + " enclos présents dans le zoo.\n"));
+    } // showNbPaddock()
+
+    /**
+     * Affiche en console le nombre total d'enclos présents dans le zoo.
+     *
+     * @return Le nombre total d'enclos présents dnas le zoo.
+     */
+    public int countNbPaddock(){
+        int cpt = 0;
+        for(Paddock p : listPaddock){
+            ++cpt;
+        }
+        return cpt;
+    } // showAllPaddock()
+
+    /**
      * Thread permettant de rendre la simulation plus ludique, en générant de l'aléatoire.
      * Ce thread est "actif" toutes les une à cinq secondes.
      * Lorsqu'il l'est, il va retirer entre 0 et 20 "points" soit de l'indicateur de faim soit de celui de santé.
@@ -207,7 +231,7 @@ public class Zoo {
             public void run() {
                 while(true){
                     try {
-                        sleep(Tools.random(1000,2000));//(60000,180000));
+                        sleep(Tools.random(60000,180000));
                         ArrayList<Animal> animalArrayList = totalAnimal.get(Tools.random(0, totalAnimal.size()));
                         Animal animal1 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
                         Animal animal2 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
@@ -270,7 +294,6 @@ public class Zoo {
         Scanner scannerChoicePaddock = new Scanner(System.in);
         Scanner scannerChoiceActionManagement = new Scanner(System.in);
         Scanner scannerChoiceMoveAnimal = new Scanner(System.in);
-        Scanner scannerChoiceMoveAnimalPaddock = new Scanner(System.in);
         Scanner scannerChoiceHeal = new Scanner(System.in);
         Scanner scannerChoiceRestock = new Scanner(System.in);
         Scanner scannerChoiceRestockQuantity = new Scanner(System.in);
@@ -318,229 +341,234 @@ public class Zoo {
             switch (choiceAction) {
                 case "1":
                     while(isNotFinishChoiceMenuMain){
-                        System.out.print("\nQuel type d'enclos voulez-vous créer ?\n" +
-                                            "\t1: Enclos (classique)\n" +
-                                            "\t2: Aquarium\n" +
-                                            "\t3: Volière\n" +
-                                            "\tq: QUITTER (CHOIX)\n" +
-                                            "\nChoix : ");
+                        if(countNbPaddock() < maxNbPaddock ){
+                            System.out.print("\nQuel type d'enclos voulez-vous créer ?\n" +
+                                                "\t1: Enclos (classique)\n" +
+                                                "\t2: Aquarium\n" +
+                                                "\t3: Volière\n" +
+                                                "\tq: QUITTER (CHOIX)\n" +
+                                                "\nChoix : ");
 
-                        String choicePaddock = scannerChoicePaddock.next();
-                        choicePaddock = choicePaddock.toLowerCase();
-                        switch (choicePaddock) {
-                            case "1":case "enclos":
-                                Paddock paddock = new Paddock("paddock"+(Paddock.getNbPaddock()+1), Tools.random(40, 500),Tools.random(3,20),"bon");
-                                System.out.print(Tools.strColorBlue("\nVous avez \"créer\" un enclos classique !"));
-                                this.showAllPaddock();
-                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                if (isPaddockFill) {
-                                    boolean isNotFinishChoiceAnimal = true;
-                                    while(isNotFinishChoiceAnimal){
-                                        isPaddockFill = false;
-                                        System.out.print("\nPour cet enclos, voici les animaux que vous pouvez créer : \n" +
-                                                        "\t1: Loup\n" +
-                                                        "\t2: Ours\n" +
-                                                        "\t3: Tigre\n" +
-                                                        "\tq: QUITTER (CHOIX)\n" +
-                                                        "\nChoix : ");
-                                        String choiceAnimal = scannerChoiceAnimal.next();
-                                        choiceAnimal = choiceAnimal.toLowerCase();
-                                        switch (choiceAnimal) {
-                                            case "1":case "loup":
-                                                do {
-                                                    Wolf wolf = new Wolf("wolf"+(Wolf.getNbWolf()+1),(Tools.random(0,2) != 0), Tools.random(25,50), Tools.random(80, 120), Tools.random(2,15));
-                                                    Wolf.setNbWolf(Wolf.getNbWolf() + 1);
-                                                    paddock.add(wolf);
-                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un loup !"));
-                                                    System.out.println(wolf.toString());
-                                                    if(paddock.getHereNbAnimals()!= paddock.getMaxNbAnimals())
-                                                        isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                                }while(isPaddockFill && paddock.getHereNbAnimals()< paddock.getMaxNbAnimals());
-                                                scannerChoiceAnimal.nextLine();
-                                                isNotFinishChoiceMenuMain = false;
-                                                isNotFinishChoiceAnimal = false;
-                                                break;
-                                            case "2":case "ours":
-                                                do {
-                                                    Bear bear = new Bear("bear"+(Bear.getNbBear()+1), (Tools.random(0,2) != 0), Tools.random(10000,50000), Tools.random(120, 150), Tools.random(2,15));
-                                                    Bear.setNbBear(Bear.getNbBear() + 1);
-                                                    paddock.add(bear);
-                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un ours !"));
-                                                    System.out.println(bear.toString());
-                                                    if(paddock.getHereNbAnimals()!= paddock.getMaxNbAnimals())
-                                                        isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                                }while(isPaddockFill && paddock.getHereNbAnimals()< paddock.getMaxNbAnimals());
-                                                scannerChoiceAnimal.nextLine();
-                                                isNotFinishChoiceMenuMain = false;
-                                                isNotFinishChoiceAnimal = false;
-                                                break;
-                                            case "3":case "tigre":
-                                                do {
-                                                    Tiger tiger = new Tiger("tiger"+(Tiger.getNbTiger()+1), (Tools.random(0,2) != 0), Tools.random(10000,25000), Tools.random(120, 150), Tools.random(2,15));
-                                                    Tiger.setNbTiger(Tiger.getNbTiger() + 1);
-                                                    paddock.add(tiger);
-                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un tigre !"));
-                                                    System.out.println(tiger.toString());
-                                                    if(paddock.getHereNbAnimals()!= paddock.getMaxNbAnimals())
-                                                        isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                                }while(isPaddockFill && paddock.getHereNbAnimals()< paddock.getMaxNbAnimals());
-                                                scannerChoiceAnimal.nextLine();
-                                                isNotFinishChoiceMenuMain = false;
-                                                isNotFinishChoiceAnimal = false;
-                                                break;
-                                            case "q":case "quit":case "quitter":case "exit":
-                                                isNotFinishChoiceAnimal = false;
-                                                scannerChoiceAnimal.nextLine();
-                                                break;
-                                            default:
-                                                Tools.notProposedOption();
-                                                scannerChoiceAnimal.nextLine();
-                                                break;
-                                        }
-                                    }//while(isNotFinishChoiceAnimal)
-                                }
-                                scannerChoicePaddock.nextLine();
-                                break;
-                            case "2":case "aquarium":
-                                Aquarium aquarium = new Aquarium("aquarium"+(Aquarium.getNbAquarium()+1), Tools.random(40, 500),Tools.random(3,20),"bon", Tools.random(10, 50), 50);
-                                System.out.print(Tools.strColorBlue("\nVous avez \"créer\" un aquarium !"));
-                                this.showAllPaddock();
-                                isPaddockFill =  Tools.askPaddockFill(isPaddockFill);
-                                if (isPaddockFill) {
-                                    boolean isNotFinishChoiceAnimal = true;
-                                    while(isNotFinishChoiceAnimal){
-                                        isPaddockFill = false;
-                                        System.out.print("\nPour cet aquarium, voici les animaux que vous pouvez créer : \n" +
-                                                "\t1: Baleine\n" +
-                                                "\t2: Pingouin\n" +
-                                                "\t3: Poisson (rouge)\n" +
-                                                "\t4: Requin\n" +
-                                                "\tq: QUITTER (CHOIX)\n" +
-                                                "\nChoix : ");
-                                        String choiceAnimal = scannerChoiceAnimal.next();
-                                        choiceAnimal = choiceAnimal.toLowerCase();
-                                        switch (choiceAnimal) {
-                                            case "1":case "baleine":
-                                                do {
-                                                    Whale whale = new Whale("whale"+(Whale.getNbWhale()+1), (Tools.random(0,2) != 0), Tools.random(150000000,170000000), Tools.random(2500, 3300), Tools.random(2,15));
-                                                    Whale.setNbWhale(Whale.getNbWhale() + 1);
-                                                    aquarium.add(whale);
-                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" une baleine !"));
-                                                    System.out.println(whale.toString());
-                                                    if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
-                                                        isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                                }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
-                                                scannerChoiceAnimal.nextLine();
-                                                isNotFinishChoiceMenuMain = false;
-                                                isNotFinishChoiceAnimal = false;
-                                                break;
-                                            case "2":case "pingouin":
-                                                do {
-                                                    Razorbill razorbill = new Razorbill("razorbill"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
-                                                    Razorbill.setNbRazorbill(Razorbill.getNbRazorbill() + 1);
-                                                    aquarium.add(razorbill);
-                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un pingouin !"));
-                                                    System.out.println(razorbill.toString());
-                                                    if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
-                                                        isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                                }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
-                                                scannerChoiceAnimal.nextLine();
-                                                isNotFinishChoiceMenuMain = false;
-                                                isNotFinishChoiceAnimal = false;
-                                                break;
-                                            case "3":case "poisson":
-                                                do {
-                                                    RedFish redFish = new RedFish("redfish"+(RedFish.getNbRedfish()+1),(Tools.random(0,2) != 0), Tools.random(15,40), Tools.random(5, 20), Tools.random(2,8));
-                                                    RedFish.setNbRedFish(RedFish.getNbRedfish() + 1);
-                                                    aquarium.add(redFish);
-                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un poisson (rouge) !"));
-                                                    System.out.println(redFish.toString());
-                                                    if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
-                                                        isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                                }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
-                                                scannerChoiceAnimal.nextLine();
-                                                isNotFinishChoiceMenuMain = false;
-                                                isNotFinishChoiceAnimal = false;
-                                                break;
-                                            case "4":case "requin":
-                                                do {
-                                                    Shark shark = new Shark("shark"+(Shark.getNbShark()+1),(Tools.random(0,2) != 0), Tools.random(400000,2500000), Tools.random(150, 350), Tools.random(2,15));
-                                                    Shark.setNbShark(Shark.getNbShark() + 1);
-                                                    aquarium.add(shark);
-                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un requin !"));
-                                                    System.out.println(shark.toString());
-                                                    if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
-                                                        isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                                }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
-                                                scannerChoiceAnimal.nextLine();
-                                                isNotFinishChoiceMenuMain = false;
-                                                isNotFinishChoiceAnimal = false;
-                                                break;
-                                            case "q":case "quit":case "quitter":case "exit":
-                                                isNotFinishChoiceAnimal = false;
-                                                scannerChoiceAnimal.nextLine();
-                                                break;
-                                            default:
-                                                Tools.notProposedOption();
-                                                scannerChoiceAnimal.nextLine();
-                                                break;
-                                        }
-                                    }//while(isNotFinishChoiceAnimal)
-                                }
-                                scannerChoicePaddock.nextLine();
-                                break;
-                            case "3":case "volière":case "voliere":
-                                Aviary aviary = new Aviary("aviary"+(Aviary.getNbAviary()+1),Tools.random(40,500),Tools.random(3,10),"bon",Tools.random(5,20));
-                                System.out.print(Tools.strColorBlue("\nVous avez \"créer\" une volière !"));
-                                this.showAllPaddock();
-                                isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                if (isPaddockFill) {
-                                    boolean isNotFinishChoiceAnimal = true;
-                                    while(isNotFinishChoiceAnimal){
-                                        isPaddockFill = false;
-                                        System.out.print("\nPour cette voilière, voici les animaux que vous pouvez créer : \n" +
-                                                "\t1: Aigle\n" +
-                                                "\tq: QUITTER (CHOIX)\n" +
-                                                "\nChoix : ");
-                                        String choiceAnimal = scannerChoiceAnimal.next();
-                                        choiceAnimal = choiceAnimal.toLowerCase();
-                                        switch (choiceAnimal) {
-                                            case "1":case "aigle":
-                                                do {
-                                                    Eagle eagle = new Eagle("eagle"+(Eagle.getNbEagle()+1),(Tools.random(0,2) != 0), Tools.random(10000,25000), Tools.random(80, 120), Tools.random(2,15));
-                                                    Eagle.setNbEagle(Eagle.getNbEagle()+1);
-                                                    aviary.add(eagle);
-                                                    System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un aigle !"));
-                                                    System.out.println(eagle.toString());
-                                                    if(aviary.getHereNbAnimals()!= aviary.getMaxNbAnimals())
-                                                        isPaddockFill = Tools.askPaddockFill(isPaddockFill);
-                                                } while (isPaddockFill && aviary.getHereNbAnimals()< aviary.getMaxNbAnimals());
-                                                scannerChoiceAnimal.nextLine();
-                                                isNotFinishChoiceMenuMain = false;
-                                                isNotFinishChoiceAnimal = false;
-                                                break;
-                                            case "q":case "quit":case "quitter":case "exit":
-                                                scannerChoiceAnimal.nextLine();
-                                                isNotFinishChoiceAnimal = false;
-                                                break;
-                                            default:
-                                                Tools.notProposedOption();
-                                                scannerChoiceAnimal.nextLine();
-                                                break;
-                                        }
-                                    }//while(isNotFinishChoiceAnimal)
-                                }
-                                scannerChoicePaddock.nextLine();
-                                break;
-                            case "q":case "quit":case "quitter":case "exit":
-                                isNotFinishChoiceMenuMain = false;
-                                scannerChoicePaddock.nextLine();
-                                break;
-                            default:
-                                Tools.notProposedOption();
-                                scannerChoicePaddock.nextLine();
-                                break;
-                        } // switch choicePaddock
+                            String choicePaddock = scannerChoicePaddock.next();
+                            choicePaddock = choicePaddock.toLowerCase();
+                            switch (choicePaddock) {
+                                case "1":case "enclos":
+                                    Paddock paddock = new Paddock("paddock"+(Paddock.getNbPaddock()+1), Tools.random(40, 500),Tools.random(3,20),"bon");
+                                    System.out.print(Tools.strColorBlue("\nVous avez \"créer\" un enclos classique !"));
+                                    this.showAllPaddock();
+                                    isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                    if (isPaddockFill) {
+                                        boolean isNotFinishChoiceAnimal = true;
+                                        while(isNotFinishChoiceAnimal){
+                                            isPaddockFill = false;
+                                            System.out.print("\nPour cet enclos, voici les animaux que vous pouvez créer : \n" +
+                                                            "\t1: Loup\n" +
+                                                            "\t2: Ours\n" +
+                                                            "\t3: Tigre\n" +
+                                                            "\tq: QUITTER (CHOIX)\n" +
+                                                            "\nChoix : ");
+                                            String choiceAnimal = scannerChoiceAnimal.next();
+                                            choiceAnimal = choiceAnimal.toLowerCase();
+                                            switch (choiceAnimal) {
+                                                case "1":case "loup":
+                                                    do {
+                                                        Wolf wolf = new Wolf("wolf"+(Wolf.getNbWolf()+1),(Tools.random(0,2) != 0), Tools.random(25,50), Tools.random(80, 120), Tools.random(2,15));
+                                                        Wolf.setNbWolf(Wolf.getNbWolf() + 1);
+                                                        paddock.add(wolf);
+                                                        System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un loup !"));
+                                                        System.out.println(wolf.toString());
+                                                        if(paddock.getHereNbAnimals()!= paddock.getMaxNbAnimals())
+                                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                                    }while(isPaddockFill && paddock.getHereNbAnimals()< paddock.getMaxNbAnimals());
+                                                    scannerChoiceAnimal.nextLine();
+                                                    isNotFinishChoiceMenuMain = false;
+                                                    isNotFinishChoiceAnimal = false;
+                                                    break;
+                                                case "2":case "ours":
+                                                    do {
+                                                        Bear bear = new Bear("bear"+(Bear.getNbBear()+1), (Tools.random(0,2) != 0), Tools.random(10000,50000), Tools.random(120, 150), Tools.random(2,15));
+                                                        Bear.setNbBear(Bear.getNbBear() + 1);
+                                                        paddock.add(bear);
+                                                        System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un ours !"));
+                                                        System.out.println(bear.toString());
+                                                        if(paddock.getHereNbAnimals()!= paddock.getMaxNbAnimals())
+                                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                                    }while(isPaddockFill && paddock.getHereNbAnimals()< paddock.getMaxNbAnimals());
+                                                    scannerChoiceAnimal.nextLine();
+                                                    isNotFinishChoiceMenuMain = false;
+                                                    isNotFinishChoiceAnimal = false;
+                                                    break;
+                                                case "3":case "tigre":
+                                                    do {
+                                                        Tiger tiger = new Tiger("tiger"+(Tiger.getNbTiger()+1), (Tools.random(0,2) != 0), Tools.random(10000,25000), Tools.random(120, 150), Tools.random(2,15));
+                                                        Tiger.setNbTiger(Tiger.getNbTiger() + 1);
+                                                        paddock.add(tiger);
+                                                        System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un tigre !"));
+                                                        System.out.println(tiger.toString());
+                                                        if(paddock.getHereNbAnimals()!= paddock.getMaxNbAnimals())
+                                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                                    }while(isPaddockFill && paddock.getHereNbAnimals()< paddock.getMaxNbAnimals());
+                                                    scannerChoiceAnimal.nextLine();
+                                                    isNotFinishChoiceMenuMain = false;
+                                                    isNotFinishChoiceAnimal = false;
+                                                    break;
+                                                case "q":case "quit":case "quitter":case "exit":
+                                                    isNotFinishChoiceAnimal = false;
+                                                    scannerChoiceAnimal.nextLine();
+                                                    break;
+                                                default:
+                                                    Tools.notProposedOption();
+                                                    scannerChoiceAnimal.nextLine();
+                                                    break;
+                                            }//switch(choiceAnimal)
+                                        }//while(isNotFinishChoiceAnimal)
+                                    }//if(isPaddockFill)
+                                    scannerChoicePaddock.nextLine();
+                                    break;
+                                case "2":case "aquarium":
+                                    Aquarium aquarium = new Aquarium("aquarium"+(Aquarium.getNbAquarium()+1), Tools.random(40, 500),Tools.random(3,20),"bon", Tools.random(10, 50), 50);
+                                    System.out.print(Tools.strColorBlue("\nVous avez \"créer\" un aquarium !"));
+                                    this.showAllPaddock();
+                                    isPaddockFill =  Tools.askPaddockFill(isPaddockFill);
+                                    if (isPaddockFill) {
+                                        boolean isNotFinishChoiceAnimal = true;
+                                        while(isNotFinishChoiceAnimal){
+                                            isPaddockFill = false;
+                                            System.out.print("\nPour cet aquarium, voici les animaux que vous pouvez créer : \n" +
+                                                    "\t1: Baleine\n" +
+                                                    "\t2: Pingouin\n" +
+                                                    "\t3: Poisson (rouge)\n" +
+                                                    "\t4: Requin\n" +
+                                                    "\tq: QUITTER (CHOIX)\n" +
+                                                    "\nChoix : ");
+                                            String choiceAnimal = scannerChoiceAnimal.next();
+                                            choiceAnimal = choiceAnimal.toLowerCase();
+                                            switch (choiceAnimal) {
+                                                case "1":case "baleine":
+                                                    do {
+                                                        Whale whale = new Whale("whale"+(Whale.getNbWhale()+1), (Tools.random(0,2) != 0), Tools.random(150000000,170000000), Tools.random(2500, 3300), Tools.random(2,15));
+                                                        Whale.setNbWhale(Whale.getNbWhale() + 1);
+                                                        aquarium.add(whale);
+                                                        System.out.println(Tools.strColorBlue("\nVous avez \"créer\" une baleine !"));
+                                                        System.out.println(whale.toString());
+                                                        if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
+                                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                                    }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
+                                                    scannerChoiceAnimal.nextLine();
+                                                    isNotFinishChoiceMenuMain = false;
+                                                    isNotFinishChoiceAnimal = false;
+                                                    break;
+                                                case "2":case "pingouin":
+                                                    do {
+                                                        Razorbill razorbill = new Razorbill("razorbill"+(Razorbill.getNbRazorbill()+1),(Tools.random(0,2) != 0), Tools.random(20000,30000), Tools.random(80, 120), Tools.random(2,15));
+                                                        Razorbill.setNbRazorbill(Razorbill.getNbRazorbill() + 1);
+                                                        aquarium.add(razorbill);
+                                                        System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un pingouin !"));
+                                                        System.out.println(razorbill.toString());
+                                                        if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
+                                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                                    }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
+                                                    scannerChoiceAnimal.nextLine();
+                                                    isNotFinishChoiceMenuMain = false;
+                                                    isNotFinishChoiceAnimal = false;
+                                                    break;
+                                                case "3":case "poisson":
+                                                    do {
+                                                        RedFish redFish = new RedFish("redfish"+(RedFish.getNbRedfish()+1),(Tools.random(0,2) != 0), Tools.random(15,40), Tools.random(5, 20), Tools.random(2,8));
+                                                        RedFish.setNbRedFish(RedFish.getNbRedfish() + 1);
+                                                        aquarium.add(redFish);
+                                                        System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un poisson (rouge) !"));
+                                                        System.out.println(redFish.toString());
+                                                        if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
+                                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                                    }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
+                                                    scannerChoiceAnimal.nextLine();
+                                                    isNotFinishChoiceMenuMain = false;
+                                                    isNotFinishChoiceAnimal = false;
+                                                    break;
+                                                case "4":case "requin":
+                                                    do {
+                                                        Shark shark = new Shark("shark"+(Shark.getNbShark()+1),(Tools.random(0,2) != 0), Tools.random(400000,2500000), Tools.random(150, 350), Tools.random(2,15));
+                                                        Shark.setNbShark(Shark.getNbShark() + 1);
+                                                        aquarium.add(shark);
+                                                        System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un requin !"));
+                                                        System.out.println(shark.toString());
+                                                        if(aquarium.getHereNbAnimals()!= aquarium.getMaxNbAnimals())
+                                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                                    }while(isPaddockFill && aquarium.getHereNbAnimals()< aquarium.getMaxNbAnimals());
+                                                    scannerChoiceAnimal.nextLine();
+                                                    isNotFinishChoiceMenuMain = false;
+                                                    isNotFinishChoiceAnimal = false;
+                                                    break;
+                                                case "q":case "quit":case "quitter":case "exit":
+                                                    isNotFinishChoiceAnimal = false;
+                                                    scannerChoiceAnimal.nextLine();
+                                                    break;
+                                                default:
+                                                    Tools.notProposedOption();
+                                                    scannerChoiceAnimal.nextLine();
+                                                    break;
+                                            }//switch(choiceAnimal)
+                                        }//while(isNotFinishChoiceAnimal)
+                                    }//if(isPaddockFill)
+                                    scannerChoicePaddock.nextLine();
+                                    break;
+                                case "3":case "volière":case "voliere":
+                                    Aviary aviary = new Aviary("aviary"+(Aviary.getNbAviary()+1),Tools.random(40,500),Tools.random(3,10),"bon",Tools.random(5,20));
+                                    System.out.print(Tools.strColorBlue("\nVous avez \"créer\" une volière !"));
+                                    this.showAllPaddock();
+                                    isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                    if (isPaddockFill) {
+                                        boolean isNotFinishChoiceAnimal = true;
+                                        while(isNotFinishChoiceAnimal){
+                                            isPaddockFill = false;
+                                            System.out.print("\nPour cette voilière, voici les animaux que vous pouvez créer : \n" +
+                                                    "\t1: Aigle\n" +
+                                                    "\tq: QUITTER (CHOIX)\n" +
+                                                    "\nChoix : ");
+                                            String choiceAnimal = scannerChoiceAnimal.next();
+                                            choiceAnimal = choiceAnimal.toLowerCase();
+                                            switch (choiceAnimal) {
+                                                case "1":case "aigle":
+                                                    do {
+                                                        Eagle eagle = new Eagle("eagle"+(Eagle.getNbEagle()+1),(Tools.random(0,2) != 0), Tools.random(10000,25000), Tools.random(80, 120), Tools.random(2,15));
+                                                        Eagle.setNbEagle(Eagle.getNbEagle()+1);
+                                                        aviary.add(eagle);
+                                                        System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un aigle !"));
+                                                        System.out.println(eagle.toString());
+                                                        if(aviary.getHereNbAnimals()!= aviary.getMaxNbAnimals())
+                                                            isPaddockFill = Tools.askPaddockFill(isPaddockFill);
+                                                    } while (isPaddockFill && aviary.getHereNbAnimals()< aviary.getMaxNbAnimals());
+                                                    scannerChoiceAnimal.nextLine();
+                                                    isNotFinishChoiceMenuMain = false;
+                                                    isNotFinishChoiceAnimal = false;
+                                                    break;
+                                                case "q":case "quit":case "quitter":case "exit":
+                                                    scannerChoiceAnimal.nextLine();
+                                                    isNotFinishChoiceAnimal = false;
+                                                    break;
+                                                default:
+                                                    Tools.notProposedOption();
+                                                    scannerChoiceAnimal.nextLine();
+                                                    break;
+                                            }//switch(choiceAnimal)
+                                        }//while(isNotFinishChoiceAnimal)
+                                    }//if(isPaddockFill)
+                                    scannerChoicePaddock.nextLine();
+                                    break;
+                                case "q":case "quit":case "quitter":case "exit":
+                                    isNotFinishChoiceMenuMain = false;
+                                    scannerChoicePaddock.nextLine();
+                                    break;
+                                default:
+                                    Tools.notProposedOption();
+                                    scannerChoicePaddock.nextLine();
+                                    break;
+                            }// switch choicePaddock
+                        }//if(countNbPadock < maxNbPaddock)
+                        else{
+                        Tools.notPossibilityAddPaddock();
+                            isNotFinishChoiceMenuMain = false;}
                         if(!listPaddock.isEmpty())
                             isPaddockCreated = true;
                         if(!totalAnimal.isEmpty())
@@ -553,7 +581,6 @@ public class Zoo {
                         while(isNotFinishChoiceMenuMain){
                             System.out.println("\nVoici les animaux que vous pouvez créer en fonction des enclos disponibles : ");
                             String showAvailabilityAnimal = "";
-                            String showAvailabilityPaddock = "";
                             ArrayList<Paddock> availabilityPaddock = new ArrayList<>();
 
                             for (Paddock p : listPaddock) {
@@ -588,10 +615,10 @@ public class Zoo {
                                         else if(p.getTypeAnimals().equals("Requin")){showAvailabilityAnimal+="7: " + p.getTypeAnimals()+ "\n";isShark=true;availabilityPaddock.add(p);}
                                         else if(p.getTypeAnimals().equals("Poisson rouge")){showAvailabilityAnimal+="8: " + p.getTypeAnimals()+ "\n";isRedFish=true;availabilityPaddock.add(p);}
                                     }
-                                }
+                                }//if (!showAvailabilityAnimal.contains(p.getTypeAnimals()))
                                 else if(p.getHereNbAnimals()<p.getMaxNbAnimals())
                                     availabilityPaddock.add(p);
-                            }
+                            }//for (Paddock p : listPaddock)
                             if(showAvailabilityAnimal.equals(""))
                                 showAvailabilityAnimal = Tools.strColorRed("\tVous ne pouvez pas créer d'animal parce que vos enclos sont remplis au max\n");
                             System.out.print(showAvailabilityAnimal + "\tq: QUITTER (CHOIX)\n\nChoix : ");
@@ -651,9 +678,9 @@ public class Zoo {
                                                             Tools.notProposedOption();
                                                         scannerChoicePaddock.nextLine();
                                                         break;
-                                                }
+                                                }//switch(choicePaddock)
                                             } //while(isNotFinishAddAnimal)
-                                        }
+                                        }//if(isWolf)
                                         else{
                                             Tools.notProposedOption();
                                             isNotFinishAddAnimal = false;
@@ -709,9 +736,9 @@ public class Zoo {
                                                             Tools.notProposedOption();
                                                         scannerChoicePaddock.nextLine();
                                                         break;
-                                                }
+                                                }//switch(choicePaddock)
                                             } //while(isNotFinishAddAnimal)
-                                        }
+                                        }//if(isBear)
                                         else{
                                             Tools.notProposedOption();
                                             isNotFinishAddAnimal = false;
@@ -767,9 +794,9 @@ public class Zoo {
                                                             Tools.notProposedOption();
                                                         scannerChoicePaddock.nextLine();
                                                         break;
-                                                }
+                                                }//switch(choicePaddock)
                                             } //while(isNotFinishAddAnimal)
-                                        }
+                                        }//if(isTiger)
                                         else{
                                             Tools.notProposedOption();
                                             isNotFinishAddAnimal = false;
@@ -825,9 +852,9 @@ public class Zoo {
                                                             Tools.notProposedOption();
                                                         scannerChoicePaddock.nextLine();
                                                         break;
-                                                }
+                                                }//switch(choicePaddock)
                                             } //while(isNotFinishAddAnimal)
-                                        }
+                                        }//if(isEagle)
                                         else{
                                             Tools.notProposedOption();
                                             isNotFinishAddAnimal = false;
@@ -883,9 +910,9 @@ public class Zoo {
                                                             Tools.notProposedOption();
                                                         scannerChoicePaddock.nextLine();
                                                         break;
-                                                }
+                                                }//switch(choicePaddock)
                                             } //while(isNotFinishAddAnimal)
-                                        }
+                                        }//if(isRazorbill)
                                         else{
                                             Tools.notProposedOption();
                                             isNotFinishAddAnimal = false;
@@ -942,9 +969,9 @@ public class Zoo {
                                                             Tools.notProposedOption();
                                                         scannerChoicePaddock.nextLine();
                                                         break;
-                                                }
+                                                }//switch(choicePaddock)
                                             } //while(isNotFinishAddAnimal)
-                                        }
+                                        }//if(isWhale)
                                         else{
                                             Tools.notProposedOption();
                                             isNotFinishAddAnimal = false;
@@ -1000,9 +1027,9 @@ public class Zoo {
                                                             Tools.notProposedOption();
                                                         scannerChoicePaddock.nextLine();
                                                         break;
-                                                }
+                                                }//switch(choicePaddock)
                                             } //while(isNotFinishAddAnimal)
-                                        }
+                                        }//if(isShark)
                                         else{
                                             Tools.notProposedOption();
                                             isNotFinishAddAnimal = false;
@@ -1058,9 +1085,9 @@ public class Zoo {
                                                             Tools.notProposedOption();
                                                         scannerChoicePaddock.nextLine();
                                                         break;
-                                                }
+                                                }//switch(choicePaddock)
                                             } //while(isNotFinishAddAnimal)
-                                        }
+                                        }//if(isRedfish)
                                         else{
                                             Tools.notProposedOption();
                                             isNotFinishAddAnimal = false;
@@ -1076,39 +1103,17 @@ public class Zoo {
                                         isNotFinishAddAnimal = false;
                                         scannerChoiceAnimal.nextLine();
                                         break;
-                                }
+                                }//switch(choiceAnimal)
                             }//while(isNotFinishAddAnimal)
                         }//while(isNotFinishChoiceMenuMain)
-                    }
+                    }//if(isPaddockCreated)
                     else
                         Tools.notProposedOption();
                     if(!totalAnimal.isEmpty()){
-                        isAnimalCreated = true;//while(isNotFinishChoiceMenuMain)
+                        isAnimalCreated = true;
                     }
                     scannerChoiceAction.nextLine();
                     break;
-
-
-
-
-                /*Possibilité pour après : améliorer le case 2 pour le stockage des enclos/aquarium/volière dans une string
-                 et ne plus parcourir la liste des paddock après mais juste faire un string.contains(choice)
-                                                      _ _ _
-                                        |       |    |     |      |
-                                        |       |    |     |      |
-                                        |-------|    |     |      |
-                                        |       |    |     |      |
-                                        |       |    |_ _ _|      .
-
-
-                 */
-
-
-
-
-
-
-
                 case "3":case "gérer":case "gerer":
                     boolean isNotFinishChoiceMenuManagement = true;
                     if(isAnimalCreated) {
@@ -1129,7 +1134,8 @@ public class Zoo {
                                                 "\t\t4: Afficher tous les enclos avec les animaux qu'ils contiennent\n" +
                                                 "\t\t5: Afficher un enclos en particulier, avec les animaux qu'il contient\n" +
                                                 "\t\t6: Afficher le nombre total d'animaux présents dans le zoo\n" +
-                                                "\t\t7: Afficher les noms de tous les animaux présents dans le zoo\n" +
+                                                "\t\t7: Afficher le nombre total d'enclos présents dans le zoo\n" +
+                                                "\t\t8: Afficher les noms de tous les animaux présents dans le zoo\n" +
                                                 "\tq: QUITTER (MODE GESTION)\n" +
                                                 "\nChoix : ");
 
@@ -1216,7 +1222,7 @@ public class Zoo {
                                                     Tools.notProposedOption();
                                                 scannerChoiceHeal.nextLine();
                                                 break;
-                                        }
+                                        }//switch(choiceheal)
                                     } //while (isNotFinishChoiceActionManagementHeal)
                                     scannerChoiceActionManagement.nextLine();
                                     break;
@@ -1274,13 +1280,13 @@ public class Zoo {
                                                             }
                                                         }
                                                         scannerChoiceRestockQuantity.nextLine();
-                                                    }
-                                                }
+                                                    }//while (isNotFinishChoiceActionManagementRestockQuantity)
+                                                }//if(paddockToRestockFood.contains(choiceRestock))
                                                 else
                                                     Tools.notProposedOption();
                                                 scannerChoiceRestock.nextLine();
                                                 break;
-                                        }
+                                        }//switch(choiceRestock)
                                     } //while (isNotFinishChoiceActionManagementHeal)
                                     scannerChoiceActionManagement.nextLine();
                                     break;
@@ -1332,6 +1338,10 @@ public class Zoo {
                                     scannerChoiceActionManagement.nextLine();
                                     break;
                                 case "7":
+                                    this.showNbPaddock();
+                                    scannerChoiceActionManagement.nextLine();
+                                    break;
+                                case "8":
                                     this.showTotalAnimal();
                                     scannerChoiceActionManagement.nextLine();
                                     break;
@@ -1344,7 +1354,7 @@ public class Zoo {
                                     break;
                             } // switch choiceActionManagement
                         } // while(isNotFinishChoiceMenuManagement)
-                    }
+                    }//if(isAnimalCreated)
                     else
                         Tools.notProposedOption();
                     break;
