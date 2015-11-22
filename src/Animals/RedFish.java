@@ -12,6 +12,7 @@ import Tools.Tools;
  *  @see Species.Fish
  */
 public class RedFish extends Fish implements ISwim {
+
     /**
      * Le nombre de poissons rouges présents dans l'application.
      */

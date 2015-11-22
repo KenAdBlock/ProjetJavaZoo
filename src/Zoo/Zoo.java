@@ -1,9 +1,11 @@
 package Zoo;
 
-import Animals.*;
-import Employee.Employee;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Animals.*;
+import Employee.Employee;
+
 import Paddock.Paddock;
 import Paddock.Aquarium;
 import Paddock.Aviary;
@@ -11,40 +13,101 @@ import Species.Animal;
 import Tools.Tools;
 
 /**
- * Created by Darkweizer on 15/11/2015.
+ * Zoo est la classe représentant le zoo (unique) soit l'application.
+ * Son unicité fait d'elle un singleton.
+ *
+ * @author Charles-Henri CARLIER et Kenny COADALEN
  */
 public class Zoo {
 
+    /**
+     * Le nom du zoo
+     */
     private String name;
+
+    /**
+     * Le nom de l'employé.
+     */
     private Employee employee;
+
+    /**
+     * Le nombre maximum d'enclos que peut contenir le zoo.
+     */
     private int maxNbPaddock;
+
+    /**
+     * La liste de tous les enclos du zoo.
+     */
     private static ArrayList<Paddock> listPaddock = new ArrayList<>();
+
+    /**
+     * La liste de tous les animaux (de tous les enclos) du zoo.
+     */
     private static ArrayList<ArrayList<Animal>> totalAnimal = new ArrayList<>();
 
-    private Zoo(String name, Employee employee, int maxNbPaddock) {
-        this.name = name;
-        this.employee = employee;
-        this.maxNbPaddock = maxNbPaddock;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    private static Zoo INSTANCE = new Zoo("Ho Land", Employee.getINSTANCE(), 10);
-
-    public static Zoo getINSTANCE() {
-        return INSTANCE;
-    }
-
+    /**
+     * Retourne la liste de tous les enclos du zoo.
+     *
+     * @return Une liste d'enclos.
+     */
     public static ArrayList<Paddock> getListPaddock() {
         return listPaddock;
     }
 
+    /**
+     * Retourne la liste de tous les animaux (de tous les enclos) du zoo.
+     *
+     * @return Une liste de liste d'animaux.
+     */
     public static ArrayList<ArrayList<Animal>> getTotalAnimal() {
         return totalAnimal;
     }
 
+    /**
+     * Instance unique d'un zoo.
+     */
+    private static Zoo INSTANCE = null;
+
+    /**
+     * Le constructeur de la classe Zoo.
+     * Il permet de créer une et une seule instance de cette classe.
+     *
+     * @param name
+     *          Le nom du zoo.
+     * @param employee
+     *          Le nom de l'employé.
+     * @param maxNbPaddock
+     *          Le nombre maximum d'enclos que peut contenir le zoo.
+     */
+    private Zoo(String name, Employee employee, int maxNbPaddock) {
+        this.name = name;
+        this.employee = employee;
+        this.maxNbPaddock = maxNbPaddock;
+    } // Constructor
+
+    /**
+     * Retourne l'instance unique du zoo.
+     *
+     * @return L'instance du zoo (unique).
+     */
+    public static synchronized Zoo getINSTANCE() {
+        if (INSTANCE == null)
+            INSTANCE = new Zoo("Ho Land", Employee.getINSTANCE(), 10);
+        return INSTANCE;
+    } // getINSTANCE()
+
+    /**
+     * Retourne le nom du zoo.
+     *
+     * @return Le nom du zoo.
+     */
+    public String getName() {
+        return name;
+    } // getName()
+
+    /**
+     * Affiche en console le nombre total d'animaux présents dans le zoo.
+     */
     public void showNbTotalAnimal(){
         int cpt = 0;
         if(totalAnimal.isEmpty())
@@ -56,9 +119,12 @@ public class Zoo {
                 }
             }
         }
-        System.out.println("Le nombre d'animal présent dans le zoo est de " + cpt + " animaux");
-    }
+        System.out.println("Le nombre d'animaux présents dans le zoo est de " + cpt + " animaux");
+    } // showNbTotalAnimal()
 
+    /**
+     * Affiche en console le nom de tous les animaux présents dans le zoo.
+     */
     public void showTotalAnimal(){
         if(totalAnimal.isEmpty())
             System.out.println("\tIl n'y a pas d'animal dans le zoo !");
@@ -76,15 +142,24 @@ public class Zoo {
                 }
             }
         }
-    }
+    } // showTotalAnimal()
 
+    /**
+     * Affiche en console le détail de tous les enclos ainsi que tous les animaux les contenant.
+     */
     public void showAllPaddock(){
         System.out.println("\nListe de tous les enclos, avec les animaux présents à l'intérieur : ");
         for(Paddock p : listPaddock){
             System.out.println("\t" + p.toString());
         }
-    }
+    } // showAllPaddock()
 
+    /**
+     * Thread permettant de rendre la simulation plus ludique, en générant de l'aléatoire.
+     * Ce thread est "actif" toutes les une à cinq secondes.
+     * Lorsqu'il l'est, il va retirer entre 0 et 20 "points" soit de l'indicateur de faim soit de celui de santé.
+     * Cela permet entre autre à l'utilisateur d'intérargir avec le zoo et ses animaux.
+     */
     private void threadDecrementation(){
         new Thread(new Thread() {
             @Override
@@ -95,9 +170,9 @@ public class Zoo {
                         Animal animal = animalArrayList.get(Tools.random(0, animalArrayList.size()));
                         boolean random = (Tools.random(0,2) != 0);
                         if (random)
-                            animal.setHungerIndicator(animal.getHungerIndicator() - Tools.random(Tools.random(1, 11), Tools.random(11, 21)));
+                            animal.setHungerIndicator(animal.getHungerIndicator() - Tools.random(0, 21));
                         else
-                            animal.setHealthIndicator(animal.getHealthIndicator() - Tools.random(Tools.random(1, 11), Tools.random(11, 21)));
+                            animal.setHealthIndicator(animal.getHealthIndicator() - Tools.random(0, 21));
                         sleep(Tools.random(1000, 5001));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -105,10 +180,12 @@ public class Zoo {
                 }
             }
         }).start();
-    }
+    } // threadDecrementation()
 
+    /**
+     * Méthode appellée par la classe Main. Point d'entrée de l'application.
+     */
     public void run() {
-
         Scanner scannerChoiceAction = new Scanner(System.in);
         Scanner scannerChoiceAnimal = new Scanner(System.in);
         Scanner scannerChoicePaddock = new Scanner(System.in);
@@ -1220,4 +1297,4 @@ public class Zoo {
             } // switch choiceAction
         } // while (true)
     } // run()
-}
+} // class Zoo

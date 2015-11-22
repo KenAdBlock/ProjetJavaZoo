@@ -12,6 +12,7 @@ import Tools.Tools;
  *  @see Species.Mammal
  */
 public class Wolf extends Mammal implements IWander {
+
     /**
      * Le nombre de loups présents dans l'application.
      */

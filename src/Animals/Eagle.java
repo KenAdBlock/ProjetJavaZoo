@@ -12,6 +12,7 @@ import Tools.Tools;
  *  @see Species.Bird
  */
 public class Eagle extends Bird implements IFly {
+
     /**
      * Le nombre d'aigles présents dans l'application.
      */
