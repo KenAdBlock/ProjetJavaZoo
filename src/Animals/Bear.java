@@ -62,7 +62,7 @@ public class Bear extends Mammal {
     /**
      * Retourne une string représentant "textuellement" les caractéristiques de l'ours.
      *
-     * @return Une string.
+     * @return Une string, représentant les caractéristiques de l'ours.
      */
     @Override
     public String toString() {
