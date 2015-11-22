@@ -64,6 +64,11 @@ public class Zoo {
     }
 
     /**
+     * Instance unique d'un zoo.
+     */
+    private static Zoo INSTANCE = null;
+
+    /**
      * Le constructeur de la classe Zoo.
      * Il permet de créer une et une seule instance de cette classe.
      *
@@ -81,30 +86,27 @@ public class Zoo {
     } // Constructor
 
     /**
+     * Retourne l'instance unique du zoo.
      *
+     * @return L'instance du zoo (unique).
      */
-    private static Zoo INSTANCE = new Zoo("Ho Land", Employee.getINSTANCE(), 10);
-
-    /**
-     *
-     *
-     * @return
-     */
-    public static Zoo getINSTANCE() {
+    public static synchronized Zoo getINSTANCE() {
+        if (INSTANCE == null)
+            INSTANCE = new Zoo("Ho Land", Employee.getINSTANCE(), 10);
         return INSTANCE;
     } // getINSTANCE()
 
     /**
+     * Retourne le nom du zoo.
      *
-     *
-     * @return
+     * @return Le nom du zoo.
      */
     public String getName() {
         return name;
     } // getName()
 
     /**
-     *
+     * Affiche en console le nombre total d'animaux présents dans le zoo.
      */
     public void showNbTotalAnimal(){
         int cpt = 0;
@@ -117,11 +119,11 @@ public class Zoo {
                 }
             }
         }
-        System.out.println("Le nombre d'animal présent dans le zoo est de " + cpt + " animaux");
+        System.out.println("Le nombre d'animaux présents dans le zoo est de " + cpt + " animaux");
     } // showNbTotalAnimal()
 
     /**
-     *
+     * Affiche en console le nom de tous les animaux présents dans le zoo.
      */
     public void showTotalAnimal(){
         if(totalAnimal.isEmpty())
@@ -143,7 +145,7 @@ public class Zoo {
     } // showTotalAnimal()
 
     /**
-     *
+     * Affiche en console le détail de tous les enclos ainsi que tous les animaux les contenant.
      */
     public void showAllPaddock(){
         System.out.println("\nListe de tous les enclos, avec les animaux présents à l'intérieur : ");
@@ -153,7 +155,10 @@ public class Zoo {
     } // showAllPaddock()
 
     /**
-     *
+     * Thread permettant de rendre la simulation plus ludique, en générant de l'aléatoire.
+     * Ce thread est "actif" toutes les une à cinq secondes.
+     * Lorsqu'il l'est, il va retirer entre 0 et 20 "points" soit de l'indicateur de faim soit de celui de santé.
+     * Cela permet entre autre à l'utilisateur d'intérargir avec le zoo et ses animaux.
      */
     private void threadDecrementation(){
         new Thread(new Thread() {
@@ -165,9 +170,9 @@ public class Zoo {
                         Animal animal = animalArrayList.get(Tools.random(0, animalArrayList.size()));
                         boolean random = (Tools.random(0,2) != 0);
                         if (random)
-                            animal.setHungerIndicator(animal.getHungerIndicator() - Tools.random(Tools.random(0, 11), Tools.random(11, 21)));
+                            animal.setHungerIndicator(animal.getHungerIndicator() - Tools.random(0, 21));
                         else
-                            animal.setHealthIndicator(animal.getHealthIndicator() - Tools.random(Tools.random(1, 11), Tools.random(11, 21)));
+                            animal.setHealthIndicator(animal.getHealthIndicator() - Tools.random(0, 21));
                         sleep(Tools.random(1000, 5001));
                     } catch (InterruptedException e) {
                         e.printStackTrace();

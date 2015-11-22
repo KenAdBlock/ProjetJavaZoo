@@ -28,6 +28,11 @@ public class Employee {
     private int age;
 
     /**
+     * Instance unique d'un employé.
+     */
+    private static Employee INSTANCE = null;
+
+    /**
      * Le constructeur de la classe Employé.
      * Il permet de créer une et une seule instance de cette classe.
      *
@@ -45,43 +50,45 @@ public class Employee {
     } // Constructor
 
     /**
+     * Retourne l'instance unique de l'employé.
      *
+     * @return L'instance de l'employé (unique).
      */
-    private static Employee INSTANCE = new Employee("Gerard",true,58);
-
-    /**
-     *
-     *
-     * @return
-     */
-    public static Employee getINSTANCE() {
+    public static synchronized Employee getINSTANCE() {
+        if (INSTANCE == null)
+            INSTANCE = new Employee("Gerard", true, 58);
         return INSTANCE;
     } // getINSTANCE()
 
     /**
-     *
+     * Permet a l'employé d'éxaminer un enclos.
      *
      * @param paddock
-     * @return
+     *          L'enclos à éxaminer.
+     *
+     * @return Une chaîne de caractère, contenant les caractéristiques d'un enclos.
      */
     public String examine(Paddock paddock){
         return paddock.toString();
     } // examine()
 
     /**
-     *
+     * Permet à l'employé de nettoyer un enclos.
      *
      * @param paddock
+     *          L'enclos dans lequel nettoyer.
      */
     public void keeUp(Paddock paddock){
         paddock.keepUp();
     } // keeUp()
 
     /**
-     *
+     * Permet à l'employé de réapprovisionner un enclos en nourriture.
      *
      * @param paddock
+     *          L'enclos à réapprovisionner.
      * @param food
+     *          La quantité de nourriture à réapprovisionner.
      */
     public void restockFood(Paddock paddock, int food){
         if(food > paddock.getMaxQuantityFood()+1){
@@ -97,9 +104,10 @@ public class Employee {
     } // restockFood()
 
     /**
-     *
+     * Permet à l'employé de soigner un animal.
      *
      * @param animal
+     *          L'animal à soigner.
      */
     public void heal(Animal animal){
         animal.beHealed();
@@ -107,12 +115,14 @@ public class Employee {
     } // heal()
 
     /**
+     * Permet à l'employé de déplacer un animal d'un enclos à un autre.
      *
-     * 
      * @param paddockOut
+     *          L'enclos de destination du déplacement.
      * @param animal
+     *          L'animal à déplacer.
      */
     public void moveAnimal(Paddock paddockOut, Animal animal){
         paddockOut.move(animal);
     } // moveAnimal()
-} // class Employe
+} // class Employee
