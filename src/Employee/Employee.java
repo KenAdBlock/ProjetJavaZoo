@@ -19,7 +19,7 @@ public class Employee {
         this.age = age;
     }
 
-    private static Employee INSTANCE = new Employee("Gerard",true,58);
+    private static Employee INSTANCE = new Employee("Gérard",true,58);
 
     public static Employee getINSTANCE() {
         return INSTANCE;
@@ -31,6 +31,10 @@ public class Employee {
 
     public void keeUp(Paddock paddock){
         paddock.keepUp();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void restockFood(Paddock paddock, int food){

@@ -1,5 +1,6 @@
 package Paddock;
 
+import Employee.Employee;
 import Species.Animal;
 import Tools.Tools;
 import java.util.ArrayList;
@@ -31,7 +32,8 @@ public class Paddock {
         Zoo.getListPaddock().add(this);
         Tools.map1.put(this.name, this);
         nbPaddock+=1;
-    }// Constructor
+    }
+    public Paddock(){}// Constructor
 
 
     public void setName(String name) {
@@ -120,10 +122,10 @@ public class Paddock {
 
     public void add(Animal type){
         try {
-            if (type.getTypeAnimal().equals("autre") || isGoodType) {
+            //if (type.getTypeAnimal().equals("autre") || isGoodType) {
 
                 if (hereNbAnimals < maxNbAnimals) {
-                    if (animalPresent.isEmpty() || (animalPresent.get(0)).getClass().getName() == type.getClass().getName()) {
+                    if (animalPresent.isEmpty() || (animalPresent.get(0)).getClass().getName().equals(type.getClass().getName())) {
                         animalPresent.add(type);
                         typeAnimals = Tools.hashTypeAnimal(type.getClass().getName().substring(8));
                         type.setPaddock(this);
@@ -138,64 +140,66 @@ public class Paddock {
                     }// l'animal à ajouter n'est pas du même type que les animaux déjà présent
                 } else
                     System.out.println("Enclos plein, vous ne pouvez pas ajouter plus d'animaux ici");
-            }
+            /*}
             else
-                System.out.println(type.getName() + " ne peut pas entrer dans " + this.getName());
+                System.out.println(type.getName() + " ne peut pas entrer dans " + this.getName());*/
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public void move(Animal type){
-        try{
-            if(animalPresent.isEmpty()) {
-                System.out.println("Il n'y a pas d'animal dans cette enclos\n");
-            }// pas d'animal présent donc il n'est pas retiré
-            else if(animalPresent.contains(type)) {
-                animalPresent.remove(animalPresent.indexOf(type));
-                hereNbAnimals--;
-                if (hereNbAnimals == 0)
-                    typeAnimals = "pas d'animal présent";
-                System.out.println("Dans quel enclos voulez-vous transferer " + type.getName() + " parmis : ");
-                int cpt = 0;
-                for(Paddock p : Zoo.getListPaddock()){
-                    if (p.getName() != this.getName()){
-                        System.out.print(p.getName() + " ");
-                        cpt++;
-                        if (cpt == 5) {
-                            System.out.println("");
-                            cpt = 0;
-                        }
+    public void move(Animal animal){
+        Scanner scannerChoiceMoveAnimalPaddock = new Scanner(System.in);
+        boolean isNotFinishChoiceActionManagementMoveAnimal = true;
+        while (isNotFinishChoiceActionManagementMoveAnimal) {
+            System.out.println("\nParmis les enclos suivants, dans lequel voulez-vous déplacer " + animal.getName() + " ?");
+            int cpt = 0;
+            System.out.print("\t");
+            String paddockToMoveAnimal = "";
+            for(Paddock p : Zoo.getListPaddock()){
+                if (!p.getName().equals(this.getName()) && ((p.getTypeAnimals().equals(animal.getTypeAnimal()) && p.getHereNbAnimals()<p.getMaxNbAnimals() ) || (p.getTypeAnimals().equals("pas d'animal présent") && animal.getPaddock().getName().substring(0,5).equals(p.getName().substring(0,5))))){
+                    paddockToMoveAnimal += p.getName() + " ";
+                    cpt++;
+                    if (cpt == 5) {
+                        paddockToMoveAnimal += "\n\t";
+                        cpt = 0;
                     }
                 }
-                System.out.println("?");
-                Scanner in = new Scanner(System.in);
-                String PaddockChoice = "";
-                boolean b = true;
-                while(b) {
-                    PaddockChoice = in.next();
-                    PaddockChoice = PaddockChoice.toLowerCase();
-                    for (Paddock p : Zoo.getListPaddock()){
-                        if(p.getName().equals(PaddockChoice))
-                            b = false;
-                    }
-                }
-                Paddock p = Tools.hashPaddock(PaddockChoice);
-                p.add(type);
-                System.out.println(type.getName() + " à bien été retiré de " + this.getName() + " pour être mis dans " + PaddockChoice +"\n");
+            }
+            if(paddockToMoveAnimal.equals(""))
+                paddockToMoveAnimal = "Pas d'enclos disponible pour le changement !";
+            System.out.print(paddockToMoveAnimal +
+                            "\n\tq: QUITTER (CHOIX)\n" +
+                            "\nChoix : ");
+            String choiceMoveAnimalPaddock = scannerChoiceMoveAnimalPaddock.next();
+            choiceMoveAnimalPaddock = choiceMoveAnimalPaddock.toLowerCase();
+            switch (choiceMoveAnimalPaddock) {
+                case "q":case "quit":case "quitter":case "exit":
+                    isNotFinishChoiceActionManagementMoveAnimal = false;
+                    scannerChoiceMoveAnimalPaddock.nextLine();
+                    break;
+                default:
+                    if (paddockToMoveAnimal.contains(choiceMoveAnimalPaddock)) {
+                        animalPresent.remove(animalPresent.indexOf(animal));
+                        hereNbAnimals--;
+                        if(hereNbAnimals == 0)
+                            typeAnimals = "pas d'animal présent";
+                        Paddock paddock = Tools.hashPaddock(choiceMoveAnimalPaddock);
+                        paddock.add(animal);
+                        animal.setPaddock(paddock);
+                        isNotFinishChoiceActionManagementMoveAnimal = false;
 
-            }// il est présent et est retiré
-            else if(animalPresent.get(0).getClass().getName() != type.getClass().getName()){
-                System.out.println(type.getName() + " ne peut être dans cette enclos car il contient des " + typeAnimals + " et non des " + Tools.hashTypeAnimal(type.getClass().getName().substring(8)) + "\n");
-            }// le type d'animal à retiré n'est pas le même que ceux déjà présent donc il n'est pas retiré
-            else{
-                System.out.println(type.getName() + " n'est pas dans cette enclos" + "\n");
-            }// l'animal n'est pas dans cette enclos donc il n'est pas retiré
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+                        System.out.println(Tools.strColorBlue("\nL'employé " + Employee.getINSTANCE().getName() + " a bien retiré " + animal.getName() + " de " + name + " pour le mettre dans " + paddock.getName()));
+
+                    }
+                    else
+                        Tools.notProposedOption();
+                    scannerChoiceMoveAnimalPaddock.nextLine();
+                    break;
+                }//switch(choiceMoveAnimalPaddock)
+            }//while(isNotFinishChoiceActionManagementMoveAnimal)
+        //return false;
     }// move()
 
     public void restockFood(int food){
