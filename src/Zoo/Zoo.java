@@ -1057,8 +1057,9 @@ public class Zoo {
                                                 "\t\t3: Réapprovisionner un enclos en nourriture\n" +
                                                 "\tInformations sur le zoo\n" +
                                                 "\t\t4: Afficher tout les enclos avec les animaux qu'ils contiennent\n" +
-                                                "\t\t5: Afficher le nombre total d'animaux présent dans le zoo\n" +
-                                                "\t\t6: Afficher les noms de tout les animaux présent dans le zoo\n" +
+                                                "\t\t5: Afficher un enclos en particulier avec les animaux qu'il contient\n" +
+                                                "\t\t6: Afficher le nombre total d'animaux présent dans le zoo\n" +
+                                                "\t\t7: Afficher les noms de tout les animaux présent dans le zoo\n" +
                                                 "\tq: QUITTER (MODE GESTION)\n" +
                                                 "\nChoix : ");
 
@@ -1095,55 +1096,8 @@ public class Zoo {
                                             default:
                                                 if(animalToMove.contains(choiceMoveAnimal)) {
                                                     Animal animal = Tools.hashAnimal(choiceMoveAnimal);
-
                                                     System.out.println(animal.getPaddock().getName());
-                                                    /*isNotFinishChoiceActionManagementMove = */employee.moveAnimal(animal.getPaddock(),animal);
-                                                        //animal.getPaddock().move(animal);
-                                                        /*System.out.print("\nParmis les enclos suivants, dans lequel voulez-vous le déplacer ?" );
-                                                        cpt = 0;
-                                                        System.out.print("\t");
-                                                        String paddockToMoveAnimal = "";
-                                                        for (Paddock p : listPaddock) {
-                                                            if( (p.getTypeAnimals().equals(animal.getTypeAnimal()) && p.getHereNbAnimals()<p.getMaxNbAnimals() ) || (p.getTypeAnimals().equals("pas d'animal présent") && animal.getPaddock().getName().substring(0,5).equals(p.getName().substring(0,5)))) {
-                                                                paddockToMoveAnimal += p.getName() + " ";
-                                                                ++cpt;
-                                                            }
-                                                            if (cpt == 5) {
-                                                                cpt = 0;
-                                                                System.out.println("\t");
-                                                            }
-                                                        }
-                                                        if(paddockToMoveAnimal.equals(""))
-                                                            paddockToMoveAnimal = "Pas d'enclos disponible pour le changement !";
-                                                        System.out.print(paddockToMoveAnimal +
-                                                                        "\n\tq: QUITTER (CHOIX)\n" +
-                                                                        "\nChoix : ");
-                                                        String choiceMoveAnimalPaddock = scannerChoiceMoveAnimalPaddock.next();
-                                                        choiceMoveAnimalPaddock = choiceMoveAnimalPaddock.toLowerCase();
-                                                        switch (choiceMoveAnimalPaddock) {
-                                                            case "q":case "quit":case "quitter":case "exit":
-                                                                isNotFinishChoiceActionManagementMoveAnimal = false;
-                                                                isNotFinishChoiceActionManagementMove = false;
-                                                                break;
-                                                            default:
-                                                                if(paddockToMoveAnimal.contains(choiceMoveAnimalPaddock)) {
-                                                                    boolean isNotFinishChoiceActionManagementMoveAnimalPaddock = true;
-                                                                    Paddock paddock = Tools.hashPaddock(choiceMoveAnimalPaddock);
-                                                                    while (isNotFinishChoiceActionManagementMoveAnimalPaddock) {
-                                                                        employee.moveAnimal(paddock,animal);
-                                                                        System.out.println(Tools.strColorBlue("L'animal a bien été déplacé."));
-
-                                                                        isNotFinishChoiceActionManagementMoveAnimalPaddock = false;
-                                                                        isNotFinishChoiceActionManagementMoveAnimal = false;
-                                                                        isNotFinishChoiceActionManagementMove = false;
-                                                                    }
-                                                                }
-                                                                else
-                                                                    Tools.notProposedOption();
-                                                                scannerChoiceMoveAnimalPaddock.nextLine();
-                                                                break;
-                                                        }*/
-                                                    //} // while (isNotFinishChoiceActionManagementMoveAnimal)
+                                                    employee.moveAnimal(animal.getPaddock(),animal);
                                                 }
                                                 else
                                                     Tools.notProposedOption();
@@ -1266,10 +1220,49 @@ public class Zoo {
                                     scannerChoiceActionManagement.nextLine();
                                     break;
                                 case "5":
-                                    this.showNbTotalAnimal();
+                                    boolean isNotFinishChoicePaddockInfo = true;
+                                    while (isNotFinishChoicePaddockInfo) {
+                                        System.out.println("\nParmis les enclos suivants, pour lequel voulez-vous connaitre ses informations ?");
+                                        int cpt = 0;
+                                        System.out.print("\t");
+                                        String paddockInfo = "";
+                                        for (Paddock p : listPaddock) {
+                                            paddockInfo += p.getName() + " ";
+                                            ++cpt;
+                                            if (cpt == 5) {
+                                                cpt = 0;
+                                                paddockInfo += "\n\t";
+                                            }
+                                        }
+                                        System.out.print(paddockInfo +
+                                                "\n\tq: QUITTER (CHOIX)\n" +
+                                                "\nChoix : ");
+
+                                        String choicePaddockInfo = scannerChoiceRestock.next();
+                                        choicePaddockInfo = choicePaddockInfo.toLowerCase();
+                                        switch (choicePaddockInfo) {
+                                            case "q":case "quit":case "quitter":case "exit":
+                                                isNotFinishChoicePaddockInfo = false;
+                                                break;
+                                            default:
+                                                if(paddockInfo.contains(choicePaddockInfo)){
+                                                    Paddock paddock = Tools.hashPaddock(choicePaddockInfo);
+                                                    System.out.println("\n" + employee.examine(paddock));
+                                                    isNotFinishChoicePaddockInfo = false;
+                                                }
+                                                else
+                                                    Tools.notProposedOption();
+                                                scannerChoiceRestock.nextLine();
+                                                break;
+                                        }//switch(choicePaddockInfo)
+                                    }//while(isNotFinishChoicePaddockInfo)
                                     scannerChoiceActionManagement.nextLine();
                                     break;
                                 case "6":
+                                    this.showNbTotalAnimal();
+                                    scannerChoiceActionManagement.nextLine();
+                                    break;
+                                case "7":
                                     this.showTotalAnimal();
                                     scannerChoiceActionManagement.nextLine();
                                     break;

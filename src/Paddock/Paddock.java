@@ -122,7 +122,7 @@ public class Paddock {
 
     public void add(Animal type){
         try {
-            //if (type.getTypeAnimal().equals("autre") || isGoodType) {
+            if (type.getTypeAnimal().equals("autre") || isGoodType) {
 
                 if (hereNbAnimals < maxNbAnimals) {
                     if (animalPresent.isEmpty() || (animalPresent.get(0)).getClass().getName().equals(type.getClass().getName())) {
@@ -140,9 +140,9 @@ public class Paddock {
                     }// l'animal à ajouter n'est pas du même type que les animaux déjà présent
                 } else
                     System.out.println("Enclos plein, vous ne pouvez pas ajouter plus d'animaux ici");
-            /*}
+            }
             else
-                System.out.println(type.getName() + " ne peut pas entrer dans " + this.getName());*/
+                System.out.println(type.getName() + " ne peut pas entrer dans " + this.getName());
         }
         catch (Exception e){
             e.printStackTrace();
