@@ -2,6 +2,8 @@ package Tools;
 
 import Paddock.Paddock;
 import java.util.*;
+
+import Species.Animal;
 import Zoo.Zoo;
 
 /**
@@ -9,6 +11,8 @@ import Zoo.Zoo;
  */
 public class Tools {
     public static Map<String, Paddock> map1 = new WeakHashMap<>();
+
+    public static Map<String, Animal> map3 = new WeakHashMap<>();
 
     private static String colorReset = "\033[0m";
     private static final Map<String, String> map2 = new HashMap<String, String>() {{
@@ -22,14 +26,18 @@ public class Tools {
         put("Wolf","Loup");
     }};
 
-    public static int random(int min, int max) {
+    public static synchronized int random(int min, int max) {
         Random r = new Random();
         return (min + r.nextInt(max - min));
     } // random()
 
-    public static Paddock hashPaddock(String str){
+    public static synchronized Paddock hashPaddock(String str){
         return map1.get(str);
     } // hashPaddock()
+
+    public static Animal hashAnimal(String str){
+        return map3.get(str);
+    }
 
     public static String hashTypeAnimal(String str){
         return map2.get(str);

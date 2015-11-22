@@ -83,6 +83,14 @@ public class Employee {
     } // keeUp()
 
     /**
+     * Permet de récupérer le nom de l'employé.
+     */
+    public String getName() {
+        return name;
+    } // getName()
+
+
+    /**
      * Permet à l'employé de réapprovisionner un enclos en nourriture.
      *
      * @param paddock

@@ -26,7 +26,10 @@ public abstract class Animal {
         this.weight = weight;
         this.height = height;
         this.age = age;
-    } // Constructor
+        Tools.map3.put(this.name, this);
+    }
+
+    protected Animal(){}// Constructor
 
     public void setPaddock(Paddock paddock) {
         this.paddock = paddock;
