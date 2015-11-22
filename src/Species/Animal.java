@@ -88,8 +88,8 @@ public abstract class Animal {
         this.weight = weight;
         this.height = height;
         this.age = age;
-        Tools.map3.put(this.name, this);
-    } // Constructor
+        Tools.mapAnimal.put(this.name, this);
+    }// Constructor
 
     /**
      * Modifie l'enclos de l'animal afin que ce dernier se retrouve dans le nouvel enclos mis en paramètre.

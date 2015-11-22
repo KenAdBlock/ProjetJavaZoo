@@ -37,6 +37,7 @@ public class Tiger extends Mammal implements IWander {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "autre";
+        Tools.mapTiger.put(this.getName(),this);
         beAlive();
     } //Constructor
 
@@ -154,18 +155,23 @@ public class Tiger extends Mammal implements IWander {
             int randomNbChild = Tools.random(4, 8);
 
             Tiger t ;
-            if(this.isSex())
+            Tiger t1;
+            if(this.isSex()) {
                 t = tiger;
-            else
+                t1 = this;
+            }
+            else {
                 t = this;
+                t1 = tiger;
+            }
             if(random < 1){
                 unborn(t,randomNbChild);
             }
+            else if(t == t1)
+                ;
             else
-                System.out.println("\nLa reproduction n'a donné aucun bébé");
+                System.out.println(Tools.strColorBlue("\nLa reproduction entre " + t.getName() + "(femele) et " + t1.getName() + "(mâle) n'a donné aucun bébé."));
         }
-        else
-            System.out.println("\nCe sont des tigres du même sexe ! Petit coquin");
     } // reproduction()
 
     /**

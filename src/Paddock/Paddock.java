@@ -98,9 +98,10 @@ public class Paddock {
         this.maxNbAnimals = maxNbAnimals;
         this.cleanliness = cleanliness;
         Zoo.getListPaddock().add(this);
-        Tools.map1.put(this.name, this);
+        Tools.mapPaddock.put(this.name, this);
         nbPaddock+=1;
     } // Constructor
+
 
     /**
      * Modifie le nom de l'enclos par le nouveau mis en paramètre.

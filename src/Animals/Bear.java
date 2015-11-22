@@ -36,6 +36,7 @@ public class Bear extends Mammal {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301); // 1000 ms égale 1 jour en vrai
         typeAnimal = "autre";
+        Tools.mapBear.put(this.getName(),this);
         beAlive();
     } // Constructor
 
@@ -145,19 +146,23 @@ public class Bear extends Mammal {
             int randomNbChild = Tools.random(4, 8);
 
             Bear b ;
-            if(this.isSex())
+            Bear b1;
+            if(this.isSex()){
                 b = bear;
-            else
+                b1 = this;
+            }
+            else{
                 b = this;
+                b1 = bear;
+            }
             if(random < 1){
                 System.out.println("ça a marché");
                 unborn(b,randomNbChild);
             }
+            else if(b == b1)
+                ;
             else
-                System.out.println("\nLa reproduction n'a donné aucun bébé");
-        }
-        else
-            System.out.println("\nCe sont des loups du même sexe ! Petit coquin");
+                System.out.println(Tools.strColorBlue("\nLa reproduction entre " + b.getName() + "(femele) et " + b1.getName() + "(mâle) n'a donné aucun bébé."));        }
     } // reproduction()
 
     /**

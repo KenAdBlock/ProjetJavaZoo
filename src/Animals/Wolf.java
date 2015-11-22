@@ -37,6 +37,7 @@ public class Wolf extends Mammal implements IWander {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "autre";
+        Tools.mapWolf.put(this.getName(),this);
         beAlive();
     } //Constructor
 
@@ -154,19 +155,24 @@ public class Wolf extends Mammal implements IWander {
             int randomNbChild = Tools.random(4, 8);
 
             Wolf w ;
-            if(this.isSex())
+            Wolf w1;
+            if(this.isSex()){
                 w = wolf;
-            else
+                w1 = this;
+            }
+            else {
                 w = this;
+                w1 = wolf;
+            }
             if(random < 1){
                 unborn(w,randomNbChild);
             }
+            else if(w == w1)
+                ;
             else
-                System.out.println("\nLa reproduction n'a donné aucun bébé");
+                System.out.println(Tools.strColorBlue("\nLa reproduction entre " + w.getName() + "(femele) et " + w1.getName() + "(mâle) n'a donné aucun bébé."));
         }
-        else
-            System.out.println("\nCe sont des loups du même sexe ! Petit coquin");
-    } // reproduction()
+    }// reproduction()
 
     /**
      * Simule le temps de gestation d'un loup.

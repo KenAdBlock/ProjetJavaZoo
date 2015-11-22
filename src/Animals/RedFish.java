@@ -37,6 +37,7 @@ public class RedFish extends Fish implements ISwim {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "nageant";
+        Tools.mapRedFish.put(this.getName(),this);
         beAlive();
     } //Constructor
 
@@ -154,18 +155,23 @@ public class RedFish extends Fish implements ISwim {
             int randomNbChild = Tools.random(4, 8);
 
             RedFish r ;
-            if(this.isSex())
+            RedFish r1;
+            if(this.isSex()) {
                 r = redFish;
-            else
+                r1 = this;
+            }
+            else {
                 r = this;
+                r1 = redFish;
+            }
             if(random < 1){
                 unborn(r,randomNbChild);
             }
+            else if(r == r1)
+                ;
             else
-                System.out.println("\nLa reproduction n'a donné aucun bébé");
+                System.out.println(Tools.strColorBlue("\nLa reproduction entre " + r.getName() + "(femele) et " + r1.getName() + "(mâle) n'a donné aucun bébé."));
         }
-        else
-            System.out.println("\nCe sont des poisson rouges du même sexe ! Petit coquin");
     } // reproduction()
 
     /**
