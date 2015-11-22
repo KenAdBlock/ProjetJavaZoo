@@ -221,9 +221,8 @@ public class Zoo {
      * Thread permettant de rendre la simulation plus ludique, en générant de l'aléatoire.
      * Ce thread est "actif" toutes les une à trois minutes.
      * Lorsqu'il l'est, il va selectionner deux animaux du même enclos (et donc du même type) pour tenter une reproduction entre eux.
-     * Cela peut échouer car l'aléatoire peut sélectionner deux animaux du même sexe. Ce n'est pas grave, au contraire cela donne plus
-     * de réalisme à la simulation.
-     * Cela permet entre autre à l'utilisateur d'intérargir avec le zoo et ses animaux.
+     * Cela peut échouer car l'aléatoire peut sélectionner deux animaux du même sexe.
+     * Ce n'est pas un problème, au contraire cela donne plus de réalisme à la simulation.
      */
     private void threadReproduction(){
         new Thread(new Thread(){
