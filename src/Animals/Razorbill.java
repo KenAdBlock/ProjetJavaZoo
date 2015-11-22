@@ -64,7 +64,7 @@ public class Razorbill extends Bird implements ISwim, IFly {
     /**
      * Retourne une string représentant "textuellement" les caractéristiques du pingouin.
      *
-     * @return Une string.
+     * @return Une string, représentant les caractéristiques du pingouin.
      */
     @Override
     public String toString() {

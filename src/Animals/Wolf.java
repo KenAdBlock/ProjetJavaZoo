@@ -63,7 +63,7 @@ public class Wolf extends Mammal implements IWander {
     /**
      * Retourne une string représentant "textuellement" les caractéristiques du loup.
      *
-     * @return Une string.
+     * @return Une string, représentant les caractéristiques du loup.
      */
     @Override
     public String toString() {

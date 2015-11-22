@@ -63,7 +63,7 @@ public class RedFish extends Fish implements ISwim {
     /**
      * Retourne une string représentant "textuellement" les caractéristiques du poisson rouge.
      *
-     * @return Une string.
+     * @return Une string, représentant les caractéristiques du poisson.
      */
     @Override
     public String toString() {

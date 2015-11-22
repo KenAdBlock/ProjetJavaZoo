@@ -63,7 +63,7 @@ public class Tiger extends Mammal implements IWander {
     /**
      * Retourne une string représentant "textuellement" les caractéristiques du tigre.
      *
-     * @return Une string.
+     * @return Une string, représentant les caractéristiques du tigre.
      */
     @Override
     public String toString() {
