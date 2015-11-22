@@ -89,7 +89,6 @@ public class Employee {
         return name;
     } // getName()
 
-
     /**
      * Permet à l'employé de réapprovisionner un enclos en nourriture.
      *

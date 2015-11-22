@@ -112,7 +112,7 @@ public class Whale extends Mammal implements ISwim {
      */
     @Override
     public void swim() {
-        System.out.println("\nLa balaine nage");
+        System.out.println("\nLa baleine nage");
     } // swim()
 
     /**

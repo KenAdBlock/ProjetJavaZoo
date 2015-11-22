@@ -119,7 +119,7 @@ public class Zoo {
                 }
             }
         }
-        System.out.println("Le nombre d'animaux présents dans le zoo est de " + cpt + " animaux");
+        System.out.println(Tools.strColorBlue("\nIl y a " + cpt + " animaux présents dans le zoo.\n"));
     } // showNbTotalAnimal()
 
     /**
@@ -127,8 +127,9 @@ public class Zoo {
      */
     public void showTotalAnimal(){
         if(totalAnimal.isEmpty())
-            System.out.println("\tIl n'y a pas d'animal dans le zoo !");
+            System.out.println(Tools.strColorRed("\tIl n'y a pas d'animal dans le zoo !"));
         else{
+            System.out.println(Tools.strColorBlue("Voici le nom de tous les animaux présents dans le zoo :"));
             int cpt = 0;
             System.out.print("\t");
             for (ArrayList<Animal> a : totalAnimal) {
@@ -142,6 +143,7 @@ public class Zoo {
                 }
             }
         }
+        System.out.println("\n");
     } // showTotalAnimal()
 
     /**
@@ -1056,10 +1058,10 @@ public class Zoo {
                                                 "\tAction(s) sur un enclos : \n" +
                                                 "\t\t3: Réapprovisionner un enclos en nourriture\n" +
                                                 "\tInformations sur le zoo\n" +
-                                                "\t\t4: Afficher tout les enclos avec les animaux qu'ils contiennent\n" +
-                                                "\t\t5: Afficher un enclos en particulier avec les animaux qu'il contient\n" +
-                                                "\t\t6: Afficher le nombre total d'animaux présent dans le zoo\n" +
-                                                "\t\t7: Afficher les noms de tout les animaux présent dans le zoo\n" +
+                                                "\t\t4: Afficher tous les enclos avec les animaux qu'ils contiennent\n" +
+                                                "\t\t5: Afficher un enclos en particulier, avec les animaux qu'il contient\n" +
+                                                "\t\t6: Afficher le nombre total d'animaux présents dans le zoo\n" +
+                                                "\t\t7: Afficher les noms de tous les animaux présents dans le zoo\n" +
                                                 "\tq: QUITTER (MODE GESTION)\n" +
                                                 "\nChoix : ");
 
