@@ -63,7 +63,7 @@ public class Shark extends Fish implements ISwim {
     /**
      * Retourne une string représentant "textuellement" les caractéristiques du requin.
      *
-     * @return Une string.
+     * @return Une string, représentant les caractéristiques du requin.
      */
     @Override
     public String toString() {

@@ -63,7 +63,7 @@ public class Eagle extends Bird implements IFly {
     /**
      * Retourne une string représentant "textuellement" les caractéristiques de l'aigle.
      *
-     * @return Une string.
+     * @return Une string, représentant les caractéristiques de l'aigle.
      */
     @Override
     public String toString() {

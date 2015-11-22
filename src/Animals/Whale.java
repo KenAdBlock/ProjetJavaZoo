@@ -64,7 +64,7 @@ public class Whale extends Mammal implements ISwim {
     /**
      * Retourne une string représentant "textuellement" les caractéristiques de la baleine.
      *
-     * @return Une string.
+     * @return Une string, représentant les caractéristiques de la baleine.
      */
     @Override
     public String toString() {
