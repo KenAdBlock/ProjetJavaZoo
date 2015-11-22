@@ -205,12 +205,14 @@ public class Zoo {
                         Animal animal = animalArrayList.get(Tools.random(0, animalArrayList.size()));
                         boolean random = (Tools.random(0,2) != 0);
                         if (random)
-                            animal.setHungerIndicator(animal.getHungerIndicator() - Tools.random(0, 21));
+                            animal.setHungerIndicator(animal.getHungerIndicator() - Tools.random(1, 21));
                         else
-                            animal.setHealthIndicator(animal.getHealthIndicator() - Tools.random(0, 21));
+                            animal.setHealthIndicator(animal.getHealthIndicator() - Tools.random(1, 21));
                         sleep(Tools.random(1000, 5001));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                    } catch (IllegalArgumentException e){
+
                     }
                 }
             }
@@ -656,6 +658,7 @@ public class Zoo {
                                                         break;
                                                     default:
                                                         boolean isNotValid = false;
+                                                        boolean isNotEnter = true;
                                                         for (Paddock p : listPaddock) {
                                                             if (p.getName().equals(choicePaddock)) {
                                                                 do {
@@ -664,6 +667,7 @@ public class Zoo {
                                                                     p.add(wolf);
                                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un loup !"));
                                                                     System.out.println(wolf.toString());
+                                                                    isNotEnter = false;
                                                                     if (p.getHereNbAnimals() != p.getMaxNbAnimals())
                                                                         isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                                 }
@@ -672,6 +676,8 @@ public class Zoo {
                                                                 isNotFinishAddAnimal = false;
                                                             } else
                                                                 isNotValid = true;
+                                                            if(!isNotEnter)
+                                                                isNotValid = false;
                                                         }
                                                         if (isNotValid)
                                                             Tools.notProposedOption();
@@ -714,6 +720,7 @@ public class Zoo {
                                                         break;
                                                     default:
                                                         boolean isNotValid = false;
+                                                        boolean isNotEnter = true;
                                                         for (Paddock p : listPaddock) {
                                                             if (p.getName().equals(choicePaddock)) {
                                                                 do {
@@ -722,6 +729,7 @@ public class Zoo {
                                                                     p.add(bear);
                                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un ours !"));
                                                                     System.out.println(bear.toString());
+                                                                    isNotEnter = false;
                                                                     if (p.getHereNbAnimals() != p.getMaxNbAnimals())
                                                                         isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                                 }
@@ -730,6 +738,8 @@ public class Zoo {
                                                                 isNotFinishAddAnimal = false;
                                                             } else
                                                                 isNotValid = true;
+                                                            if(!isNotEnter)
+                                                                isNotValid = false;
                                                         }
                                                         if (isNotValid)
                                                             Tools.notProposedOption();
@@ -772,6 +782,7 @@ public class Zoo {
                                                         break;
                                                     default:
                                                         boolean isNotValid = false;
+                                                        boolean isNotEnter = true;
                                                         for (Paddock p : listPaddock) {
                                                             if (p.getName().equals(choicePaddock)) {
                                                                 do {
@@ -780,6 +791,7 @@ public class Zoo {
                                                                     p.add(tiger);
                                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un tigre !"));
                                                                     System.out.println(tiger.toString());
+                                                                    isNotEnter = false;
                                                                     if (p.getHereNbAnimals() != p.getMaxNbAnimals())
                                                                         isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                                 }
@@ -788,6 +800,8 @@ public class Zoo {
                                                                 isNotFinishAddAnimal = false;
                                                             } else
                                                                 isNotValid = true;
+                                                            if(!isNotEnter)
+                                                                isNotValid = false;
                                                         }
                                                         if (isNotValid)
                                                             Tools.notProposedOption();
@@ -830,6 +844,7 @@ public class Zoo {
                                                         break;
                                                     default:
                                                         boolean isNotValid = false;
+                                                        boolean isNotEnter = true;
                                                         for (Paddock p : listPaddock) {
                                                             if (p.getName().equals(choicePaddock)) {
                                                                 do {
@@ -838,6 +853,7 @@ public class Zoo {
                                                                     p.add(eagle);
                                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un aigle !"));
                                                                     System.out.println(eagle.toString());
+                                                                    isNotEnter = false;
                                                                     if (p.getHereNbAnimals() != p.getMaxNbAnimals())
                                                                         isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                                 }
@@ -846,6 +862,8 @@ public class Zoo {
                                                                 isNotFinishAddAnimal = false;
                                                             } else
                                                                 isNotValid = true;
+                                                            if(!isNotEnter)
+                                                                isNotValid = false;
                                                         }
                                                         if (isNotValid)
                                                             Tools.notProposedOption();
@@ -888,6 +906,7 @@ public class Zoo {
                                                         break;
                                                     default:
                                                         boolean isNotValid = false;
+                                                        boolean isNotEnter = true;
                                                         for (Paddock p : listPaddock) {
                                                             if (p.getName().equals(choicePaddock)) {
                                                                 do {
@@ -896,6 +915,7 @@ public class Zoo {
                                                                     p.add(razorbill);
                                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un pingouin !"));
                                                                     System.out.println(razorbill.toString());
+                                                                    isNotEnter = false;
                                                                     if (p.getHereNbAnimals() != p.getMaxNbAnimals())
                                                                         isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                                 }
@@ -904,6 +924,8 @@ public class Zoo {
                                                                 isNotFinishAddAnimal = false;
                                                             } else
                                                                 isNotValid = true;
+                                                            if(!isNotEnter)
+                                                                isNotValid = false;
                                                         }
                                                         if (isNotValid)
                                                             Tools.notProposedOption();
@@ -947,6 +969,7 @@ public class Zoo {
                                                         break;
                                                     default:
                                                         boolean isNotValid = false;
+                                                        boolean isNotEnter = true;
                                                         for (Paddock p : listPaddock) {
                                                             if (p.getName().equals(choicePaddock)) {
                                                                 do {
@@ -955,6 +978,7 @@ public class Zoo {
                                                                     p.add(whale);
                                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" une baleine !"));
                                                                     System.out.println(whale.toString());
+                                                                    isNotEnter = false;
                                                                     if (p.getHereNbAnimals() != p.getMaxNbAnimals())
                                                                         isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                                 }
@@ -963,6 +987,8 @@ public class Zoo {
                                                                 isNotFinishAddAnimal = false;
                                                             } else
                                                                 isNotValid = true;
+                                                            if(!isNotEnter)
+                                                                isNotValid = false;
                                                         }
                                                         if (isNotValid)
                                                             Tools.notProposedOption();
@@ -1005,6 +1031,7 @@ public class Zoo {
                                                         break;
                                                     default:
                                                         boolean isNotValid = false;
+                                                        boolean isNotEnter = true;
                                                         for (Paddock p : listPaddock) {
                                                             if (p.getName().equals(choicePaddock)) {
                                                                 do {
@@ -1013,6 +1040,7 @@ public class Zoo {
                                                                     p.add(shark);
                                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un requin !"));
                                                                     System.out.println(shark.toString());
+                                                                    isNotEnter = false;
                                                                     if (p.getHereNbAnimals() != p.getMaxNbAnimals())
                                                                         isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                                 }
@@ -1063,6 +1091,7 @@ public class Zoo {
                                                         break;
                                                     default:
                                                         boolean isNotValid = false;
+                                                        boolean isNotEnter = true;
                                                         for (Paddock p : listPaddock) {
                                                             if (p.getName().equals(choicePaddock)) {
                                                                 do {
@@ -1071,6 +1100,7 @@ public class Zoo {
                                                                     p.add(redFish);
                                                                     System.out.println(Tools.strColorBlue("\nVous avez \"créer\" un poisson rouge !"));
                                                                     System.out.println(redFish.toString());
+                                                                    isNotEnter = false;
                                                                     if (p.getHereNbAnimals() != p.getMaxNbAnimals())
                                                                         isPaddockFill = Tools.askPaddockFill(isPaddockFill);
                                                                 }
@@ -1079,6 +1109,8 @@ public class Zoo {
                                                                 isNotFinishAddAnimal = false;
                                                             } else
                                                                 isNotValid = true;
+                                                            if(!isNotEnter)
+                                                                isNotValid = false;
                                                         }
                                                         if (isNotValid)
                                                             Tools.notProposedOption();
