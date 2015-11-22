@@ -184,15 +184,69 @@ public class Zoo {
         }).start();
     } // threadDecrementation()
 
-    private void threaadReproduction(){
+    /**
+     * Thread permettant de rendre la simulation plus ludique, en générant de l'aléatoire.
+     * Ce thread est "actif" toutes les une à trois minutes.
+     * Lorsqu'il l'est, il va selectionner deux animaux du même enclos (et donc du même type) pour tenter une reproduction entre eux.
+     * Cela peut échouer car l'aléatoire peut sélectionner deux animaux du même sexe. Ce n'est pas grave, au contraire cela donne plus
+     * de réalisme à la simulation.
+     * Cela permet entre autre à l'utilisateur d'intérargir avec le zoo et ses animaux.
+     */
+    private void threadReproduction(){
         new Thread(new Thread(){
             @Override
             public void run() {
                 while(true){
-                    ArrayList<Animal> animalArrayList = totalAnimal.get(Tools.random(0, totalAnimal.size()));
-                    Animal animal1 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
-                    Animal animal2 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
-                    //faire la reproduction entre les 2 animaux ; mais ceux sont des animaux donc pas de methode reproduction;
+                    try {
+                        sleep(Tools.random(1000,2000));//(60000,180000));
+                        ArrayList<Animal> animalArrayList = totalAnimal.get(Tools.random(0, totalAnimal.size()));
+                        Animal animal1 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
+                        Animal animal2 = animalArrayList.get(Tools.random(0, animalArrayList.size()));
+                        String name1 = animal1.getName();
+                        String name2 = animal2.getName();
+                        if(name1.substring(0,4).equals("wolf")) {
+                            Wolf wolf1 = Tools.hashWolf(name1);
+                            Wolf wolf2 = Tools.hashWolf(name2);
+                            wolf1.reproduction(wolf2);
+                        }
+                        else if(name1.substring(0,4).equals("bear")){
+                            Bear bear1 = Tools.hashBear(name1);
+                            Bear bear2 = Tools.hashBear(name2);
+                            bear1.reproduction(bear2);
+                        }
+                        else if(name1.substring(0,4).equals("tiger")){
+                            Tiger tiger1 = Tools.hashTiger(name1);
+                            Tiger tiger2 = Tools.hashTiger(name2);
+                            tiger1.reproduction(tiger2);
+                        }
+                        else if(name1.substring(0,4).equals("whale")){
+                            Whale whale1 = Tools.hashWhale(name1);
+                            Whale whale2 = Tools.hashWhale(name2);
+                            whale1.reproduction(whale2);
+                        }
+                        else if(name1.substring(0,4).equals("razorbill")){
+                            Razorbill razorbill1 = Tools.hashRazorbill(name1);
+                            Razorbill razorbill2 = Tools.hashRazorbill(name2);
+                            razorbill1.reproduction(razorbill2);
+                        }
+                        else if(name1.substring(0,4).equals("redfish")){
+                            RedFish redfish1 = Tools.hashRedFish(name1);
+                            RedFish redfish2 = Tools.hashRedFish(name2);
+                            redfish1.reproduction(redfish2);
+                        }
+                        else if(name1.substring(0,4).equals("shark")){
+                            Shark shark1 = Tools.hashShark(name1);
+                            Shark shark2 = Tools.hashShark(name2);
+                            shark1.reproduction(shark2);
+                        }
+                        else if(name1.substring(0,4).equals("eagle")){
+                            Eagle eagle1 = Tools.hashEagle(name1);
+                            Eagle eagle2 = Tools.hashEagle(name2);
+                            eagle1.reproduction(eagle2);
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }).start();
@@ -1063,6 +1117,7 @@ public class Zoo {
                             if(isFirstAccesToCase3) {
                                 System.out.println(Tools.strColorBlue("\nVous êtes maintenant dans le mode gestion du zoo.\n"));
                                 threadDecrementation();
+                                threadReproduction();
                                 isFirstAccesToCase3 = false;
                             }
                             System.out.print("Quel action voulez-vous faire ?\n" +
@@ -1112,7 +1167,6 @@ public class Zoo {
                                             default:
                                                 if(animalToMove.contains(choiceMoveAnimal)) {
                                                     Animal animal = Tools.hashAnimal(choiceMoveAnimal);
-                                                    System.out.println(animal.getPaddock().getName());
                                                     employee.moveAnimal(animal.getPaddock(),animal);
                                                 }
                                                 else

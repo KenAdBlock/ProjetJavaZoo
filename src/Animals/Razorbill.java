@@ -38,6 +38,7 @@ public class Razorbill extends Bird implements ISwim, IFly {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "nageant";
+        Tools.mapRazorbill.put(this.getName(),this);
         beAlive();
     } //Constructor
 
@@ -163,18 +164,23 @@ public class Razorbill extends Bird implements ISwim, IFly {
             int randomNbChild = Tools.random(4, 8);
 
             Razorbill r ;
-            if(this.isSex())
+            Razorbill r1;
+            if(this.isSex()) {
                 r = razorbill;
-            else
-                r = this;
-            if(random < 1){
-                unborn(r,randomNbChild);
+                r1 = this;
             }
+            else{
+                r = this;
+                r1 = razorbill;
+            }
+            if(random < 1){
+            unborn(r,randomNbChild);
+            }
+            else if(r == r1)
+                ;
             else
-                System.out.println("\nLa reproduction n'a donné aucun bébé");
+                System.out.println(Tools.strColorBlue("\nLa reproduction entre " + r.getName() + "(femele) et " + r1.getName() + "(mâle) n'a donné aucun bébé."));
         }
-        else
-            System.out.println("\nCe sont des petit pingouins du même sexe ! Petit coquin");
     } // reproduction()
 
     /**

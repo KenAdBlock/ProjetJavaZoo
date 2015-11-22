@@ -1,5 +1,6 @@
 package Tools;
 
+import Animals.*;
 import Paddock.Paddock;
 import java.util.*;
 
@@ -10,12 +11,61 @@ import Zoo.Zoo;
  * Created by Darkweizer on 18/10/2015.
  */
 public class Tools {
-    public static Map<String, Paddock> map1 = new WeakHashMap<>();
 
-    public static Map<String, Animal> map3 = new WeakHashMap<>();
+    /**
+     * Stock tous les Paddock avec pour clé leur nom.
+     */
+    public static Map<String, Paddock> mapPaddock = new WeakHashMap<>();
 
-    private static String colorReset = "\033[0m";
-    private static final Map<String, String> map2 = new HashMap<String, String>() {{
+    /**
+     * Stock tous les Animal avec pour clé leur nom.
+     */
+    public static Map<String, Animal> mapAnimal = new WeakHashMap<>();
+
+    /**
+     * Stock tous les Wolf avec pour clé leur nom.
+     */
+    public static Map<String, Wolf> mapWolf = new WeakHashMap<>();
+
+    /**
+     * Stock tous les Bear avec pour clé leur nom.
+     */
+    public static Map<String, Bear> mapBear = new WeakHashMap<>();
+
+    /**
+     * Stock tous les Tiger avec pour clé leur nom.
+     */
+    public static Map<String, Tiger> mapTiger = new WeakHashMap<>();
+
+    /**
+     * Stock tous les Whale avec pour clé leur nom.
+     */
+    public static Map<String, Whale> mapWhale = new WeakHashMap<>();
+
+    /**
+     * Stock tous les Razorbill avec pour clé leur nom.
+     */
+    public static Map<String, Razorbill> mapRazorbill = new WeakHashMap<>();
+
+    /**
+     * Stock tous les RedFish avec pour clé leur nom.
+     */
+    public static Map<String, RedFish> mapRedFish= new WeakHashMap<>();
+
+    /**
+     * Stock tous les Shark avec pour clé leur nom.
+     */
+    public static Map<String, Shark> mapShark = new WeakHashMap<>();
+
+    /**
+     * Stock tous les Eagle avec pour clé leur nom.
+     */
+    public static Map<String, Eagle> mapEagle = new WeakHashMap<>();
+
+    /**
+     * Stock tous les nom des animaux en français avec pour clé leur nom en anglais.
+     */
+    private static final Map<String, String> mapTypeAnimal = new HashMap<String, String>() {{
         put("Bear","Ours");
         put("Eagle","Aigle");
         put("Razorbill","Pingouin");
@@ -26,21 +76,143 @@ public class Tools {
         put("Wolf","Loup");
     }};
 
+    private static String colorReset = "\033[0m";
+
     public static synchronized int random(int min, int max) {
         Random r = new Random();
         return (min + r.nextInt(max - min));
     } // random()
 
+    /**
+     * Retourne la classe Paddock correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom du paddock.
+     *
+     * @return La classe Paddock correspondante à la string passait en paramètre.
+     */
     public static synchronized Paddock hashPaddock(String str){
-        return map1.get(str);
+        return mapPaddock.get(str);
     } // hashPaddock()
 
+    /**
+     * Retourne la classe Animal correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom de l'animal.
+     *
+     * @return La classe Animal correspondante à la string passait en paramètre.
+     */
     public static Animal hashAnimal(String str){
-        return map3.get(str);
+        return mapAnimal.get(str);
     }
 
+    /**
+     * Retourne la classe Wolf correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom du loup.
+     *
+     * @return La classe Wolf correspondante à la string passait en paramètre.
+     */
+    public static Wolf hashWolf(String str){
+        return mapWolf.get(str);
+    }
+
+    /**
+     * Retourne la classe Bear correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom de l'ours.
+     *
+     * @return La classe Bear correspondante à la string passait en paramètre.
+     */
+    public static Bear hashBear(String str){
+        return mapBear.get(str);
+    }
+
+    /**
+     * Retourne la classe Tiger correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom du tigre.
+     *
+     * @return La classe Tiger correspondante à la string passait en paramètre.
+     */
+    public static Tiger hashTiger(String str){
+        return mapTiger.get(str);
+    }
+
+    /**
+     * Retourne la classe Whale correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom de la baleine.
+     *
+     * @return La classe Whale correspondante à la string passait en paramètre.
+     */
+    public static Whale hashWhale(String str){
+        return mapWhale.get(str);
+    }
+
+    /**
+     * Retourne la classe Razorbill correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom du pingouin.
+     *
+     * @return La classe Razorbille correspondante à la string passait en paramètre.
+     */
+    public static Razorbill hashRazorbill(String str){
+        return mapRazorbill.get(str);
+    }
+
+    /**
+     * Retourne la classe RedFish correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom du poisson rouge.
+     *
+     * @return La classe RedFish correspondante à la string passait en paramètre.
+     */
+    public static RedFish hashRedFish(String str){
+        return mapRedFish.get(str);
+    }
+
+    /**
+     * Retourne la classe Shark correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom du requin.
+     *
+     * @return La classe Shark correspondante à la string passait en paramètre.
+     */
+    public static Shark hashShark(String str){
+        return mapShark.get(str);
+    }
+
+    /**
+     * Retourne la classe Eagle correspondante à la string passait en paramètre
+     *
+     * @param str
+     *          Le nom de l'aigle.
+     *
+     * @return La classe Eagle correspondante à la string passait en paramètre.
+     */
+    public static Eagle hashEagle(String str){
+        return mapEagle.get(str);
+    }
+
+    /**
+     *Retourne le nom en français de l'animal correspondante au nom en anglais de l'animal passait en paramètre.
+     *
+     * @param str
+     *          Le nom en anglais de l'animal.
+     *
+     * @return Le nom en français de l'animal correspondante au nom en anglais de l'animal passait en paramètre.
+     */
     public static String hashTypeAnimal(String str){
-        return map2.get(str);
+        return mapTypeAnimal.get(str);
     } // hashTypeAnimal()
 
     public static void askAgain() {

@@ -38,6 +38,7 @@ public class Whale extends Mammal implements ISwim {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "nageant";
+        Tools.mapWhale.put(this.getName(),this);
         beAlive();
     } //Constructor
 
@@ -155,18 +156,23 @@ public class Whale extends Mammal implements ISwim {
             int randomNbChild = Tools.random(4, 8);
 
             Whale w ;
-            if(this.isSex())
+            Whale w1;
+            if(this.isSex()) {
                 w = whale;
-            else
+                w1 = this;
+            }
+            else {
                 w = this;
+                w1 = whale;
+            }
             if(random < 1){
                 unborn(w,randomNbChild);
             }
+            else if(w == w1)
+                ;
             else
-                System.out.println("\nLa reproduction n'a donné aucun bébé");
+                System.out.println(Tools.strColorBlue("\nLa reproduction entre " + w.getName() + "(femele) et " + w1.getName() + "(mâle) n'a donné aucun bébé."));
         }
-        else
-            System.out.println("\nCe sont des baleines du même sexe ! Petit coquin");
     } // reproduction()
 
     /**

@@ -37,6 +37,7 @@ public class Eagle extends Bird implements IFly {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "volant";
+        Tools.mapEagle.put(this.getName(),this);
         beAlive();
     } //Constructor
 
@@ -154,16 +155,22 @@ public class Eagle extends Bird implements IFly {
             int randomNbChild = Tools.random(4, 8);
 
             Eagle e ;
-            if(this.isSex())
+            Eagle e1;
+            if(this.isSex()) {
                 e = eagle;
-            else
+                e1 = this;
+            }
+            else {
                 e = this;
+                e1 = eagle;
+            }
             if(random < 1){
                 unborn(e,randomNbChild);
             }
+            else if(e == e1)
+                ;
             else
-                System.out.println("\nLa reproduction n'a donné aucun bébé");
-        }
+                System.out.println(Tools.strColorBlue("\nLa reproduction entre " + e.getName() + "(femele) et " + e1.getName() + "(mâle) n'a donné aucun bébé."));        }
         else
             System.out.println("\nCe sont des aigles du même sexe ! Petit coquin");
     } // reproduction()

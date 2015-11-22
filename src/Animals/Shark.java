@@ -37,6 +37,7 @@ public class Shark extends Fish implements ISwim {
         super(name, sex, weight, height, age);
         timeUnborn = Tools.random(6000, 6301);// 1000 ms égale 1 jour en vrai
         typeAnimal = "nageant";
+        Tools.mapShark.put(this.getName(),this);
         beAlive();
     } //Constructor
 
@@ -154,18 +155,23 @@ public class Shark extends Fish implements ISwim {
             int randomNbChild = Tools.random(4, 8);
 
             Shark s ;
-            if(this.isSex())
+            Shark s1;
+            if(this.isSex()) {
                 s = shark;
-            else
+                s1 = this;
+            }
+            else {
                 s = this;
+                s1 = shark;
+            }
             if(random < 1){
                 unborn(s,randomNbChild);
             }
+            else if(s == s1)
+                ;
             else
-                System.out.println("\nLa reproduction n'a donné aucun bébé");
+                System.out.println(Tools.strColorBlue("\nLa reproduction entre " + s.getName() + "(femele) et " + s1.getName() + "(mâle) n'a donné aucun bébé."));
         }
-        else
-            System.out.println("\nCe sont des requins du même sexe ! Petit coquin");
     } // reproduction()
 
     /**
